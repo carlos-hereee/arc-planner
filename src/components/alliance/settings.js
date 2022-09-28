@@ -2,16 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { Button, Modal, TextArea } from "semantic-ui-react";
 // import { Formik, Form, Field } from "formik";
 
-import styles from "../../stylesheets/settings.module.scss";
 import { PlayerContext } from "../../utils/context/Player/PlayerState";
 
 export default function Settings() {
-  const {
-    alliance,
-    getAlliance,
-    allianceSettings,
-    deleteAlliance,
-  } = useContext(PlayerContext);
+  const { alliance, getAlliance, allianceSettings, deleteAlliance } =
+    useContext(PlayerContext);
   const [data, setData] = useState({
     allianceName: "",
     allianceTag: "",
@@ -32,7 +27,7 @@ export default function Settings() {
     allianceSettings(data);
   }
   return (
-    <div className={styles.form}>
+    <div className="form">
       <label>Alliance Tag:</label>
       <input
         type="text"
@@ -57,16 +52,15 @@ export default function Settings() {
         key={alliance.messageBoard}
         defaultValue={alliance.messageBoard}
       />
-      <div className={styles.btns}>
+      <div className="btns">
         <Modal
           onClose={() => setOpen(false)}
           onOpen={() => setOpen(true)}
           open={open}
-          trigger={<Button color="red">Disband</Button>}
-        >
+          trigger={<Button color="red">Disband</Button>}>
           <Modal.Header>Disband Alliance</Modal.Header>
           <Modal.Content>
-            <div className={styles.row}>
+            <div className="row">
               Are you sure you want to DISBAND the alliance
             </div>
           </Modal.Content>

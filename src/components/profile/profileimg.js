@@ -1,9 +1,6 @@
-import React, { useRef, useState, useContext, useEffect } from "react";
+import React, { useRef, useState, useContext } from "react";
 
 import { PlayerContext } from "../../utils/context/Player/PlayerState";
-
-import styles from "../../stylesheets/profile.module.scss";
-import custom from "../../stylesheets/custom-styles.module.scss";
 
 export default function ProfileImg() {
   const { addImg, profile, updateProfile } = useContext(PlayerContext);
@@ -58,7 +55,7 @@ export default function ProfileImg() {
   }
 
   return (
-    <div className={styles.wrapper}>
+    <div className="wrapper">
       <form encType="multipart/form-data" onSubmit={handleSubmit}>
         <input
           type="file"
@@ -71,51 +68,51 @@ export default function ProfileImg() {
           src={`${process.env.REACT_APP_BASE_URL}/${
             profile.path && profile.path.replace("\\", "/")
           }`}
-          className={styles.headshot}
+          className="headshot"
           ref={uploadedImage}
           alt={profile.originalname}
           onClick={imgClick}
         />
         {imgToggle ? (
           <>
-            <button type="submit" className={custom.inputSave} />
+            <button type="submit" className="inputSave" />
           </>
         ) : (
           ""
         )}
       </form>
-      <div className={styles.field}>
+      <div className="field">
         <div>GOVERNOR NAME: </div>
         <input
           key={profile.inGameName}
-          className={custom.input}
+          className="input"
           defaultValue={profile.inGameName}
           name="inGameName"
           onChange={(e) => inputChange(e)}
         />
       </div>
-      <div className={styles.field}>
+      <div className="field">
         <div>CITY HALL: </div>
         <input
           key={profile.city}
-          className={custom.input}
+          className="input"
           defaultValue={profile.city}
           name="city"
           onChange={(e) => inputChange(e)}
         />
       </div>
-      <div className={styles.field}>
+      <div className="field">
         <div>CASTLE: </div>
         <input
           key={profile.castle}
-          className={custom.input}
+          className="input"
           defaultValue={profile.castle}
           name="castle"
           onChange={(e) => inputChange(e)}
         />
       </div>
       {inputChanged ? (
-        <div className={custom.btn} onClick={saveData}>
+        <div className="btn" onClick={saveData}>
           <p>SAVE</p>
         </div>
       ) : (

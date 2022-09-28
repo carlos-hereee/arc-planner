@@ -1,4 +1,3 @@
-import React from "react";
 import { Route, Switch } from "react-router-dom";
 
 import Header from "./pages/header.js";
@@ -12,11 +11,9 @@ import { AuthState } from "./utils/context/Auth/AuthState.js";
 import { PlayerState } from "./utils/context/Player/PlayerState.js";
 import { PrivateRoute } from "./utils/privateRoute";
 
-import app from "./stylesheets/app.module.scss";
-
 function App() {
   return (
-    <div className={app.App}>
+    <div className="App">
       <Switch>
         <AuthState>
           <PlayerState>

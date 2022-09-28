@@ -4,8 +4,6 @@ import { Menu, Segment } from "semantic-ui-react";
 import Register from "../components/register";
 import LogIn from "../components/login";
 
-import styles from "../stylesheets/custom-styles.module.scss";
-
 export default function Main({ history }) {
   const rfToken = localStorage.getItem("refreshToken");
 
@@ -19,12 +17,12 @@ export default function Main({ history }) {
   const auth = { login: <LogIn />, register: <Register /> };
 
   return (
-    <div className={styles.main}>
-      <div className={styles.header}>
+    <div className="main">
+      <div className="header">
         <img src="https://lilithimage.lilithcdn.com/roc/en/m/imgs/logo_m1.png?v=201809211119" />
       </div>
-      <div className={styles.content}>
-        <div className={styles.card}>
+      <div className="content">
+        <div className="card">
           <Segment raised>
             <h2>Ark Planner</h2>
             <p>
@@ -40,7 +38,7 @@ export default function Main({ history }) {
             </p>
           </Segment>
         </div>
-        <div className={styles.card}>
+        <div className="card">
           <Segment raised>
             <Menu pointing secondary>
               <Menu.Item

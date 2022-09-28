@@ -11,15 +11,13 @@ import {
   validategovName,
 } from "../utils/validateAuth";
 
-import styles from "../stylesheets/app.module.scss";
-
 export default function Register() {
   const { isLoading, register } = useContext(AuthContext);
   const [canSeePassword, setCanSeePassword] = useState(false);
   const [canSeeConfirmPassword, setcanSeeConfirmPassword] = useState(false);
 
   return (
-    <div className={styles.wrapper}>
+    <div className={"wrapper"}>
       <h1>Register</h1>
       <Formik
         initialValues={{
@@ -32,30 +30,29 @@ export default function Register() {
         onSubmit={(values, actions) => {
           register(values);
           actions.resetForm();
-        }}
-      >
+        }}>
         {({ errors, touched, validateForm, values }) => (
-          <Form className={styles.form}>
+          <Form className="form">
             {errors.username && touched.username && (
-              <div className={styles.validate}>{errors.username}</div>
+              <div className="validate">{errors.username}</div>
             )}
             <label>Username </label>
             <Field type="text" name="username" validate={validateUsername} />
             {errors.inGameName && touched.inGameName && (
-              <div className={styles.validate}>{errors.inGameName}</div>
+              <div className="validate">{errors.inGameName}</div>
             )}
             <label>Govenor Name</label>
             <Field type="text" name="inGameName" validate={validategovName} />
             {errors.email && touched.email && (
-              <div className={styles.validate}>{errors.email}</div>
+              <div className="validate">{errors.email}</div>
             )}
             <label>Email </label>
             <Field type="text" name="email" validate={validateEmail} />
             {errors.password && touched.password && (
-              <div className={styles.validate}>{errors.password}</div>
+              <div className="validate">{errors.password}</div>
             )}
             <label>Password </label>
-            <div className={styles.password}>
+            <div className="password">
               <Field
                 type={canSeePassword ? "text" : "password"}
                 name="password"
@@ -63,16 +60,16 @@ export default function Register() {
               />
               <Icon
                 size="big"
-                className={styles.icon}
+                className="icon"
                 name={canSeePassword ? "eye slash" : "eye"}
                 onClick={() => setCanSeePassword(!canSeePassword)}
               />
             </div>
             {errors.confirmPassword && touched.confirmPassword && (
-              <div className={styles.validate}>{errors.confirmPassword}</div>
+              <div className="validate">{errors.confirmPassword}</div>
             )}
             <label>Confirm Password </label>
-            <div className={styles.password}>
+            <div className="password">
               <Field
                 type={canSeeConfirmPassword ? "text" : "password"}
                 name="confirmPassword"
@@ -82,7 +79,7 @@ export default function Register() {
               />
               <Icon
                 size="big"
-                className={styles.icon}
+                className="icon"
                 name={canSeeConfirmPassword ? "eye slash" : "eye"}
                 onClick={() => setcanSeeConfirmPassword(!canSeeConfirmPassword)}
               />

@@ -3,8 +3,6 @@ import { useDrag, useDrop } from "react-dnd";
 import { ITEM_TYPE } from "./types";
 import Members from "../members";
 
-import styles from "../../../stylesheets/alliance.module.scss";
-
 export default function Item({ item, index, moveItem }) {
   const ref = useRef(null);
 
@@ -44,10 +42,9 @@ export default function Item({ item, index, moveItem }) {
       <div
         ref={ref}
         style={{ opacity: isDragging ? 0 : 1 }}
-        className={styles.cards}
-        key={item.uuid}
-      >
-        <div className={styles.card}>
+        className="cards"
+        key={item.uuid}>
+        <div className="card">
           <div>
             <img
               src={`${process.env.REACT_APP_BASE_URL}/${
@@ -55,11 +52,11 @@ export default function Item({ item, index, moveItem }) {
               }`}
             />
           </div>
-          <div className={styles.card_content}>
-            <div className={styles.gov_name}>{item.inGameName}</div>
-            <div className={styles.bar}>
+          <div className="card_content">
+            <div className="gov_name">{item.inGameName}</div>
+            <div className="bar">
               <div
-                className={styles.t}
+                className="t"
                 style={
                   (t3 * 100) / (t3 + t4 + t5)
                     ? {
@@ -69,12 +66,11 @@ export default function Item({ item, index, moveItem }) {
                     : {
                         display: "none",
                       }
-                }
-              >
+                }>
                 {t3} t3
               </div>
               <div
-                className={styles.t}
+                className="t"
                 style={
                   (t4 * 100) / (t3 + t4 + t5)
                     ? {
@@ -84,12 +80,11 @@ export default function Item({ item, index, moveItem }) {
                     : {
                         display: "none",
                       }
-                }
-              >
+                }>
                 {t4} t4
               </div>
               <div
-                className={styles.t}
+                className="t"
                 style={
                   (t5 * 100) / (t3 + t4 + t5)
                     ? {
@@ -99,8 +94,7 @@ export default function Item({ item, index, moveItem }) {
                     : {
                         display: "none",
                       }
-                }
-              >
+                }>
                 {t5} t5
               </div>
             </div>

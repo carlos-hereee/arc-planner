@@ -1,5 +1,3 @@
-@import "./mixins.scss";
-
 .header {
   @include flex(space-between, row);
   align-items: baseline;

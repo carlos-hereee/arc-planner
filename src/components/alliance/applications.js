@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { PlayerContext } from "../../utils/context/Player/PlayerState";
 
-import styles from "../../stylesheets/alliance.module.scss";
 import { Button } from "semantic-ui-react";
 
 export default function Applications() {
@@ -10,20 +9,20 @@ export default function Applications() {
     getApps();
   }, [listApps.length]);
   return (
-    <div className={styles.a_wrapper}>
+    <div className="a_wrapper">
       <div>
         <h2>Applications</h2>
       </div>
       <div>
         {listApps.length === 0 ? (
-          <div className={styles.empty}>No Applications</div>
+          <div className="empty">No Applications</div>
         ) : (
           ""
         )}
         {listApps &&
           listApps.map((data, idx) => (
-            <div className={styles.applicant} key={data.uuid}>
-              <div className={styles.img}>
+            <div className="applicant" key={data.uuid}>
+              <div className="img">
                 {idx + 1}.
                 <img
                   src={`${process.env.REACT_APP_BASE_URL}/${
@@ -33,21 +32,19 @@ export default function Applications() {
                 />
                 {data.inGameName}
               </div>
-              <div className={styles.btn}>
+              <div className="btn">
                 <Button
                   color="red"
                   size="tiny"
-                  onClick={() => acceptApp(data.allianceId, data.profileId)}
-                >
+                  onClick={() => acceptApp(data.allianceId, data.profileId)}>
                   Decline
                 </Button>
               </div>
-              <div className={styles.btn}>
+              <div className="btn">
                 <Button
                   color="green"
                   size="tiny"
-                  onClick={() => acceptApp(data.allianceId, data.profileId)}
-                >
+                  onClick={() => acceptApp(data.allianceId, data.profileId)}>
                   Accept
                 </Button>
               </div>
