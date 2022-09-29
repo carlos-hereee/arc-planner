@@ -1,31 +1,26 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-
-import { checkAuth } from "../utils/localStorage";
-
 import { AuthContext } from "../utils/context/Auth/AuthState";
 
-import styles from "../stylesheets/hf.module.scss";
-
 export default function Header() {
-  const { signOut } = useContext(AuthContext);
+  const { signOut, accessToken, appName } = useContext(AuthContext);
 
   return (
-    <div className={styles.header}>
-      <div>
-        <Link to="/">Ark Planner</Link>
-      </div>
-      {checkAuth() ? (
-        <div className={styles.nav}>
-          <div className={styles.content}>
+    <div className="header">
+      <Link to="/">
+        <div>{appName}</div>
+      </Link>
+      {accessToken ? (
+        <div className="nav">
+          <div className="content">
             <Link to="/user">Profile</Link>
           </div>
-          <div onClick={() => signOut()} className={styles.content}>
+          <button className="content" onClick={() => signOut()}>
             Sign Out
-          </div>
+          </button>
         </div>
       ) : (
-        ""
+        <Link to="sign-up">Create Account</Link>
       )}
     </div>
   );

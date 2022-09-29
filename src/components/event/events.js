@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Accordion, Button, Icon } from "semantic-ui-react";
+// import { Accordion, Button, Icon } from "semantic-ui-react";
 import { PlayerContext } from "../../utils/context/Player/PlayerState";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
@@ -9,10 +9,6 @@ import CreateTeam from "./createTeam";
 import Item from "./dragable/Item";
 import DropWrapper from "./dragable/dropWrapper";
 import Col from "./dragable/col";
-
-import styles from "../../stylesheets/alliance.module.scss";
-import custom from "../../stylesheets/custom-styles.module.scss";
-import "./dragable/styles.css";
 
 export default function Events() {
   const {
@@ -64,36 +60,31 @@ export default function Events() {
     });
   };
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.card_wrapper}>
+    <div className="wrapper">
+      <div className="card_wrapper">
         <h2>Events</h2>
         <CreateEvent />
-        {eventsError ? (
-          <div className={styles.no_events}>{eventsError}</div>
-        ) : (
-          ""
-        )}
+        {eventsError ? <div className="no_events">{eventsError}</div> : ""}
         {eventsList &&
           eventsList.map((data) => (
-            <div key={data.eventId} className={styles.eventCards}>
-              <Accordion>
+            <div key={data.eventId} className="eventCards">
+              {/* <Accordion>
                 <Accordion.Title
                   active={activeIndex === data.eventId}
                   index={data.eventId}
-                  onClick={handleClick}
-                >
-                  <div className={styles.event_header}>
+                  onClick={handleClick}>
+                  <div className="event_header">
                     <Icon name="dropdown" />
-                    <div className={styles.title}>
+                    <div className="title">
                       <h3>{data.eventName}</h3>
-                      <div className={styles.row}>
+                      <div className="row">
                         <p>This event ends in {data.endDate}</p>
                       </div>
                     </div>
                   </div>
                 </Accordion.Title>
                 <Accordion.Content active={activeIndex === data.eventId}>
-                  <div className={styles.row}>
+                  <div className="row">
                     <p>{data.eventDescription}</p>
                     <CreateTeam eventId={data.eventId} />
                   </div>
@@ -121,12 +112,12 @@ export default function Events() {
                     ))}
                   </DndProvider>
                 </Accordion.Content>
-                <div className={styles.delete_btn}>
+                <div className="delete_btn">
                   <Button color="red" onClick={() => deleteEvent(data.eventId)}>
                     Delete
                   </Button>
                 </div>
-              </Accordion>
+              </Accordion> */}
             </div>
           ))}
       </div>

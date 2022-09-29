@@ -9,7 +9,7 @@ export default function DropWrapper({ onDrop, children, teamId }) {
     collect: (monitor) => ({ isOver: monitor.isOver() }),
   });
   return (
-    <div ref={drop} className={"drop-wrapper"}>
+    <div ref={drop} className="drop-wrapper">
       {React.cloneElement(children, { isOver })}
     </div>
   );

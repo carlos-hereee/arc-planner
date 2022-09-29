@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Menu, Modal, Icon } from "semantic-ui-react";
 
 import AllianceContent from "./allianceContent";
 import AllianceSettings from "./settings";
 
-import custom from "../../stylesheets/custom-styles.module.scss";
 import { PlayerContext } from "../../utils/context/Player/PlayerState";
 import Events from "../event/events";
 import Members from "../event/members";
@@ -12,7 +10,7 @@ import Applications from "./applications";
 
 export default function AllianceNavLink() {
   const { getPermissions, permissions } = useContext(PlayerContext);
-  const [activeItem, setActiveItem] = useState("applications");
+  const [activeItem, setActiveItem] = useState("members");
   const [open, setOpen] = useState(false);
 
   const item = { margin: "auto", textAlign: "center" };
@@ -34,20 +32,19 @@ export default function AllianceNavLink() {
   };
   return (
     <div>
-      <div className={custom.header}>
+      <div className="header">
         <h1>Alliance</h1>
       </div>
-      <div className={custom.body}>
-        <div className={custom.content}>
-          <div className={custom.menu}>
+      <div className="body">
+        <div className="content">
+          <div className="menu">
             <Modal
               basic
               onClose={() => setOpen(false)}
               onOpen={() => setOpen(true)}
               open={open}
               size="small"
-              trigger={<Icon name="bars" size="large" />}
-            >
+              trigger={<Icon name="bars" size="large" />}>
               <Modal.Actions>
                 <Menu text vertical inverted fluid secondary>
                   <Menu.Item

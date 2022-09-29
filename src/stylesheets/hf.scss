@@ -1,9 +1,7 @@
-@import "./mixins.scss";
-
 .header {
   @include flex(space-between, row);
   align-items: baseline;
-  background-color: brown;
+  background-color: $primary-dg-color;
   padding: 1rem;
   color: white;
   overflow: hidden;
@@ -31,12 +29,17 @@
     }
   }
 }
-.wrapper {
-  background-color: brown;
-  color: $txt;
+.container {
+  background-color: $primary-dg-color;
+  color: $primary-text-color;
   height: 3rem;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+footer {
+  background-color: $primary-dg-color;
+  padding: 1rem;
+  color: $primary-text-color;
 }

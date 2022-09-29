@@ -26,6 +26,7 @@ export const AuthState = (props) => {
     refreshToken: null,
     userProfile: null,
     userProfilePic: [],
+    appName: "Rok Handbook",
   };
   const [state, dispatch] = useReducer(authReducer, initialState);
 
@@ -75,11 +76,11 @@ export const AuthState = (props) => {
         signInError: state.signInError,
         accessToken: state.accessToken,
         userProfile: state.userProfile,
+        appName: state.appName,
         signIn,
         register,
         signOut,
-      }}
-    >
+      }}>
       {props.children}
     </AuthContext.Provider>
   );

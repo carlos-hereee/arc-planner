@@ -6,9 +6,6 @@ import AllianceList from "../components/alliance/allianceList";
 
 import { PlayerContext } from "../utils/context/Player/PlayerState";
 
-import custom from "../stylesheets/custom-styles.module.scss";
-import styles from "../stylesheets/profile.module.scss";
-
 export default function IsMemberAlliance() {
   const { userProfile, getUserProfile } = useContext(PlayerContext);
 
@@ -17,13 +14,13 @@ export default function IsMemberAlliance() {
   }, []);
 
   return (
-    <div className={custom.wrapper}>
+    <div className="wrapper">
       {userProfile && userProfile.isMember ? (
         <AllianceNavLink />
       ) : (
         <AllianceList />
       )}
-      <div className={styles.buttons}>
+      <div className="buttons">
         <Navbar />
       </div>
     </div>

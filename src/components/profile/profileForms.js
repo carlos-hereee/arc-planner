@@ -1,11 +1,10 @@
+import { useContext } from "react";
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import { Icon } from "semantic-ui-react";
 
 import { AuthContext } from "../../utils/context/Auth/AuthState";
 import { validateField, validateNumber } from "../../utils/validateAuth";
-
-import form from "../../stylesheets/App.module.scss";
 
 export default function ProfileContent() {
   const { userProfile } = useContext(AuthContext);
@@ -14,7 +13,7 @@ export default function ProfileContent() {
   }
   return (
     <div>
-      <div className={styles.card}>
+      <div className="card">
         {userProfile && userProfile.governorName ? (
           <>
             <lavel>Governor name:</lavel>
@@ -30,13 +29,12 @@ export default function ProfileContent() {
             }}
             onSubmit={(values, actions) => {
               addGovernorName(values);
-            }}
-          >
+            }}>
             {({ errors, touched, validateForm }) => (
-              <Form className={form.form}>
+              <Form className="form">
                 <label>Governor name:</label>
                 {errors.governorName && touched.governorName && (
-                  <div className={styles.validate}>{errors.governorName}</div>
+                  <div className="validate">{errors.governorName}</div>
                 )}
                 <Field
                   type="text"
@@ -46,12 +44,12 @@ export default function ProfileContent() {
 
                 <label>City Hall Level:</label>
                 {errors.cityHall && touched.cityHall && (
-                  <div className={styles.validate}>{errors.cityHall}</div>
+                  <div className="validate">{errors.cityHall}</div>
                 )}
                 <Field type="text" name="cityHall" validate={validateNumber} />
                 <label>Castle Level:</label>
                 {errors.castleLevel && touched.castleLevel && (
-                  <div className={styles.validate}>{errors.castleLevel}</div>
+                  <div className="validate">{errors.castleLevel}</div>
                 )}
                 <Field
                   type="text"
@@ -66,10 +64,10 @@ export default function ProfileContent() {
           </Formik>
         )}
       </div>
-      <div className={styles.card}>{userProfile && userProfile.email}</div>
-      <div className={styles.card}>{userProfile && userProfile.email}</div>
-      <div className={styles.card}>{userProfile && userProfile.email}</div>
-      <div className={styles.card}>{userProfile && userProfile.email}</div>
+      <div className="card">{userProfile && userProfile.email}</div>
+      <div className="card">{userProfile && userProfile.email}</div>
+      <div className="card">{userProfile && userProfile.email}</div>
+      <div className="card">{userProfile && userProfile.email}</div>
     </div>
   );
 }

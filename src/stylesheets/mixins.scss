@@ -16,7 +16,7 @@
 }
 @mixin input() {
   background: $card-bg;
-  color: $txt;
+  color: $primary-text-color;
   box-sizing: border-box;
   text-align: center;
   border: none;
@@ -27,32 +27,6 @@
     outline: none;
   }
 }
-
-$btn-color: brown;
-$btn-active: rgb(102, 6, 6);
-$btn-hover: rgb(77, 6, 6);
-
-// colors for title
-$title-bg: #c6c4b7;
-$title-txt: #878379;
-
-// hover-gradiant
-// content
-$card-bg: #005e81;
-$lightest-blue-hover: #7bb1c7;
-$lightest-blue: #3aa4cd;
-$right-gradiant: #117fb6;
-$txt: #ebf8fb;
-
-// banner gradient
-$banner-outer: #69380f;
-$banner-mid: #e3963e;
-$banner-inner: #ffe462;
-// buttons
-$btns-bg: #00496b;
-
-// colors
-$epic: #8615ad;
 
 // media query
 $mobile: "(max-width : 500px)";

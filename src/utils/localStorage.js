@@ -1,5 +1,4 @@
 import decode from "jwt-decode";
-import { client } from "./axiosWithAuth";
 
 export const loadState = (state) => {
   try {

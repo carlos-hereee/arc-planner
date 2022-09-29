@@ -1,11 +1,8 @@
 import React, { useContext, useState } from "react";
-import { Button, Modal, Form, Message } from "semantic-ui-react";
 import { Formik } from "formik";
 import * as yup from "yup";
 
 import { PlayerContext } from "../../utils/context/Player/PlayerState";
-
-import custom from "../../stylesheets/custom-styles.module.scss";
 
 export default function CreateAlliance() {
   const { createAlliance } = useContext(PlayerContext);
@@ -30,16 +27,14 @@ export default function CreateAlliance() {
           allianceTag: yup.string().required("This is a required field"),
           allianceName: yup.string().required("This is a required field"),
           messageBoard: yup.string().required("This is a required field"),
-        })}
-      >
+        })}>
         {({ values, errors, handleChange, handleSubmit, isSubmitting }) => (
           <Modal
             as={Form}
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
             open={open}
-            trigger={<div className={custom.btn}>Create</div>}
-          >
+            trigger={<div className="btn">Create</div>}>
             <Modal.Header>Create Alliance</Modal.Header>
             <Modal.Content>
               {errors.allianceName && (
@@ -107,8 +102,7 @@ export default function CreateAlliance() {
                 primary
                 type="submit"
                 onClick={handleSubmit}
-                loading={isSubmitting}
-              >
+                loading={isSubmitting}>
                 Submit
               </Button>
             </Modal.Actions>

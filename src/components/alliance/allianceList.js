@@ -4,8 +4,6 @@ import CreateAlliance from "./createAlliance";
 
 import { PlayerContext } from "../../utils/context/Player/PlayerState";
 
-import custom from "../../stylesheets/custom-styles.module.scss";
-
 export default function AllianceList() {
   const {
     allianceList,
@@ -30,21 +28,21 @@ export default function AllianceList() {
   }
   return (
     <div>
-      <div className={custom.header}>
+      <div className="header">
         <h1>Alliance List</h1>
       </div>
-      <div className={custom.body}>
-        <div className={custom.content} style={{ flexDirection: "column" }}>
+      <div className="body">
+        <div className="content" style={{ flexDirection: "column" }}>
           <h4>Your not currently a member of an alliance</h4>
           {/* <p>search bar</p> */}
           <CreateAlliance />
-          <div className={custom.scrollable}>
+          <div className="scrollable">
             {allianceListError && (
-              <div className={custom.errorWrapper}>{allianceListError}</div>
+              <div className="errorWrapper">{allianceListError}</div>
             )}
             {allianceList &&
               allianceList.map((data, idx) => (
-                <div key={data.uuid} className={custom.row}>
+                <div key={data.uuid} className="row">
                   <p>{idx + 1}.</p>
                   <p>{data.kingdomNumber}</p>
                   <p>{data.allianceTag}</p>
@@ -52,16 +50,14 @@ export default function AllianceList() {
 
                   {applications.includes(data.uuid) ? (
                     <button
-                      className={custom.cancel_btn}
-                      onClick={() => applicationCancel(data.uuid)}
-                    >
+                      className="cancel_btn"
+                      onClick={() => applicationCancel(data.uuid)}>
                       Cancel
                     </button>
                   ) : (
                     <button
-                      className={custom.save_btn}
-                      onClick={() => applicationSent(data.uuid)}
-                    >
+                      className="save_btn"
+                      onClick={() => applicationSent(data.uuid)}>
                       Apply
                     </button>
                   )}

@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { Modal, Button, Form, Message } from "semantic-ui-react";
 import { Formik } from "formik";
 import * as yup from "yup";
 
@@ -22,16 +21,14 @@ export default function CreateTeam({ eventId }) {
         }}
         validationSchema={yup.object().shape({
           teamName: yup.string().required("This is a required field"),
-        })}
-      >
+        })}>
         {({ values, errors, handleChange, handleSubmit, isSubmitting }) => (
           <Modal
             as={Form}
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
             open={open}
-            trigger={<Button color="blue">Create a Team</Button>}
-          >
+            trigger={<Button color="blue">Create a Team</Button>}>
             <Modal.Header>Create a Team</Modal.Header>
             <Modal.Content>
               {errors.teamName && <Message error content={errors.teamName} />}
@@ -63,8 +60,7 @@ export default function CreateTeam({ eventId }) {
                 type="submit"
                 color="blue"
                 onClick={handleSubmit}
-                loading={isSubmitting}
-              >
+                loading={isSubmitting}>
                 Submit
               </Button>
             </Modal.Actions>

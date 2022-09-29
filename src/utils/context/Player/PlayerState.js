@@ -1,9 +1,8 @@
-import React, { createContext, useReducer, useEffect } from "react";
+import React, { createContext, useReducer } from "react";
 
 import {
   IS_LOADING,
   GET_PROFILE_SUCCESS,
-  GET_PROFILE_ERROR,
   UPDATE_TROOPS_SUCCESS,
   UPDATE_TROOPS_ERROR,
   UPDATE_PROFILE_SUCCESS,
@@ -54,13 +53,13 @@ import {
   DELETE_ALLIANCE_ERROR,
   GET_APPS_SUCCESS,
   GET_APPS_ERROR,
+  ACCEPT_APP_SUCCESS,
+  ACCEPT_APP_ERROR,
 } from "../types";
 import { reducer } from "./reducer";
 import { axiosWithAuth } from "../../axiosWithAuth";
 
 import { logOut } from "../../localStorage";
-import custom from "../../../stylesheets/custom-styles.module.scss";
-import { Button } from "semantic-ui-react";
 
 export const PlayerContext = createContext();
 
@@ -376,6 +375,18 @@ export const PlayerState = (props) => {
       dispatch({ type: GET_APPS_ERROR, payload: e.response });
     }
   };
+  const acceptApp = async (allianceId, profileId) => {
+    dispatch({ type: IS_LOADING, payload: true });
+    try {
+      const res = await axiosWithAuth().put(
+        `alliance/${profileId}/accept/${allianceId}`
+      );
+      dispatch({ type: ACCEPT_APP_SUCCESS, payload: res.data });
+    } catch (e) {
+      console.log("error", e);
+      dispatch({ type: ACCEPT_APP_ERROR, payload: e.response });
+    }
+  };
 
   return (
     <PlayerContext.Provider
@@ -423,14 +434,14 @@ export const PlayerState = (props) => {
         allianceSettings,
         deleteAlliance,
         getApps,
-      }}
-    >
+        acceptApp,
+      }}>
       {state.error && (
-        <div className={custom.global_error}>
+        <div className="global_error">
           <p>{state.error}</p>
-          <Button onClick={refreshPage} color="blue">
+          <button onClick={refreshPage} color="blue">
             click to reload
-          </Button>
+          </button>
         </div>
       )}
       {props.children}

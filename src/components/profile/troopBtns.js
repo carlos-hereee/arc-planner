@@ -2,9 +2,6 @@ import React, { useState, useContext } from "react";
 
 import { PlayerContext } from "../../utils/context/Player/PlayerState";
 
-import custom from "../../stylesheets/custom-styles.module.scss";
-import styles from "../../stylesheets/profile.module.scss";
-
 export default function TroopBtns({ type, counts }) {
   const [isPositive, setIsPositive] = useState(true);
   const [hasChanged, setHasChanged] = useState(false);
@@ -34,11 +31,11 @@ export default function TroopBtns({ type, counts }) {
     setAddedTroops(0);
   }
   return (
-    <div className={styles.f_wrapper}>
-      <div className={styles.inputed}>
+    <div className="f_wrapper">
+      <div className="inputed">
         <div>
           <input
-            className={custom.input}
+            className="input"
             key={profile[type]}
             type="text"
             defaultValue={counts}
@@ -48,46 +45,42 @@ export default function TroopBtns({ type, counts }) {
         {hasChanged && addedTroops !== 0 ? (
           <>
             {isPositive ? (
-              <div className={styles.positive}>+{addedTroops}</div>
+              <div className="positive">+{addedTroops}</div>
             ) : (
-              <div className={styles.negative}>-{addedTroops}</div>
+              <div className="negative">-{addedTroops}</div>
             )}
           </>
         ) : (
-          <div className={custom.box}></div>
+          <div className="box"></div>
         )}
       </div>
-      <div className={styles.file}>
+      <div className="file">
         <div
           onClick={togglePositive}
-          className={isPositive ? custom.green_btn : custom.red_btn}
-        >
+          className={isPositive ? "green_btn" : "red_btn"}>
           {isPositive ? "+" : "-"}
         </div>
         <div
-          className={isPositive ? custom.green_btn : custom.red_btn}
-          onClick={() => updateCount(100)}
-        >
+          className={isPositive ? "green_btn" : "red_btn"}
+          onClick={() => updateCount(100)}>
           100
         </div>
         <div
-          className={isPositive ? custom.green_btn : custom.red_btn}
-          onClick={() => updateCount(500)}
-        >
+          className={isPositive ? "green_btn" : "red_btn"}
+          onClick={() => updateCount(500)}>
           500
         </div>
         <div
-          className={isPositive ? custom.green_btn : custom.red_btn}
-          onClick={() => updateCount(1000)}
-        >
+          className={isPositive ? "green_btn" : "red_btn"}
+          onClick={() => updateCount(1000)}>
           1000
         </div>
         {hasChanged ? (
-          <button className={custom.save_btn} onClick={() => saveTroops()}>
+          <button className="save_btn" onClick={() => saveTroops()}>
             Save
           </button>
         ) : (
-          <div className={custom.box}></div>
+          <div className="box"></div>
         )}
       </div>
     </div>

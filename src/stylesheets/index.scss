@@ -1,4 +1,26 @@
+@import "./variables.scss";
 @import "./mixins.scss";
+@import "./custom-styles.scss";
+@import "./alliance.scss";
+@import "./hf.scss";
+@import "./profile.scss";
+@import "./settings.scss";
+
+body {
+  background: whitesmoke;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
 .App {
   background: white;
   max-width: 1000px;

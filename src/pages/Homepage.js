@@ -1,14 +1,10 @@
-import React, { useState } from "react";
-import { Menu, Segment } from "semantic-ui-react";
+import { useState } from "react";
 
 import Register from "../components/register";
 import LogIn from "../components/login";
 
-import styles from "../stylesheets/custom-styles.module.scss";
-
 export default function Main({ history }) {
   const rfToken = localStorage.getItem("refreshToken");
-
   const [activeItem, setActiveItem] = useState("login");
   const handleItemClick = (e, { name }) => setActiveItem(name);
 
@@ -19,13 +15,16 @@ export default function Main({ history }) {
   const auth = { login: <LogIn />, register: <Register /> };
 
   return (
-    <div className={styles.main}>
-      <div className={styles.header}>
-        <img src="https://lilithimage.lilithcdn.com/roc/en/m/imgs/logo_m1.png?v=201809211119" />
+    <div className="main">
+      <div className="header">
+        <img
+          src="https://lilithimage.lilithcdn.com/roc/en/m/imgs/logo_m1.png?v=201809211119"
+          alt="riseofkingodms"
+        />
       </div>
-      <div className={styles.content}>
-        <div className={styles.card}>
-          <Segment raised>
+      <div className="content">
+        <div className="card">
+          <div>
             <h2>Ark Planner</h2>
             <p>
               Help coordinate with your alliance to let them know your strengths
@@ -38,24 +37,24 @@ export default function Main({ history }) {
               Players can sign-up for ARK with just a few clicks, while leaders
               can choose the players in the same way
             </p>
-          </Segment>
+          </div>
         </div>
-        <div className={styles.card}>
-          <Segment raised>
-            <Menu pointing secondary>
-              <Menu.Item
+        <div className="card">
+          <div>
+            <div pointing secondary>
+              <div
                 name="login"
                 active={activeItem === "login"}
                 onClick={handleItemClick}
               />
-              <Menu.Item
+              <div
                 name="register"
                 active={activeItem === "register"}
                 onClick={handleItemClick}
               />
-            </Menu>
+            </div>
             {auth[activeItem]}
-          </Segment>
+          </div>
         </div>
       </div>
     </div>

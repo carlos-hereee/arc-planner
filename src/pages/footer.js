@@ -1,11 +1,15 @@
-import React from "react";
+import { useContext } from "react";
+import { AuthContext } from "../utils/context/Auth/AuthState";
 
-import styles from "../stylesheets/hf.module.scss";
-
-export default function Footer() {
+const Footer = () => {
+  const { appName } = useContext(AuthContext);
   return (
-    <div className={styles.wrapper}>
-      <div>Ark Planner © {new Date().getFullYear()} </div>
-    </div>
+    <footer>
+      <span>
+        {appName} © {new Date().getFullYear()}
+      </span>
+    </footer>
   );
-}
+};
+
+export default Footer;

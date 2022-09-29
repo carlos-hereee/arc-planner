@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { Modal, Button, Form, Message } from "semantic-ui-react";
 import { Formik } from "formik";
 import * as yup from "yup";
 
@@ -27,16 +26,14 @@ export default function CreateEvent() {
           eventDescription: yup.string().required("This is a required field"),
           startDate: yup.date().required("This is a required field"),
           endDate: yup.date().required("This is a required field"),
-        })}
-      >
+        })}>
         {({ values, errors, handleChange, handleSubmit, isSubmitting }) => (
           <Modal
             as={Form}
             onClose={() => setOpen(false)}
             onOpen={() => setOpen(true)}
             open={open}
-            trigger={<Button color="green">Create An Event</Button>}
-          >
+            trigger={<Button color="green">Create An Event</Button>}>
             <Modal.Header>Create Event</Modal.Header>
             <Modal.Content>
               {errors.eventName && <Message error content={errors.eventName} />}
@@ -101,8 +98,7 @@ export default function CreateEvent() {
                 type="submit"
                 color="blue"
                 onClick={handleSubmit}
-                loading={isSubmitting}
-              >
+                loading={isSubmitting}>
                 Submit
               </Button>
             </Modal.Actions>
