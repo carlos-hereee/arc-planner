@@ -10,11 +10,7 @@ export const PrivateRoute = ({ component: Component, ...rest }) => (
       checkAuth() ? (
         <Component {...props} />
       ) : (
-        <Redirect
-          to={{
-            pathname: "/",
-          }}
-        />
+        <Redirect to={{ pathname: "/" }} />
       )
     }
   />

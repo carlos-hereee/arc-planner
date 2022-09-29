@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Button, Modal, TextArea } from "semantic-ui-react";
 // import { Formik, Form, Field } from "formik";
 
 import { PlayerContext } from "../../utils/context/Player/PlayerState";

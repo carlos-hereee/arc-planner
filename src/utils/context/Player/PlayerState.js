@@ -1,9 +1,8 @@
-import React, { createContext, useReducer, useEffect } from "react";
+import React, { createContext, useReducer } from "react";
 
 import {
   IS_LOADING,
   GET_PROFILE_SUCCESS,
-  GET_PROFILE_ERROR,
   UPDATE_TROOPS_SUCCESS,
   UPDATE_TROOPS_ERROR,
   UPDATE_PROFILE_SUCCESS,
@@ -61,8 +60,6 @@ import { reducer } from "./reducer";
 import { axiosWithAuth } from "../../axiosWithAuth";
 
 import { logOut } from "../../localStorage";
-import custom from "../../../stylesheets/custom-styles.module.scss";
-import { Button } from "semantic-ui-react";
 
 export const PlayerContext = createContext();
 
@@ -438,14 +435,13 @@ export const PlayerState = (props) => {
         deleteAlliance,
         getApps,
         acceptApp,
-      }}
-    >
+      }}>
       {state.error && (
-        <div className={custom.global_error}>
+        <div className="global_error">
           <p>{state.error}</p>
-          <Button onClick={refreshPage} color="blue">
+          <button onClick={refreshPage} color="blue">
             click to reload
-          </Button>
+          </button>
         </div>
       )}
       {props.children}

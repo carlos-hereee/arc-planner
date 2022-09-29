@@ -32,7 +32,7 @@
   border-radius: 10px;
   padding-bottom: 1rem;
   text-align: center;
-  color: $txt;
+  color: $primary-text-color;
   .header {
     color: $title-txt;
   }
@@ -76,7 +76,7 @@
   margin: 1rem auto;
   font-weight: 900;
   &:hover {
-    color: $txt;
+    color: $primary-text-color;
     background: $card-bg;
   }
 }
@@ -103,7 +103,7 @@
 .blue_btn {
   @include btn();
   background: $lightest-blue;
-  color: $txt;
+  color: $primary-text-color;
   padding: 1rem 1.5rem;
   margin-top: 1rem;
   &:hover {
@@ -114,7 +114,7 @@
 .save_btn {
   @include btn();
   background: $card-bg;
-  color: $txt;
+  color: $primary-text-color;
   border: none;
   &:hover {
     background: $lightest-blue;
@@ -123,7 +123,7 @@
 .cancel_btn {
   @include btn();
   background: red;
-  color: $txt;
+  color: $primary-text-color;
   border: none;
   &:hover {
     background: darkred;
@@ -179,7 +179,8 @@
 
 .errorWrapper {
   background-color: #f44336;
-  color: white;
+  color: $primary-text-color;
+
   font-weight: bold;
   padding: 15px;
   margin: 2rem;
@@ -191,7 +192,8 @@
   width: 100%;
   border-radius: 4px;
   background-color: #ff7272;
-  color: white;
+  color: $primary-text-color;
+
   padding: 1rem;
   text-align: center;
 }

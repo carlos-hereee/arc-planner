@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react";
 import { PlayerContext } from "../../utils/context/Player/PlayerState";
 
 import AllianceHeader from "./allianceHeader";
-import { Button } from "semantic-ui-react";
 
 export default function AllianceContent() {
   const {

@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { Formik, Form, Field } from "formik";
-import { Loader, Icon } from "semantic-ui-react";
 
 import { AuthContext } from "../utils/context/Auth/AuthState";
 import {
@@ -58,12 +57,12 @@ export default function Register() {
                 name="password"
                 validate={validatePassword}
               />
-              <Icon
+              {/* <Icon
                 size="big"
                 className="icon"
                 name={canSeePassword ? "eye slash" : "eye"}
                 onClick={() => setCanSeePassword(!canSeePassword)}
-              />
+              /> */}
             </div>
             {errors.confirmPassword && touched.confirmPassword && (
               <div className="validate">{errors.confirmPassword}</div>
@@ -77,15 +76,15 @@ export default function Register() {
                   validateConfirmPassword(values.password, value)
                 }
               />
-              <Icon
+              {/* <Icon
                 size="big"
                 className="icon"
                 name={canSeeConfirmPassword ? "eye slash" : "eye"}
                 onClick={() => setcanSeeConfirmPassword(!canSeeConfirmPassword)}
-              />
+              /> */}
             </div>
             <button type="submit" onClick={() => validateForm()}>
-              {!isLoading ? "Register" : <Loader />}
+              {/* {!isLoading ? "Register" : <Loader />} */}
             </button>
           </Form>
         )}

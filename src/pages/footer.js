@@ -1,9 +1,15 @@
-import React from "react";
+import { useContext } from "react";
+import { AuthContext } from "../utils/context/Auth/AuthState";
 
-export default function Footer() {
+const Footer = () => {
+  const { appName } = useContext(AuthContext);
   return (
-    <div className="wrapper">
-      <span>Ark Planner © {new Date().getFullYear()} </span>
-    </div>
+    <footer>
+      <span>
+        {appName} © {new Date().getFullYear()}
+      </span>
+    </footer>
   );
-}
+};
+
+export default Footer;

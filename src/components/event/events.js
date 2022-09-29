@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Accordion, Button, Icon } from "semantic-ui-react";
+// import { Accordion, Button, Icon } from "semantic-ui-react";
 import { PlayerContext } from "../../utils/context/Player/PlayerState";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
@@ -68,7 +68,7 @@ export default function Events() {
         {eventsList &&
           eventsList.map((data) => (
             <div key={data.eventId} className="eventCards">
-              <Accordion>
+              {/* <Accordion>
                 <Accordion.Title
                   active={activeIndex === data.eventId}
                   index={data.eventId}
@@ -117,7 +117,7 @@ export default function Events() {
                     Delete
                   </Button>
                 </div>
-              </Accordion>
+              </Accordion> */}
             </div>
           ))}
       </div>

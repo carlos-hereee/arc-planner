@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Menu, Modal, Icon } from "semantic-ui-react";
 
 import AllianceContent from "./allianceContent";
 import AllianceSettings from "./settings";

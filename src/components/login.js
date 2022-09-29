@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { Formik, Form, Field } from "formik";
-import { Loader, Icon } from "semantic-ui-react";
 
 import { AuthContext } from "../utils/context/Auth/AuthState";
 import { validateUsername, validatePassword } from "../utils/validateAuth";

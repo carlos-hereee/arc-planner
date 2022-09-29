@@ -1,8 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { PlayerContext } from "../../utils/context/Player/PlayerState";
 
-import { Button } from "semantic-ui-react";
-
 export default function Applications() {
   const { getApps, listApps, acceptApp } = useContext(PlayerContext);
   useEffect(() => {
