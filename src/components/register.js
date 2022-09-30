@@ -9,15 +9,16 @@ import {
   validateConfirmPassword,
   validategovName,
 } from "../utils/validateAuth";
+import Icons from "./atoms/Icons";
 
 export default function Register() {
-  const { isLoading, register } = useContext(AuthContext);
-  const [canSeePassword, setCanSeePassword] = useState(false);
-  const [canSeeConfirmPassword, setcanSeeConfirmPassword] = useState(false);
+  const { register } = useContext(AuthContext);
+  const [canSeePassword, setSeePassword] = useState(false);
+  const [canSeeConfirmPassword, setSeeConfirmPassword] = useState(false);
 
   return (
-    <div className={"wrapper"}>
-      <h1>Register</h1>
+    <section className="register">
+      <h2>Create an account</h2>
       <Formik
         initialValues={{
           username: "",
@@ -26,9 +27,8 @@ export default function Register() {
           confirmPassword: "",
           inGameName: "",
         }}
-        onSubmit={(values, actions) => {
+        onSubmit={(values) => {
           register(values);
-          actions.resetForm();
         }}>
         {({ errors, touched, validateForm, values }) => (
           <Form className="form">
@@ -57,38 +57,39 @@ export default function Register() {
                 name="password"
                 validate={validatePassword}
               />
-              {/* <Icon
-                size="big"
-                className="icon"
-                name={canSeePassword ? "eye slash" : "eye"}
-                onClick={() => setCanSeePassword(!canSeePassword)}
-              /> */}
+              <button
+                className="btn"
+                type="button"
+                onClick={() => setSeePassword(!canSeePassword)}>
+                <Icons name={canSeePassword ? "eyeslash" : "eye"} size={"2x"} />
+              </button>
             </div>
             {errors.confirmPassword && touched.confirmPassword && (
               <div className="validate">{errors.confirmPassword}</div>
             )}
             <label>Confirm Password </label>
-            <div className="password">
-              <Field
-                type={canSeeConfirmPassword ? "text" : "password"}
-                name="confirmPassword"
-                validate={(value) =>
-                  validateConfirmPassword(values.password, value)
-                }
+            <Field
+              type={canSeeConfirmPassword ? "text" : "password"}
+              name="confirmPassword"
+              validate={(value) =>
+                validateConfirmPassword(values.password, value)
+              }
+            />
+            <button
+              className="btn"
+              type="button"
+              onClick={() => setSeeConfirmPassword(!canSeePassword)}>
+              <Icons
+                name={canSeeConfirmPassword ? "eyeslash" : "eye"}
+                size={"2x"}
               />
-              {/* <Icon
-                size="big"
-                className="icon"
-                name={canSeeConfirmPassword ? "eye slash" : "eye"}
-                onClick={() => setcanSeeConfirmPassword(!canSeeConfirmPassword)}
-              /> */}
-            </div>
+            </button>
             <button type="submit" onClick={() => validateForm()}>
               {/* {!isLoading ? "Register" : <Loader />} */}
             </button>
           </Form>
         )}
       </Formik>
-    </div>
+    </section>
   );
 }
