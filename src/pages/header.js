@@ -7,6 +7,7 @@ export default function Header() {
 
   return (
     <div className="header">
+      <title>{appName}</title>
       <Link to="/">
         <div>{appName}</div>
       </Link>
