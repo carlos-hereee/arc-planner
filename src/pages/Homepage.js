@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../utils/context/Auth/AuthState";
 import RokLogo from "../components/atoms/RokLogo";
-import Account from "./Account";
+import Login from "../components/Login";
 
 const Homepage = ({ history }) => {
   const { accessToken } = useContext(AuthContext);
@@ -22,7 +22,7 @@ const Homepage = ({ history }) => {
           Help coordinate with your alliance to let them know your strengths
         </p>
       </div>
-      <Account />
+      <Login />
     </section>
   );
 };

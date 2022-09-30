@@ -18,38 +18,36 @@
   }
 }
 
-.wrapper {
-  @include flex(space-around, column);
-  background: $title-bg;
-  border-radius: 10px;
-  padding-bottom: 1rem;
-  text-align: center;
-  color: $primary-text-color;
-  .header {
-    color: $title-txt;
-  }
-  .body {
-    padding: 2rem;
-    display: flex;
-    flex-direction: row;
-    background: $card-bg;
-    .content {
-      @include flex(space-around, row);
-      background: $right-gradiant;
-      min-height: 400px;
-      width: 100%;
-      padding: 1rem 0;
-      border-radius: 4px;
-      .menu {
-        padding: 0 10px;
-      }
-      @media #{$mobile} {
-        @include flex(space-around, column);
-        text-align: left;
-      }
-    }
-  }
-}
+// .wrapper {
+//   @include flex(space-around, column);
+//   background: $title-bg;
+//   border-radius: 10px;
+//   padding-bottom: 1rem;
+//   text-align: center;
+//   color: $primary-text-color;
+
+//   .body {
+//     padding: 2rem;
+//     display: flex;
+//     flex-direction: row;
+//     background: $card-bg;
+//     .content {
+//       @include flex(space-around, row);
+//       background: $right-gradiant;
+//       min-height: 400px;
+//       width: 100%;
+//       padding: 1rem 0;
+//       border-radius: 4px;
+//       .menu {
+//         padding: 0 10px;
+//       }
+//       @media #{$mobile} {
+//         @include flex(space-around, column);
+//         text-align: left;
+//       }
+//     }
+//   }
+// }
 
 .sets {
   @include flex(space-around, row);
@@ -156,15 +154,15 @@
   overflow-y: scroll;
 }
 
-.errorWrapper {
-  background-color: #f44336;
-  color: $primary-text-color;
+// .errorWrapper {
+//   background-color: #f44336;
+//   color: $primary-text-color;
 
-  font-weight: bold;
-  padding: 15px;
-  margin: 2rem;
-  border-radius: 4px;
-}
+//   font-weight: bold;
+//   padding: 15px;
+//   margin: 2rem;
+//   border-radius: 4px;
+// }
 .global_error {
   position: absolute;
   top: 50%;

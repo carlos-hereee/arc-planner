@@ -1,16 +1,15 @@
 import React, { useContext, useState } from "react";
 import { Formik, Form, Field } from "formik";
-
 import { AuthContext } from "../utils/context/Auth/AuthState";
 import { validateUsername, validatePassword } from "../utils/validateAuth";
+import Icons from "./atoms/Icons";
 
-export default function LogIn() {
+const Login = () => {
   const { isLoading, signIn, signInError } = useContext(AuthContext);
-  const [canSeePassword, setCanSeePassword] = useState(false);
+  const [canSeePassword, setSeePassword] = useState(false);
 
   return (
-    <div className="wrapper">
-      <h1>Login</h1>
+    <div>
       {signInError ? <p className="validate">{signInError}</p> : ""}
       <Formik
         initialValues={{ username: "", password: "" }}
@@ -35,12 +34,12 @@ export default function LogIn() {
                 name="password"
                 validate={validatePassword}
               />
-              <Icon
-                size="big"
-                className="icon"
-                name={canSeePassword ? "eye slash" : "eye"}
-                onClick={() => setCanSeePassword(!canSeePassword)}
-              />
+              <button
+                className="btn"
+                type="button"
+                onClick={() => setSeePassword(!canSeePassword)}>
+                <Icons name={canSeePassword ? "eyeslash" : "eye"} size={"2x"} />
+              </button>
             </div>
             <button type="submit" onClick={() => validateForm()}>
               {!isLoading ? "Sign In" : <Loader />}
@@ -50,4 +49,5 @@ export default function LogIn() {
       </Formik>
     </div>
   );
-}
+};
+export default Login;

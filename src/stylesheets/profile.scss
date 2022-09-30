@@ -1,14 +1,14 @@
 @import "./mixins.scss";
 
-.wrapper {
-  padding: 0 1rem;
-  @media #{$mobile} {
-    text-align: center;
-    input {
-      width: 100%;
-    }
-  }
-}
+// .wrapper {
+//   padding: 0 1rem;
+//   @media #{$mobile} {
+//     text-align: center;
+//     input {
+//       width: 100%;
+//     }
+//   }
+// }
 
 .buttons {
   background: $card-bg;
