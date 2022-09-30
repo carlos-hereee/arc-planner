@@ -3,6 +3,7 @@ import { Formik, Form, Field } from "formik";
 import { AuthContext } from "../utils/context/Auth/AuthState";
 import { validateUsername, validatePassword } from "../utils/validateAuth";
 import Icons from "./atoms/Icons";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const { isLoading, signIn, signInError } = useContext(AuthContext);
@@ -10,6 +11,7 @@ const Login = () => {
 
   return (
     <div>
+      <h3>Login</h3>
       {signInError ? <p className="validate">{signInError}</p> : ""}
       <Formik
         initialValues={{ username: "", password: "" }}
@@ -47,6 +49,11 @@ const Login = () => {
           </Form>
         )}
       </Formik>
+      <div className="wrapper">
+        <Link to="/register" className="link">
+          Create an account
+        </Link>
+      </div>
     </div>
   );
 };
