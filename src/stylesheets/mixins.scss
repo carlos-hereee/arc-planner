@@ -10,9 +10,6 @@
   margin: auto;
   border: none;
   cursor: pointer;
-  &:focus {
-    outline: none;
-  }
 }
 @mixin input() {
   background: $card-bg;

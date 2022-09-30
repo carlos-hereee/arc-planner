@@ -1,31 +1,23 @@
-@import "./mixins.scss";
-
-.main {
+.card {
   display: flex;
   flex-direction: column;
-  .header {
-    text-align: center;
-    margin: 3rem 0;
-    @media #{$mobile} {
-      img {
-        width: 100%;
-      }
-    }
-  }
-  .content {
-    @include flex(space-around, row);
-    @media #{$mobile} {
-      @include flex(space-around, column);
-      gap: 2rem;
-      .card {
-        width: 100%;
-        a {
-          width: 50%;
-        }
-      }
-    }
+  border-radius: 4px;
+  border: 1px solid gray;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: -1px 2px #7e7c7c;
+}
+.btn {
+  @include btn();
+  width: 100px;
+  padding: 10px 0;
+  margin: 1rem auto;
+  &:hover {
+    color: $primary-text-color;
+    background: $card-bg;
   }
 }
+
 .wrapper {
   @include flex(space-around, column);
   background: $title-bg;
@@ -65,19 +57,6 @@
   width: 100%;
   .set {
     margin: 0 5px;
-  }
-}
-.btn {
-  @include btn();
-  width: 100px;
-  background: $lightest-blue;
-  color: $btns-bg;
-  padding: 10px 0;
-  margin: 1rem auto;
-  font-weight: 900;
-  &:hover {
-    color: $primary-text-color;
-    background: $card-bg;
   }
 }
 
@@ -202,19 +181,8 @@
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
-.card {
-  width: 450px;
-}
+
 .marketing {
   text-align: center;
   margin: 0 6rem;
-}
-
-@keyframes fade {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
 }

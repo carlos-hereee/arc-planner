@@ -1,62 +1,29 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../utils/context/Auth/AuthState";
+import RokLogo from "../components/atoms/RokLogo";
+import Account from "./Account";
 
-import Register from "../components/register";
-import LogIn from "../components/login";
+const Homepage = ({ history }) => {
+  const { accessToken } = useContext(AuthContext);
 
-export default function Main({ history }) {
-  const rfToken = localStorage.getItem("refreshToken");
-  const [activeItem, setActiveItem] = useState("login");
-  const handleItemClick = (e, { name }) => setActiveItem(name);
-
-  if (rfToken) {
+  if (accessToken) {
     history.push("/user");
   }
-
-  const auth = { login: <LogIn />, register: <Register /> };
-
   return (
-    <div className="main">
-      <div className="header">
-        <img
-          src="https://lilithimage.lilithcdn.com/roc/en/m/imgs/logo_m1.png?v=201809211119"
-          alt="riseofkingodms"
-        />
+    <section className="homepage">
+      <RokLogo />
+      <div className="card">
+        <h2>ROK Planner</h2>
+        <p>
+          This is a fanbased application to make Ark Of Osiris team preparation
+          easier for player and ARK leaders.
+        </p>
+        <p>
+          Help coordinate with your alliance to let them know your strengths
+        </p>
       </div>
-      <div className="content">
-        <div className="card">
-          <div>
-            <h2>Ark Planner</h2>
-            <p>
-              Help coordinate with your alliance to let them know your strengths
-            </p>
-            <p>
-              This application is a tool to make Ark Of Osiris team preparation
-              easier for player and ARK leaders.
-            </p>
-            <p>
-              Players can sign-up for ARK with just a few clicks, while leaders
-              can choose the players in the same way
-            </p>
-          </div>
-        </div>
-        <div className="card">
-          <div>
-            <div pointing secondary>
-              <div
-                name="login"
-                active={activeItem === "login"}
-                onClick={handleItemClick}
-              />
-              <div
-                name="register"
-                active={activeItem === "register"}
-                onClick={handleItemClick}
-              />
-            </div>
-            {auth[activeItem]}
-          </div>
-        </div>
-      </div>
-    </div>
+      <Account />
+    </section>
   );
-}
+};
+export default Homepage;

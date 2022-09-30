@@ -2,13 +2,13 @@ import { Route, Routes } from "react-router-dom";
 
 import Header from "./pages/Header.js";
 import Footer from "./pages/Footer.js";
-import Main from "./pages/Homepage.js";
-import Profile from "./pages/profile";
+import Homepage from "./pages/Homepage.js";
 import Dashboard from "./pages/dashboard.js";
 import Alliance from "./pages/alliance";
 
 import { AuthState } from "./utils/context/Auth/AuthState.js";
 import { PlayerState } from "./utils/context/Player/PlayerState.js";
+import Account from "./pages/Account.js";
 // import { PrivateRoute } from "./utils/privateRoute";
 
 function App() {
@@ -18,11 +18,12 @@ function App() {
         <PlayerState>
           <Header />
           <Routes>
-            <Route exact path="/" component={Main} />
+            <Route exact path="/" element={<Homepage />} />
+            <Route path="/account" element={<Account />} />
             {/* 
-            <PrivateRoute path="/dashboard" component={Dashboard} />
-            <PrivateRoute path="/alliance" component={Alliance} />
-            <PrivateRoute path="/user" component={Profile} /> 
+            <PrivateRoute path="/dashboard" element={Dashboard} />
+            <PrivateRoute path="/alliance" element={Alliance} />
+            <PrivateRoute path="/user" element={Profile} /> 
             */}
           </Routes>
           <Footer />

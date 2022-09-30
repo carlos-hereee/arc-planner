@@ -1,6 +1,8 @@
 @import "./variables.scss";
+@import "./keyframes.scss";
 @import "./mixins.scss";
 @import "./custom-styles.scss";
+@import "./homepage.scss";
 @import "./alliance.scss";
 @import "./hf.scss";
 @import "./profile.scss";
@@ -39,6 +41,7 @@ code {
   width: 100%;
   margin: auto;
 }
+
 .validate {
   color: red;
 }
