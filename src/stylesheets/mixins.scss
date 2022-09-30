@@ -5,24 +5,22 @@
 }
 
 @mixin btn() {
+  box-shadow: 0 3px #666;
+  padding: 1rem;
   text-align: center;
   border-radius: 4px;
-  margin: auto;
   border: none;
   cursor: pointer;
+  &:active {
+    transform: translateY(4px);
+  }
 }
 @mixin input() {
-  background: $card-bg;
-  color: $primary-text-color;
   box-sizing: border-box;
   text-align: center;
   border: none;
   border-bottom: 1px solid black;
   border-radius: 4px;
-  cursor: pointer;
-  &:focus {
-    outline: none;
-  }
 }
 
 // media query

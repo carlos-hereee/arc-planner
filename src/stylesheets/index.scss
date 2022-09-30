@@ -2,11 +2,11 @@
 @import "./keyframes.scss";
 @import "./mixins.scss";
 @import "./custom-styles.scss";
+@import "./forms.scss";
 @import "./homepage.scss";
 @import "./alliance.scss";
 @import "./hf.scss";
 @import "./profile.scss";
-@import "./settings.scss";
 
 body {
   background: whitesmoke;
@@ -36,55 +36,10 @@ code {
     margin: 0 auto;
   }
 }
-
-.validate {
-  color: red;
+button {
 }
-.form {
-  @include flex(center, column);
-  text-align: left;
-  margin: auto;
-  .password {
-    @include flex(center, row);
-    border: 2px solid black;
-    border-radius: 4px;
-    padding: 0 5px 0 0;
-    margin: 0.5rem 0;
-    .icon {
-      margin: auto 0 auto 5px;
-    }
-    input {
-      margin: 0;
-      border: none;
-      width: 100%;
-      &:focus {
-        outline: none;
-      }
-    }
-  }
-  input {
-    padding: 10px 20px;
-    margin: 8px 0;
-    border-radius: 4px;
-  }
-  button {
-    background-color: brown;
-    color: whitesmoke;
-    padding: 1rem;
-    border: none;
-    border-radius: 4px;
-    width: fit-content;
-    margin: 1rem 1rem 1rem auto;
-    box-shadow: 0 5px #666;
-    &:focus {
-      outline: none;
-    }
-    &:hover {
-      background-color: $btn-active;
-    }
-    &:active {
-      background-color: $btn-active;
-      transform: translateY(4px);
-    }
-  }
+input {
+  padding: 1rem 2rem;
+  margin: 1rem 0;
+  border-radius: 4px;
 }

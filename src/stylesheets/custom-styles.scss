@@ -9,9 +9,6 @@
 }
 .btn {
   @include btn();
-  width: 100px;
-  padding: 10px 0;
-  margin: 1rem auto;
   &:hover {
     color: $primary-text-color;
     background: $card-bg;
@@ -109,12 +106,7 @@
 .apply_btn {
   @include btn();
 }
-.input {
-  @include input();
-  @media #{$mobile} {
-    width: 100px;
-  }
-}
+
 .inputSave {
   @include input();
   width: 20px;
@@ -183,4 +175,7 @@
 .marketing {
   text-align: center;
   margin: 0 6rem;
+}
+.validate {
+  color: red;
 }

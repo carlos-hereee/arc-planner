@@ -20,12 +20,12 @@ const Login = () => {
         {({ errors, touched, validateForm }) => (
           <Form className="form">
             {errors.username && touched.username && (
-              <div className="validate">{errors.username}</div>
+              <span className="validate">{errors.username}</span>
             )}
             <label>Username </label>
             <Field type="text" name="username" validate={validateUsername} />
             {errors.password && touched.password && (
-              <div className="validate">{errors.password}</div>
+              <span className="validate">{errors.password}</span>
             )}
             <label>Password </label>
             <div className="password">
@@ -41,7 +41,7 @@ const Login = () => {
                 <Icons name={canSeePassword ? "eyeslash" : "eye"} size={"2x"} />
               </button>
             </div>
-            <button type="submit" onClick={() => validateForm()}>
+            <button type="submit" onClick={validateForm} className="btn">
               {!isLoading ? "Sign In" : <Loader />}
             </button>
           </Form>
