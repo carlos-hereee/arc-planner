@@ -9,13 +9,14 @@ import {
 import Icons from "./atoms/Icons";
 
 export default function Register() {
-  const { register, isLoading } = useContext(AuthContext);
+  const { register, isLoading, signUpError } = useContext(AuthContext);
   const [canSeePassword, setSeePassword] = useState(false);
   const [canSeeConfirmPassword, setSeeConfirmPassword] = useState(false);
 
   return (
     <section className="register card">
       <h2>Create an account</h2>
+      {signUpError && <p className="validate">{signUpError}</p>}
       <Formik
         initialValues={{ username: "", password: "", confirmPassword: "" }}
         onSubmit={(values) => register(values)}>
@@ -87,12 +88,14 @@ export default function Register() {
               </div>
             </div>
             <div className="form-submit">
-              <button
-                type="submit"
-                className="btn"
-                onClick={() => validateForm()}>
-                {!isLoading ? "Confirm" : <Loader />}
-              </button>
+              {!isLoading && (
+                <button
+                  type="submit"
+                  className="btn"
+                  onClick={() => validateForm()}>
+                  Confirm
+                </button>
+              )}
             </div>
           </Form>
         )}

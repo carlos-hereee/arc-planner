@@ -1,19 +1,17 @@
-import React, { createContext, useReducer, useEffect, useState } from "react";
+import React, { createContext, useReducer } from "react";
 
 import {
   IS_LOADING,
   SIGNIN_SUCCESS,
   SIGNIN_FAILURE,
   SIGNUP_SUCCESS,
-  SIGNUP_FAILURE,
   SIGNOUT_SUCCESS,
   SIGNOUT_FAILURE,
 } from "../types";
 
 import authReducer from "./reducer";
 
-import { client } from "../../axiosWithAuth";
-
+import { axiosWithOutAuth } from "../../axiosWithAuth";
 import { logOut } from "../../localStorage";
 
 export const AuthContext = createContext();
@@ -22,6 +20,7 @@ export const AuthState = (props) => {
   const initialState = {
     isLoading: false,
     signInError: null,
+    signUpError: null,
     accessToken: null,
     refreshToken: null,
     userProfile: null,
@@ -39,7 +38,7 @@ export const AuthState = (props) => {
       inGameName: values.inGameName,
     };
     try {
-      const res = await client().post("/user/register", credential);
+      const res = await axiosWithOutAuth.post("/users/register", credential);
       dispatch({ type: SIGNUP_SUCCESS, payload: res.data });
     } catch (error) {
       console.log(error);
@@ -52,7 +51,7 @@ export const AuthState = (props) => {
       password: values.password,
     };
     try {
-      const res = await client().post("/user/login", credential);
+      const res = await axiosWithOutAuth.post("/user/login", credential);
       dispatch({ type: SIGNIN_SUCCESS, payload: res.data });
     } catch (e) {
       console.log("e", e);
@@ -74,6 +73,7 @@ export const AuthState = (props) => {
         error: state.error,
         isLoading: state.isLoading,
         signInError: state.signInError,
+        signUpError: state.signUpError,
         accessToken: state.accessToken,
         userProfile: state.userProfile,
         appName: state.appName,

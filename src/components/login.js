@@ -12,7 +12,7 @@ const Login = () => {
   return (
     <div className="card">
       <h3>Login</h3>
-      {signInError ? <p className="validate">{signInError}</p> : ""}
+      {signInError && <p className="validate">{signInError}</p>}
       <Formik
         initialValues={{ username: "", password: "" }}
         onSubmit={(values) => signIn(values)}
