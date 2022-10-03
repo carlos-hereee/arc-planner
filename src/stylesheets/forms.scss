@@ -1,21 +1,21 @@
 .form {
   @include flex(space-around, column);
   text-align: left;
-  // input[type="text"] {
-  //   @include input();
-  //   overflow-y: auto;
-  //   overflow-wrap: break-word;
-  // }
-  // textarea {
-  //   @include input();
-  //   text-align: left;
-  // }
 }
 
-.row {
-  text-align: center;
+.form-submit {
+  display: flex;
+  justify-content: center;
+  button {
+    margin-top: 1rem;
+    width: 100%;
+  }
 }
-
-.btns {
-  margin: 1rem auto;
+.password {
+  display: flex;
+  align-items: center;
+}
+.register {
+  width: max-content;
+  margin: auto;
 }
