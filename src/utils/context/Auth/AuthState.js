@@ -8,13 +8,12 @@ export const AuthContext = createContext();
 export const AuthState = (props) => {
   const initialState = {
     isLoading: false,
-    signInError: null,
-    signUpError: null,
-    accessToken: null,
-    refreshToken: null,
-    userProfile: null,
-    userProfilePic: [],
+    signInError: "",
+    signUpError: "",
+    accessToken: "",
+    refreshToken: "",
     appName: "Rok Handbook",
+    user: {},
   };
   const [state, dispatch] = useReducer(authReducer, initialState);
 

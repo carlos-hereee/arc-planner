@@ -1,15 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../utils/context/Auth/AuthState";
 import RokLogo from "../components/atoms/RokLogo";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Homepage = () => {
   const { accessToken } = useContext(AuthContext);
 
-  if (accessToken) {
-    const navigate = useNavigate();
-    navigate("/users");
-  }
   return (
     <section className="homepage">
       <RokLogo />

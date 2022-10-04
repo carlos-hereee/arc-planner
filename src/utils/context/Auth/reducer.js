@@ -1,55 +1,43 @@
 const isLoading = (state, action) => {
-  return {
-    ...state,
-    isLoading: action.payload,
-  };
+  return { ...state, isLoading: action.payload };
 };
 const signInSuccess = (state, action) => {
-  localStorage.setItem("refreshToken", action.payload.refreshToken);
+  localStorage.setItem("accessToken", action.payload.accessToken);
   return {
     ...state,
     isLoading: false,
     signInError: null,
     accessToken: action.payload.accessToken,
     refreshToken: action.payload.refreshToken,
-    userProfile: action.payload.profile,
+    user: action.payload.user,
   };
 };
 
 const signInFailure = (state, action) => {
-  console.log("action.payload", action.payload);
-  return {
-    ...state,
-    isLoading: false,
-    signInError: action.payload,
-  };
+  return { ...state, isLoading: false, signInError: action.payload };
 };
 const signUpSuccess = (state, action) => {
-  localStorage.setItem("refreshToken", action.payload.refreshToken);
+  localStorage.setItem("accessToken", action.payload.accessToken);
   return {
     ...state,
     isLoading: false,
     accessToken: action.payload.accessToken,
     refreshToken: action.payload.refreshToken,
-    userProfile: action.payload.profile,
+    user: action.payload.user,
   };
 };
 
 const signUpFailure = (state, action) => {
-  return {
-    ...state,
-    signUpError: action.payload,
-    isLoading: false,
-  };
+  return { ...state, signUpError: action.payload, isLoading: false };
 };
 
 const signOutSuccess = (state, action) => {
   return {
     ...state,
-    error: null,
+    signUpError: "",
     isLoading: false,
-    userProfile: null,
-    accessToken: null,
+    user: "",
+    accessToken: "",
   };
 };
 const signOutFailure = (state, action) => {
