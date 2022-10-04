@@ -1,13 +1,3 @@
-import {
-  IS_LOADING,
-  SIGNIN_SUCCESS,
-  SIGNIN_FAILURE,
-  SIGNUP_SUCCESS,
-  SIGNUP_FAILURE,
-  SIGNOUT_SUCCESS,
-  SIGNOUT_FAILURE,
-} from "../types";
-
 const isLoading = (state, action) => {
   return {
     ...state,
@@ -70,19 +60,19 @@ const signOutFailure = (state, action) => {
 };
 const authReducer = (state, action) => {
   switch (action.type) {
-    case IS_LOADING:
+    case "IS_LOADING":
       return isLoading(state, action);
-    case SIGNIN_SUCCESS:
+    case "SIGNIN_SUCCESS":
       return signInSuccess(state, action);
-    case SIGNIN_FAILURE:
+    case "SIGNIN_FAILURE":
       return signInFailure(state, action);
-    case SIGNUP_SUCCESS:
+    case "SIGNUP_SUCCESS":
       return signUpSuccess(state, action);
-    case SIGNUP_FAILURE:
+    case "SIGNUP_FAILURE":
       return signUpFailure(state, action);
-    case SIGNOUT_SUCCESS:
+    case "SIGNOUT_SUCCESS":
       return signOutSuccess(state, action);
-    case SIGNOUT_FAILURE:
+    case "SIGNOUT_FAILURE":
       return signOutFailure(state, action);
     default:
       return state;

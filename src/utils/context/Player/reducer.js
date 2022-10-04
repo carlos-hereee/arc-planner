@@ -1,5 +1,4 @@
 import {
-  IS_LOADING,
   GET_PROFILE_SUCCESS,
   GET_PROFILE_ERROR,
   UPDATE_TROOPS_SUCCESS,
@@ -33,7 +32,6 @@ import {
   DELETE_EVENT_SUCCESS,
   DELETE_EVENT_ERROR,
   WILL_PARTICIPATE_SUCCESS,
-  WILL_PARTICIPATE_ERROR,
   GET_ALL_EVENTS_SUCCESS,
   GET_ALL_EVENTS_ERROR,
   GET_EVENT_SUCCESS,
@@ -442,7 +440,7 @@ const acceptAppError = (state, action) => {
 // cases
 export const reducer = (state, action) => {
   switch (action.type) {
-    case IS_LOADING:
+    case "IS_LOADING":
       return setIsLoading(state, action);
     case GET_PROFILE_SUCCESS:
       return getProfile(state, action);

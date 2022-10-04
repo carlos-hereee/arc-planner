@@ -7,6 +7,7 @@ import {
   validateConfirmPassword,
 } from "../utils/validateAuth";
 import Icons from "./atoms/Icons";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   const { register, isLoading, signUpError } = useContext(AuthContext);
@@ -100,6 +101,11 @@ export default function Register() {
           </Form>
         )}
       </Formik>
+      <div className="wrapper">
+        <Link to="/" className="link">
+          Already have an account?
+        </Link>
+      </div>
     </section>
   );
 }

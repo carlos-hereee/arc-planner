@@ -69,7 +69,7 @@ const Login = () => {
       </Formik>
       <div className="wrapper">
         <Link to="/sign-up" className="link">
-          Create an account
+          Create an account?
         </Link>
       </div>
     </div>

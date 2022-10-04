@@ -1,7 +1,6 @@
 import React, { createContext, useReducer } from "react";
 
 import {
-  IS_LOADING,
   GET_PROFILE_SUCCESS,
   UPDATE_TROOPS_SUCCESS,
   UPDATE_TROOPS_ERROR,
@@ -94,7 +93,7 @@ export const PlayerState = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const getUserProfile = async () => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().get(`/user`);
       dispatch({ type: GET_USER_PROFILE_SUCCESS, payload: res.data });
@@ -104,7 +103,7 @@ export const PlayerState = (props) => {
     }
   };
   const getProfile = async () => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().get(`/profile`);
       dispatch({ type: GET_PROFILE_SUCCESS, payload: res.data });
@@ -116,7 +115,7 @@ export const PlayerState = (props) => {
     }
   };
   const updateTroops = async (type, count) => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().put(`/profile/change?${type}=${count}`);
       dispatch({ type: UPDATE_TROOPS_SUCCESS, payload: res.data });
@@ -126,7 +125,7 @@ export const PlayerState = (props) => {
     }
   };
   const updateProfile = async (data) => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().put(`/profile/ncc`, data);
       dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: res.data });
@@ -137,7 +136,7 @@ export const PlayerState = (props) => {
   };
 
   const addImg = async (file) => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().put(`profile/img/`, file);
       dispatch({ type: IMG_SUCCESS, payload: res.data });
@@ -147,7 +146,7 @@ export const PlayerState = (props) => {
     }
   };
   const getAlliance = async () => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().get(`/alliance/`);
       dispatch({ type: GET_ALLIANCE_SUCCESS, payload: res.data });
@@ -159,7 +158,7 @@ export const PlayerState = (props) => {
     }
   };
   const getPermissions = async () => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().get(`/alliance/permissions`);
       dispatch({ type: GET_PRIVILEGE_SUCCESS, payload: res.data });
@@ -169,7 +168,7 @@ export const PlayerState = (props) => {
     }
   };
   const getAllianceList = async () => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().get(`alliance/list`);
       dispatch({ type: GET_ALLIANCE_LIST_SUCCESS, payload: res.data });
@@ -181,7 +180,7 @@ export const PlayerState = (props) => {
     }
   };
   const createAlliance = async (data) => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().post(`alliance/`, data);
       dispatch({ type: CREATE_ALLIANCE_SUCCESS, payload: res.data });
@@ -191,7 +190,7 @@ export const PlayerState = (props) => {
     }
   };
   const getApplications = async () => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().get(`alliance/applications`);
       dispatch({ type: GET_APPLICATIONS_SUCCESS, payload: res.data });
@@ -201,7 +200,7 @@ export const PlayerState = (props) => {
     }
   };
   const sendApplication = async (allianceId) => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().post(
         `/alliance/applications/apply/${allianceId}`
@@ -213,7 +212,7 @@ export const PlayerState = (props) => {
     }
   };
   const cancelApplication = async (allianceId) => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().delete(
         `/alliance/applications/cancel/${allianceId}`
@@ -226,7 +225,7 @@ export const PlayerState = (props) => {
     }
   };
   const getCurrentEvents = async () => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().get(`event/current`);
       dispatch({ type: GET_CURRENT_EVENTS_SUCCESS, payload: res.data });
@@ -236,7 +235,7 @@ export const PlayerState = (props) => {
     }
   };
   const getMembers = async () => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().get(`/alliance/members`);
       dispatch({ type: GET_MEMBERS_SUCCESS, payload: res.data });
@@ -246,7 +245,7 @@ export const PlayerState = (props) => {
     }
   };
   const createEvents = async (body) => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().post(`/event`, body);
       dispatch({ type: CREATE_EVENTS_SUCCESS, payload: res.data });
@@ -256,7 +255,7 @@ export const PlayerState = (props) => {
     }
   };
   const deleteEvent = async (eventId) => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     console.log("eventId", eventId);
     try {
       const res = await axiosWithAuth().delete(`/event/${eventId}`);
@@ -267,7 +266,7 @@ export const PlayerState = (props) => {
     }
   };
   const willParticipate = async (isParticipating, eventId) => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().put(`/event/${eventId}`, {
         isParticipating,
@@ -279,7 +278,7 @@ export const PlayerState = (props) => {
     }
   };
   const getAllEvents = async () => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().get(`/event/all`);
       dispatch({ type: GET_ALL_EVENTS_SUCCESS, payload: res.data });
@@ -289,7 +288,7 @@ export const PlayerState = (props) => {
     }
   };
   const getEvent = async (eventId) => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().get(`/event/specific/${eventId}/`);
       dispatch({ type: GET_EVENT_SUCCESS, payload: res.data });
@@ -299,7 +298,7 @@ export const PlayerState = (props) => {
     }
   };
   const createTeam = async (body, eventId) => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().post(`/event/team/${eventId}`, body);
       dispatch({ type: CREATE_TEAM_SUCCESS, payload: res.data });
@@ -309,7 +308,7 @@ export const PlayerState = (props) => {
     }
   };
   const initChoice = async (data, eventId) => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().post(
         `/event/participation/${eventId}`,
@@ -322,7 +321,7 @@ export const PlayerState = (props) => {
     }
   };
   const getParticipatingEvents = async () => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().get(`/event/participating`);
       dispatch({ type: PARTICIPATING_EVENTS_SUCCESS, payload: res.data });
@@ -332,7 +331,7 @@ export const PlayerState = (props) => {
     }
   };
   const updateTeams = async (old, newest) => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().put(`/event/ondrop/teams`, {
         old: old,
@@ -345,7 +344,7 @@ export const PlayerState = (props) => {
     }
   };
   const allianceSettings = async (data) => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().put(`alliance/changes`, data);
       dispatch({ type: ALLIANCE_SETTINGS_SUCCESS, payload: res.data });
@@ -355,7 +354,7 @@ export const PlayerState = (props) => {
     }
   };
   const deleteAlliance = async () => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().delete(`alliance/delete`);
       dispatch({ type: DELETE_ALLIANCE_SUCCESS, payload: res.data });
@@ -366,7 +365,7 @@ export const PlayerState = (props) => {
   };
 
   const getApps = async () => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().get(`alliance/apps`);
       dispatch({ type: GET_APPS_SUCCESS, payload: res.data });
@@ -376,7 +375,7 @@ export const PlayerState = (props) => {
     }
   };
   const acceptApp = async (allianceId, profileId) => {
-    dispatch({ type: IS_LOADING, payload: true });
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
       const res = await axiosWithAuth().put(
         `alliance/${profileId}/accept/${allianceId}`
