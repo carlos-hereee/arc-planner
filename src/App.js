@@ -10,6 +10,7 @@ import { AuthState } from "./utils/context/Auth/AuthState.js";
 import { PlayerState } from "./utils/context/Player/PlayerState.js";
 import Account from "./pages/Account.js";
 import Register from "./components/Register.js";
+import Login from "./components/Login.js";
 // import { PrivateRoute } from "./utils/privateRoute";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Header />
           <Routes>
             <Route exact path="/" element={<Homepage />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/sign-up" element={<Register />} />
             <Route path="/account" element={<Account />} />
             {/* 

@@ -13,10 +13,12 @@ export default function Header() {
       </Link>
       {accessToken ? (
         <div className="nav">
-          <div className="content">
-            <Link to="/user">Profile</Link>
-          </div>
-          <button className="content" onClick={() => signOut()}>
+          <Link to="/account">
+            <button type="button" className="btn">
+              Account
+            </button>
+          </Link>
+          <button className="btn" onClick={() => signOut()}>
             Sign Out
           </button>
         </div>

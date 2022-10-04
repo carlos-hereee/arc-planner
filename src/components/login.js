@@ -10,7 +10,7 @@ const Login = () => {
   const [canSeePassword, setSeePassword] = useState(false);
 
   return (
-    <div className="card">
+    <section className="login card">
       <h3>Login</h3>
       {signInError && <p className="validate">{signInError}</p>}
       <Formik
@@ -72,7 +72,7 @@ const Login = () => {
           Create an account?
         </Link>
       </div>
-    </div>
+    </section>
   );
 };
 export default Login;
