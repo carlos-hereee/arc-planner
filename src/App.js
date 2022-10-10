@@ -27,15 +27,14 @@ function App() {
         <Route exact path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<Register />} />
-        <Route path="/account" element={<Account />} />
         <Route path="/*" element={<PageNotFound />} />
         <Route element={<ProtectedRoute user={accessToken} />}>
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/alliance" element={Alliance} />
+          <Route path="/account" element={<Account />} />
         </Route>
-        {/* 
-            <ProtectedRoute path="/alliance" element={Alliance} />
-            <ProtectedRoute path="/user" element={Profile} /> 
-            */}
+        {/*
+         */}
       </Routes>
       <Footer />
     </div>
