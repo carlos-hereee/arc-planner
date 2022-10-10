@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import "./stylesheets/index.scss";
-import { AuthState } from "./utils/context/Auth/AuthState";
+import { AuthState } from "./utils/context/AuthContext";
 import { PlayerState } from "./utils/context/Player/PlayerState";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

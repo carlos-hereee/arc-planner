@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from "react";
 import authReducer from "./reducer";
-import { axiosWithOutAuth } from "../../axiosWithAuth";
-import { logOut } from "../../localStorage";
+import { axiosWithOutAuth } from "../axiosWithAuth";
+import { logOut } from "../localStorage";
 
 export const AuthContext = createContext();
 

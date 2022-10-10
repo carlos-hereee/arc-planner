@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../utils/context/Auth/AuthState";
+import { AuthContext } from "../utils/context/AuthContext";
 
 export default function Header() {
   const { signOut, accessToken, appName } = useContext(AuthContext);

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AuthContext } from "../utils/context/Auth/AuthState";
+import { AuthContext } from "../utils/context/AuthContext";
 import RokLogo from "../components/atoms/RokLogo";
 import { Link } from "react-router-dom";
 
