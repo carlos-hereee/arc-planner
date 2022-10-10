@@ -10,12 +10,10 @@ export const setLocalStorage = (data) => {
   localStorage.setItem("nickname", data.user.nickname);
   localStorage.setItem("id", data.user.uid);
 };
+export const logOut = () => localStorage.clear();
 
 export const axiosWithAuth = axios.create({
-  baseURL:
-    process.env.NODE_ENV === "production"
-      ? process.env.REACT_APP_DB_BASE_URL_PRODUCTION
-      : process.env.REACT_APP_DB_BASE_URL,
+  baseURL: process.env.REACT_APP_DB_BASE_URL,
   withCredentials: true,
   headers: {
     "Access-Control-Allow-Origin": process.env.REACT_APP_CLIENT_BASE_URL,
@@ -24,10 +22,7 @@ export const axiosWithAuth = axios.create({
   },
 });
 export const axiosWithOutAuth = axios.create({
-  baseURL:
-    process.env.NODE_ENV === "production"
-      ? process.env.REACT_APP_DB_BASE_URL_PRODUCTION
-      : process.env.REACT_APP_DB_BASE_URL,
+  baseURL: process.env.REACT_APP_DB_BASE_URL,
   withCredentials: true,
   headers: {
     "Access-Control-Allow-Origin": process.env.REACT_APP_CLIENT_BASE_URL,
@@ -36,42 +31,42 @@ export const axiosWithOutAuth = axios.create({
   },
 });
 
-// response interceptors =================================================
-let isRefreshing = false;
-let refreshSubscribers = [];
-function subscribeTokenRefresh(cb) {
-  refreshSubscribers.push(cb);
-}
+// // response interceptors =================================================
+// let isRefreshing = false;
+// let refreshSubscribers = [];
+// function subscribeTokenRefresh(cb) {
+//   refreshSubscribers.push(cb);
+// }
 
-function onRrefreshed(accessToken) {
-  refreshSubscribers.map((cb) => cb(accessToken));
-}
+// function onRrefreshed(accessToken) {
+//   refreshSubscribers.map((cb) => cb(accessToken));
+// }
 
-axiosWithAuth.interceptors.request.use(
-  async (config) => {
-    config.headers.Authorization = `Bearer ${accessToken}`;
-    return config;
-  },
-  async (err) => {
-    const { config, response } = err;
-    const ogReq = config;
-    if (response.status === 401) {
-      if (!isRefreshing) {
-        isRefreshing = true;
-        const { data } = await axiosWithAuth.post("/users/refresh-token");
-        onRrefreshed(data.accessToken);
-        isRefreshing = false;
-      }
-      const retryOrigReq = new Promise((resolve, reject) => {
-        subscribeTokenRefresh((access) => {
-          // replace the expired accessToken and retry
-          ogReq.headers["Authorization"] = "Bearer " + access;
-          resolve(axios(ogReq));
-        });
-      });
-      return retryOrigReq;
-    } else {
-      return Promise.reject(err);
-    }
-  }
-);
+// axiosWithAuth.interceptors.request.use(
+//   // async (config) => {
+//   //   config.headers.Authorization = `Bearer ${accessToken}`;
+//   //   return config;
+//   // },
+//   async (err) => {
+//     const { config, response } = err;
+//     const ogReq = config;
+//     if (response.status === 401) {
+//       if (!isRefreshing) {
+//         isRefreshing = true;
+//         const { data } = await axiosWithAuth.post("/users/refresh-token");
+//         onRrefreshed(data.accessToken);
+//         isRefreshing = false;
+//       }
+//       const retryOrigReq = new Promise((resolve, reject) => {
+//         subscribeTokenRefresh((access) => {
+//           // replace the expired accessToken and retry
+//           ogReq.headers["Authorization"] = "Bearer " + access;
+//           resolve(axios(ogReq));
+//         });
+//       });
+//       return retryOrigReq;
+//     } else {
+//       return Promise.reject(err);
+//     }
+//   }
+// );

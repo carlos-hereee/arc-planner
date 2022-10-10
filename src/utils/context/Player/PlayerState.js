@@ -1,9 +1,6 @@
 import React, { createContext, useReducer } from "react";
-
 import { reducer } from "./reducer";
 import { axiosWithAuth } from "../../axiosWithAuth";
-
-import { logOut } from "../../localStorage";
 
 export const PlayerContext = createContext();
 
@@ -29,11 +26,6 @@ export const PlayerState = (props) => {
     participatingEvents: [],
     listApps: [],
   };
-
-  function refreshPage() {
-    window.location.reload(false);
-  }
-
   // use reducer on local state or start fresh with initial state
   const [state, dispatch] = useReducer(reducer, initialState);
 

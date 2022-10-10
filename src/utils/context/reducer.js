@@ -2,27 +2,22 @@ const isLoading = (state, action) => {
   return { ...state, isLoading: action.payload };
 };
 const signInSuccess = (state, action) => {
-  localStorage.setItem("accessToken", action.payload.accessToken);
   return {
     ...state,
     isLoading: false,
-    signInError: null,
+    signInError: "",
     accessToken: action.payload.accessToken,
-    refreshToken: action.payload.refreshToken,
     user: action.payload.user,
   };
 };
-
 const signInERROR = (state, action) => {
   return { ...state, isLoading: false, signInError: action.payload };
 };
 const signUpSuccess = (state, action) => {
-  localStorage.setItem("accessToken", action.payload.accessToken);
   return {
     ...state,
     isLoading: false,
     accessToken: action.payload.accessToken,
-    refreshToken: action.payload.refreshToken,
     user: action.payload.user,
   };
 };

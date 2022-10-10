@@ -1,7 +1,7 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useEffect, useReducer } from "react";
 import authReducer from "./reducer";
 import { axiosWithOutAuth } from "../axiosWithAuth";
-import { logOut } from "../localStorage";
+// import axios from "axios";
 
 export const AuthContext = createContext();
 
@@ -15,6 +15,18 @@ export const AuthState = (props) => {
     user: {},
   };
   const [state, dispatch] = useReducer(authReducer, initialState);
+
+  useEffect(() => {
+    const getAccessToken = async () => {
+      try {
+        const { data } = await axiosWithOutAuth.post("/users/refresh-token");
+        dispatch({ type: "SIGNIN_SUCCESS", payload: data });
+      } catch (e) {
+        dispatch({ type: "SIGNIN_ERROR", payload: e.response.data.message });
+      }
+    };
+    getAccessToken();
+  }, []);
 
   const register = async (values) => {
     dispatch({ type: "IS_LOADING", payload: true });

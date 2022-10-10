@@ -65,7 +65,7 @@ export default function ProfileImg() {
           style={{ display: "none" }}
         />
         <img
-          src={`${process.env.REACT_APP_BASE_URL}/${
+          src={`${process.env.REACT_APP_DB_BASE_URL}/${
             profile.path && profile.path.replace("\\", "/")
           }`}
           className="headshot"

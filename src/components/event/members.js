@@ -18,7 +18,7 @@ export default function Members() {
             <div className="card" key={data.uuid}>
               <div>
                 <img
-                  src={`${process.env.REACT_APP_BASE_URL}/${
+                  src={`${process.env.REACT_APP_DB_BASE_URL}/${
                     data.path && data.path.replace("\\", "/")
                   }`}
                   alt="profile-picture"

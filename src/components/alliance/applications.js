@@ -23,7 +23,7 @@ export default function Applications() {
               <div className="img">
                 {idx + 1}.
                 <img
-                  src={`${process.env.REACT_APP_BASE_URL}/${
+                  src={`${process.env.REACT_APP_DB_BASE_URL}/${
                     data.path && data.path.replace("\\", "/")
                   }`}
                   alt="profile-picture"

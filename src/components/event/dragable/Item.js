@@ -47,7 +47,7 @@ export default function Item({ item, index, moveItem }) {
         <div className="card">
           <div>
             <img
-              src={`${process.env.REACT_APP_BASE_URL}/${
+              src={`${process.env.REACT_APP_DB_BASE_URL}/${
                 item.path && item.path.replace("\\", "/")
               }`}
             />
