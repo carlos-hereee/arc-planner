@@ -21,14 +21,6 @@
   padding: 1rem;
 }
 
-// .wrapper {
-//   @include flex(space-around, column);
-//   background: $title-bg;
-//   border-radius: 10px;
-//   padding-bottom: 1rem;
-//   text-align: center;
-//   color: $primary-text-color;
-
 //   .body {
 //     padding: 2rem;
 //     display: flex;
@@ -173,7 +165,7 @@
   text-align: center;
 }
 .message {
-  animation: fade ease 10s;
+  animation: glow ease 10s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }

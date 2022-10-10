@@ -8,6 +8,7 @@ import { AuthContext } from "./utils/context/AuthContext";
 import Account from "./pages/Account.js";
 import Register from "./components/Register.js";
 import Login from "./components/Login.js";
+import PageNotFound from "./pages/PageNotFound.js";
 // import { PrivateRoute } from "./utils/privateRoute";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<Register />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/*" element={<PageNotFound />} />
         {/* 
             <PrivateRoute path="/dashboard" element={Dashboard} />
             <PrivateRoute path="/alliance" element={Alliance} />
