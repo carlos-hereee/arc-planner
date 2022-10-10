@@ -3,7 +3,7 @@ import { AuthContext } from "../utils/context/AuthContext";
 import RokLogo from "../components/atoms/RokLogo";
 import { Link } from "react-router-dom";
 
-const Homepage = () => {
+const Landing = () => {
   const { accessToken } = useContext(AuthContext);
 
   return (
@@ -16,9 +16,9 @@ const Homepage = () => {
           Help coordinate with your alliance to let them know your strengths
         </p>
         {accessToken ? (
-          <Link to="/account">
+          <Link to="/dashboard">
             <button className="btn" type="button">
-              Account
+              Go to Kingdom
             </button>
           </Link>
         ) : (
@@ -32,4 +32,4 @@ const Homepage = () => {
     </section>
   );
 };
-export default Homepage;
+export default Landing;

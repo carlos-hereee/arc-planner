@@ -3,16 +3,11 @@ import { Formik, Form, Field } from "formik";
 import { AuthContext } from "../utils/context/AuthContext";
 import { validateUsername, validatePassword } from "../utils/validateAuth";
 import Icons from "./atoms/Icons";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const { isLoading, signIn, signInError } = useContext(AuthContext);
   const [canSeePassword, setSeePassword] = useState(false);
-  const { accessToken } = useContext(AuthContext);
-  const navigate = useNavigate();
-  if (accessToken) {
-    navigate("/users");
-  }
 
   return (
     <section className="login card">

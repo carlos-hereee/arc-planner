@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../utils/context/AuthContext";
 
 export default function Header() {
-  const { signOut, accessToken, appName } = useContext(AuthContext);
+  const { accessToken, appName } = useContext(AuthContext);
 
   return (
     <div className="header">
@@ -18,9 +18,6 @@ export default function Header() {
               Account
             </button>
           </Link>
-          <button className="btn" onClick={() => signOut()}>
-            Sign Out
-          </button>
         </div>
       ) : (
         <Link to="sign-up">Create Account</Link>

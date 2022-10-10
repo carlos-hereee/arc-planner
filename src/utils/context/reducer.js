@@ -13,7 +13,7 @@ const signInSuccess = (state, action) => {
   };
 };
 
-const signInFailure = (state, action) => {
+const signInERROR = (state, action) => {
   return { ...state, isLoading: false, signInError: action.payload };
 };
 const signUpSuccess = (state, action) => {
@@ -27,7 +27,7 @@ const signUpSuccess = (state, action) => {
   };
 };
 
-const signUpFailure = (state, action) => {
+const signUpERROR = (state, action) => {
   return { ...state, signUpError: action.payload, isLoading: false };
 };
 
@@ -40,7 +40,7 @@ const signOutSuccess = (state, action) => {
     accessToken: "",
   };
 };
-const signOutFailure = (state, action) => {
+const signOutERROR = (state, action) => {
   return {
     ...state,
     signOutError: action.payload,
@@ -52,16 +52,16 @@ const authReducer = (state, action) => {
       return isLoading(state, action);
     case "SIGNIN_SUCCESS":
       return signInSuccess(state, action);
-    case "SIGNIN_FAILURE":
-      return signInFailure(state, action);
+    case "SIGNIN_ERROR":
+      return signInERROR(state, action);
     case "SIGNUP_SUCCESS":
       return signUpSuccess(state, action);
-    case "SIGNUP_FAILURE":
-      return signUpFailure(state, action);
+    case "SIGNUP_ERROR":
+      return signUpERROR(state, action);
     case "SIGNOUT_SUCCESS":
       return signOutSuccess(state, action);
-    case "SIGNOUT_FAILURE":
-      return signOutFailure(state, action);
+    case "SIGNOUT_ERROR":
+      return signOutERROR(state, action);
     default:
       return state;
   }

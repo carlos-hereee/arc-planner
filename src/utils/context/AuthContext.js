@@ -11,7 +11,6 @@ export const AuthState = (props) => {
     signInError: "",
     signUpError: "",
     accessToken: "",
-    refreshToken: "",
     appName: "Rok Handbook",
     user: {},
   };
@@ -24,7 +23,7 @@ export const AuthState = (props) => {
       dispatch({ type: "SIGNUP_SUCCESS", payload: res.data });
     } catch (error) {
       const { message } = error.response.data;
-      dispatch({ type: "SIGNUP_FAILURE", payload: message });
+      dispatch({ type: "SIGNUP_ERROR", payload: message });
     }
   };
   const signIn = async (values) => {
@@ -32,7 +31,7 @@ export const AuthState = (props) => {
       const res = await axiosWithOutAuth.post("/users/login", values);
       dispatch({ type: "SIGNIN_SUCCESS", payload: res.data });
     } catch (e) {
-      dispatch({ type: "SIGNIN_FAILURE", payload: e.response.data.message });
+      dispatch({ type: "SIGNIN_ERROR", payload: e.response.data.message });
     }
   };
   const signOut = () => {
@@ -40,7 +39,7 @@ export const AuthState = (props) => {
       dispatch({ type: "SIGNOUT_SUCCESS" });
       logOut();
     } catch (error) {
-      dispatch({ type: "SIGNOUT_FAILURE", payload: error.message });
+      dispatch({ type: "SIGNOUT_ERROR", payload: error.message });
     }
   };
 
@@ -52,7 +51,7 @@ export const AuthState = (props) => {
         signInError: state.signInError,
         signUpError: state.signUpError,
         accessToken: state.accessToken,
-        userProfile: state.userProfile,
+        user: state.user,
         appName: state.appName,
         signIn,
         register,
