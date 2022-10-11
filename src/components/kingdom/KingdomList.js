@@ -1,6 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 import Empty from "../atoms/Empty";
+import Icons from "../atoms/Icons";
 
 const KingdomList = ({ newKD, setNewKD }) => {
   const {
@@ -9,18 +10,45 @@ const KingdomList = ({ newKD, setNewKD }) => {
     applyKingdom,
     applications,
     cancelAppKingdom,
+    updateKingdomList,
     getKingdomApp,
   } = useContext(KingdomContext);
+  const [search, setSearch] = useState("");
   useEffect(() => {
     getAllKingdom();
     getKingdomApp();
   }, []);
-  console.log("applications", applications);
-  console.log("kingdomList", kingdomList);
-
+  const handleChange = (e) => {
+    e.preventDefault();
+    setSearch(e.target.value);
+  };
+  if (search.length > 0) {
+    const list = kingdomList.filter((kl) => {
+      return (
+        kl.name.match(search) ||
+        kl.kingName.match(search) ||
+        kl.announcement.match(search)
+      );
+    });
+    updateKingdomList(list);
+  }
+  const handleSubmit = () => {};
   return (
     <>
-      <h2>Join a kingdom</h2>
+      <div className="search-bar">
+        <h2>Join a kingdom</h2>
+
+        <input
+          className="search-bar-input"
+          type="text"
+          value={search}
+          placeholder="...Search here"
+          onChange={handleChange}
+        />
+        <button className="btn" onClick={handleSubmit}>
+          <Icons name="search" size="2x" />
+        </button>
+      </div>
       <div className="list">
         <div className="list-title">
           <span className="row-element">Kingdom #</span>

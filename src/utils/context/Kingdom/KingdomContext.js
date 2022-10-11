@@ -284,7 +284,7 @@ export const KingdomState = (props) => {
     dispatch({ type: "IS_LOADING", payload: true });
     try {
       const data = await axiosWithAuth.get("/kingdom/all");
-      dispatch({ type: "GET_KINGDOM_LIST", payload: data.data });
+      dispatch({ type: "UPDATE_KINGDOM_LIST", payload: data.data });
     } catch (e) {
       const response = e.response.data.message;
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
@@ -337,7 +337,15 @@ export const KingdomState = (props) => {
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
     }
   };
-
+  const updateKingdomList = async (list) => {
+    dispatch({ type: "", payload: true });
+    try {
+      // const res = await axiosWithAuth.call(`endpoint`)
+      dispatch({ type: "UPDATE_KINGDOM_LIST", payload: list });
+    } catch {
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: "ERROR" });
+    }
+  };
   return (
     <KingdomContext.Provider
       value={{
@@ -388,6 +396,7 @@ export const KingdomState = (props) => {
         getKingdomApp,
         applyKingdom,
         cancelAppKingdom,
+        updateKingdomList,
       }}>
       {state.error && (
         <div className="global_error">

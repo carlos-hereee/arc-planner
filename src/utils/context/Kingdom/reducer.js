@@ -31,7 +31,7 @@ export const reducer = (state, action) => {
       return isLoading(state, action);
     case "ADD_MESSAGE_TO_LOG":
       return addToLog(state, action);
-    case "GET_KINGDOM_LIST":
+    case "UPDATE_KINGDOM_LIST":
       return getKingdomList(state, action);
     case "KINGDOM_APPLICATIONS":
       return kingdomApp(state, action);

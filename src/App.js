@@ -33,8 +33,6 @@ function App() {
           <Route path="/alliance" element={<Alliance />} />
           <Route path="/account" element={<Account />} />
         </Route>
-        {/*
-         */}
       </Routes>
       <Footer />
     </div>
