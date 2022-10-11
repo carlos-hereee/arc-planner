@@ -3,13 +3,13 @@ import React, { useState, useEffect, useContext } from "react";
 import AllianceContent from "./allianceContent";
 import AllianceSettings from "./settings";
 
-import { PlayerContext } from "../../utils/context/Player/PlayerState";
+import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 import Events from "../event/events";
 import Members from "../event/members";
 import Applications from "./applications";
 
 export default function AllianceNavLink() {
-  const { getPermissions, permissions } = useContext(PlayerContext);
+  const { getPermissions, permissions } = useContext(KingdomContext);
   const [activeItem, setActiveItem] = useState("members");
   const [open, setOpen] = useState(false);
 

@@ -2,10 +2,10 @@ import React, { useContext, useState } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
 
-import { PlayerContext } from "../../utils/context/Player/PlayerState";
+import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 
 export default function CreateAlliance() {
-  const { createAlliance } = useContext(PlayerContext);
+  const { createAlliance } = useContext(KingdomContext);
   const [open, setOpen] = useState(false);
 
   return (

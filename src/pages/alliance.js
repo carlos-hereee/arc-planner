@@ -4,10 +4,10 @@ import Navbar from "./navbar";
 import AllianceNavLink from "../components/alliance/allianceNavLink";
 import AllianceList from "../components/alliance/allianceList";
 
-import { PlayerContext } from "../utils/context/Player/PlayerState";
+import { KingdomContext } from "../utils/context/Kingdom/KingdomContext";
 
 export default function IsMemberAlliance() {
-  const { userProfile, getUserProfile } = useContext(PlayerContext);
+  const { userProfile, getUserProfile } = useContext(KingdomContext);
 
   useEffect(() => {
     getUserProfile();

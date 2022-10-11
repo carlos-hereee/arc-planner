@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import { PlayerContext } from "../../utils/context/Player/PlayerState";
+import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 
 export default function Applications() {
-  const { getApps, listApps, acceptApp } = useContext(PlayerContext);
+  const { getApps, listApps, acceptApp } = useContext(KingdomContext);
   useEffect(() => {
     getApps();
   }, [listApps.length]);

@@ -2,10 +2,10 @@ import React, { useContext, useEffect } from "react";
 
 import TroopBtns from "./troopBtns";
 
-import { PlayerContext } from "../../utils/context/Player/PlayerState";
+import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 
 export default function ProfileTroops() {
-  const { profile, getProfile } = useContext(PlayerContext);
+  const { profile, getProfile } = useContext(KingdomContext);
 
   useEffect(() => {
     getProfile();

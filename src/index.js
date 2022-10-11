@@ -3,17 +3,17 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import "./stylesheets/index.scss";
-import { AuthState } from "./utils/context/AuthContext";
-import { PlayerState } from "./utils/context/Player/PlayerState";
+import { AuthState } from "./utils/context/Auth/AuthContext";
+import { KingdomState } from "./utils/context/Kingdom/KingdomContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Router>
       <AuthState>
-        <PlayerState>
+        <KingdomState>
           <App />
-        </PlayerState>
+        </KingdomState>
       </AuthState>
     </Router>
   </React.StrictMode>

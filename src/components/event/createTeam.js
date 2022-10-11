@@ -2,10 +2,10 @@ import React, { useState, useContext } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
 
-import { PlayerContext } from "../../utils/context/Player/PlayerState";
+import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 
 export default function CreateTeam({ eventId }) {
-  const { createTeam } = useContext(PlayerContext);
+  const { createTeam } = useContext(KingdomContext);
 
   const [open, setOpen] = useState(false);
   return (

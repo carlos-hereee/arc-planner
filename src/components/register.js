@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Formik, Form, Field } from "formik";
-import { AuthContext } from "../utils/context/AuthContext";
+import { AuthContext } from "../utils/context/Auth/AuthContext";
 import {
   validatePassword,
   validateUsername,

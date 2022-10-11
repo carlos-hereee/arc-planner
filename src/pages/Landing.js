@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AuthContext } from "../utils/context/AuthContext";
+import { AuthContext } from "../utils/context/Auth/AuthContext";
 import RokLogo from "../components/atoms/RokLogo";
 import { Link } from "react-router-dom";
 
@@ -13,12 +13,12 @@ const Landing = () => {
         <h2>ROK Planner</h2>
         <p>This is a fanbased application</p>
         <p>
-          Help coordinate with your alliance to let them know your strengths
+          To help coordinate with your alliance to let them know your strengths
         </p>
         {accessToken ? (
           <Link to="/dashboard">
             <button className="btn" type="button">
-              Go to Kingdom
+              Go to Dashboard
             </button>
           </Link>
         ) : (

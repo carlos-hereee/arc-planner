@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 // import { Accordion, Button, Icon } from "semantic-ui-react";
-import { PlayerContext } from "../../utils/context/Player/PlayerState";
+import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 
@@ -20,7 +20,7 @@ export default function Events() {
     participants,
     teams,
     updateTeams,
-  } = useContext(PlayerContext);
+  } = useContext(KingdomContext);
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [items, setItems] = useState(participants);

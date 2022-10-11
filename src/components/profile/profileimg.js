@@ -1,9 +1,9 @@
 import React, { useRef, useState, useContext } from "react";
 
-import { PlayerContext } from "../../utils/context/Player/PlayerState";
+import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 
 export default function ProfileImg() {
-  const { addImg, profile, updateProfile } = useContext(PlayerContext);
+  const { addImg, profile, updateProfile } = useContext(KingdomContext);
 
   const [inputChanged, setInputChange] = useState(false);
   const [imgToggle, setImgToggle] = useState(false);

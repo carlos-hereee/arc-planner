@@ -1,7 +1,6 @@
 import React, { createContext, useEffect, useReducer } from "react";
 import authReducer from "./reducer";
-import { axiosWithOutAuth } from "../axiosWithAuth";
-// import axios from "axios";
+import { axiosWithOutAuth } from "../../axiosWithAuth";
 
 export const AuthContext = createContext();
 
@@ -15,7 +14,6 @@ export const AuthState = (props) => {
     user: {},
   };
   const [state, dispatch] = useReducer(authReducer, initialState);
-
   useEffect(() => {
     const getAccessToken = async () => {
       try {

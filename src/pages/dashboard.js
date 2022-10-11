@@ -1,10 +1,11 @@
-import React from "react";
-
-export default function Dashboard() {
-	return (
-		<>
-			<div>Kingdom/Alliance</div>
-			<div>Troops</div>
-		</>
-	);
-}
+const Dashboard = () => {
+  return (
+    <section className="dashboard">
+      <div>Kingdom</div>
+      <div>Alliance</div>
+      <div>ARC</div>
+      <div>Other resources</div>
+    </section>
+  );
+};
+export default Dashboard;

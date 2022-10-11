@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 
-import { PlayerContext } from "../../utils/context/Player/PlayerState";
+import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 
 export default function TroopBtns({ type, counts }) {
   const [isPositive, setIsPositive] = useState(true);
@@ -8,7 +8,7 @@ export default function TroopBtns({ type, counts }) {
   let [addedTroops, setAddedTroops] = useState(0);
   const [inputTroops, setInputTroops] = useState(0);
 
-  const { profile, updateTroops } = useContext(PlayerContext);
+  const { profile, updateTroops } = useContext(KingdomContext);
   function togglePositive() {
     setIsPositive(!isPositive);
   }

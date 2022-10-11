@@ -1,11 +1,11 @@
 import { useContext, useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { AuthContext } from "./utils/context/AuthContext";
+import { AuthContext } from "./utils/context/Auth/AuthContext";
 import { ProtectedRoute } from "./utils/ProtectedRoute.js";
 import Header from "./pages/Header.js";
 import Footer from "./pages/Footer.js";
 import Landing from "./pages/Landing.js";
-import Dashboard from "./pages/dashboard.js";
+import Dashboard from "./pages/Dashboard.js";
 import Alliance from "./pages/alliance";
 import Account from "./pages/Account.js";
 import PageNotFound from "./pages/PageNotFound.js";
@@ -30,7 +30,7 @@ function App() {
         <Route path="/*" element={<PageNotFound />} />
         <Route element={<ProtectedRoute user={accessToken} />}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/alliance" element={Alliance} />
+          <Route path="/alliance" element={<Alliance />} />
           <Route path="/account" element={<Account />} />
         </Route>
         {/*

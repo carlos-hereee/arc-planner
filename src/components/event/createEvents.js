@@ -2,10 +2,10 @@ import React, { useState, useContext } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
 
-import { PlayerContext } from "../../utils/context/Player/PlayerState";
+import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 
 export default function CreateEvent() {
-  const { createEvents } = useContext(PlayerContext);
+  const { createEvents } = useContext(KingdomContext);
   const [open, setOpen] = useState(false);
   return (
     <div>

@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
 
-import { PlayerContext } from "../../utils/context/Player/PlayerState";
+import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 
 export default function AllianceHeader() {
-  const { alliance, getAlliance } = useContext(PlayerContext);
+  const { alliance, getAlliance } = useContext(KingdomContext);
   useEffect(() => {
     getAlliance();
   }, []);

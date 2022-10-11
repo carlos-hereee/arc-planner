@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { PlayerContext } from "../../utils/context/Player/PlayerState";
+import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 
 import AllianceHeader from "./allianceHeader";
 
@@ -10,7 +10,7 @@ export default function AllianceContent() {
     willParticipate,
     getParticipatingEvents,
     participatingEvents,
-  } = useContext(PlayerContext);
+  } = useContext(KingdomContext);
 
   useEffect(() => {
     getCurrentEvents();

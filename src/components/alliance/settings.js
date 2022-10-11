@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 // import { Formik, Form, Field } from "formik";
 
-import { PlayerContext } from "../../utils/context/Player/PlayerState";
+import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 
 export default function Settings() {
   const { alliance, getAlliance, allianceSettings, deleteAlliance } =
-    useContext(PlayerContext);
+    useContext(KingdomContext);
   const [data, setData] = useState({
     allianceName: "",
     allianceTag: "",

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
-import { PlayerContext } from "../../utils/context/Player/PlayerState";
+import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 
 export default function Members() {
-  const { members, getMembers } = useContext(PlayerContext);
+  const { members, getMembers } = useContext(KingdomContext);
 
   useEffect(() => {
     getMembers();

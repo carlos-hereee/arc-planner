@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 
 import CreateAlliance from "./createAlliance";
 
-import { PlayerContext } from "../../utils/context/Player/PlayerState";
+import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 
 export default function AllianceList() {
   const {
@@ -13,7 +13,7 @@ export default function AllianceList() {
     sendApplication,
     cancelApplication,
     getApplications,
-  } = useContext(PlayerContext);
+  } = useContext(KingdomContext);
 
   useEffect(() => {
     getApplications();
