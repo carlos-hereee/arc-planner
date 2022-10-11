@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
 import { Formik, Form, Field } from "formik";
-import { AuthContext } from "../utils/context/Auth/AuthContext";
+import { AuthContext } from "../../utils/context/Auth/AuthContext";
 import {
   validatePassword,
   validateUsername,
   validateConfirmPassword,
-} from "../utils/validateAuth";
-import Icons from "./atoms/Icons";
+} from "../../utils/validateAuth";
+import Icons from "../atoms/Icons";
 import { Link } from "react-router-dom";
 
 export default function Register() {

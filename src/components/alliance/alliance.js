@@ -1,10 +1,9 @@
 import React, { useEffect, useContext } from "react";
 
-import Navbar from "./navbar";
-import AllianceNavLink from "../components/alliance/allianceNavLink";
-import AllianceList from "../components/alliance/allianceList";
+import AllianceNavLink from "./allianceNavLink";
+import AllianceList from "./allianceList";
 
-import { KingdomContext } from "../utils/context/Kingdom/KingdomContext";
+import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 
 export default function IsMemberAlliance() {
   const { userProfile, getUserProfile } = useContext(KingdomContext);
@@ -20,9 +19,7 @@ export default function IsMemberAlliance() {
       ) : (
         <AllianceList />
       )}
-      <div className="buttons">
-        <Navbar />
-      </div>
+      <div className="buttons">{/* <Navbar /> */}</div>
     </div>
   );
 }

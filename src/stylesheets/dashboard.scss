@@ -1,3 +1,6 @@
-.dashboard {
-  margin: auto;
+.list {
+  height: 15vh;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
 }

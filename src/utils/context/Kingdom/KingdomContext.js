@@ -25,6 +25,8 @@ export const KingdomState = (props) => {
     teams: [],
     participatingEvents: [],
     listApps: [],
+    kingdom: {},
+    kingdomList: [],
   };
   // use reducer on local state or start fresh with initial state
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -343,6 +345,8 @@ export const KingdomState = (props) => {
         userProfile: state.userProfile,
         teams: state.teams,
         listApps: state.listApps,
+        kingdom: state.kingdom,
+        kingdomList: state.kingdomList,
         getProfile,
         getPermissions,
         getUserProfile,

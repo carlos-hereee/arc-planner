@@ -7,17 +7,17 @@ import { AuthContext } from "../../utils/context/Auth/AuthState";
 import { validateField, validateNumber } from "../../utils/validateAuth";
 
 export default function ProfileContent() {
-  const { userProfile } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   function addGovernorName(name) {
     console.log("name", name);
   }
   return (
     <div>
       <div className="card">
-        {userProfile && userProfile.governorName ? (
+        {user && user.governorName ? (
           <>
             <lavel>Governor name:</lavel>
-            <p>{userProfile.governorName}</p>
+            <p>{user.governorName}</p>
             <Icon name="pencil" />
           </>
         ) : (
@@ -64,10 +64,7 @@ export default function ProfileContent() {
           </Formik>
         )}
       </div>
-      <div className="card">{userProfile && userProfile.email}</div>
-      <div className="card">{userProfile && userProfile.email}</div>
-      <div className="card">{userProfile && userProfile.email}</div>
-      <div className="card">{userProfile && userProfile.email}</div>
+      <div className="card">{user && user.email}</div>
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Formik, Form, Field } from "formik";
-import { AuthContext } from "../utils/context/Auth/AuthContext";
-import { validateUsername, validatePassword } from "../utils/validateAuth";
-import Icons from "./atoms/Icons";
+import { AuthContext } from "../../utils/context/Auth/AuthContext";
+import { validateUsername, validatePassword } from "../../utils/validateAuth";
+import Icons from "../atoms/Icons";
 import { Link } from "react-router-dom";
 
 const Login = () => {

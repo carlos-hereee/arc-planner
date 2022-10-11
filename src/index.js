@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import "./stylesheets/index.scss";
+import { AllianceState } from "./utils/context/Alliance/AllianceContext";
 import { AuthState } from "./utils/context/Auth/AuthContext";
 import { KingdomState } from "./utils/context/Kingdom/KingdomContext";
 
@@ -12,7 +13,9 @@ root.render(
     <Router>
       <AuthState>
         <KingdomState>
-          <App />
+          <AllianceState>
+            <App />
+          </AllianceState>
         </KingdomState>
       </AuthState>
     </Router>
