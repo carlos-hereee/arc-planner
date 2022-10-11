@@ -19,7 +19,6 @@ export const KingdomState = (props) => {
     eventsList: [],
     profile: [],
     userProfile: { isMember: false },
-    applications: [],
     members: [],
     permissions: {},
     teams: [],
@@ -27,6 +26,7 @@ export const KingdomState = (props) => {
     listApps: [],
     kingdom: {},
     kingdomList: [],
+    applications: [],
     log: [],
   };
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -300,6 +300,43 @@ export const KingdomState = (props) => {
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
     }
   };
+  const applyKingdom = async (values) => {
+    dispatch({ type: "IS_LOADING", payload: true });
+    try {
+      const data = await axiosWithAuth.post("/kingdom/apply", {
+        ...values,
+        type: "kingdom",
+      });
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: data.message });
+      getKingdomApp();
+    } catch (e) {
+      const response = e.response.data.message;
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
+    }
+  };
+  const getKingdomApp = async () => {
+    dispatch({ type: "IS_LOADING", payload: true });
+    try {
+      const data = await axiosWithAuth.get("/kingdom/user-application");
+      dispatch({ type: "KINGDOM_APPLICATIONS", payload: data.data });
+    } catch (e) {
+      const response = e.response.data.message;
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
+    }
+  };
+  const cancelAppKingdom = async (values) => {
+    dispatch({ type: "IS_LOADING", payload: true });
+    try {
+      const data = await axiosWithAuth.delete(
+        `/kingdom/user-application/${values.uid}`
+      );
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: data.message });
+      getKingdomApp();
+    } catch (e) {
+      const response = e.response.data.message;
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
+    }
+  };
 
   return (
     <KingdomContext.Provider
@@ -348,6 +385,9 @@ export const KingdomState = (props) => {
         acceptApp,
         createKingdom,
         getAllKingdom,
+        getKingdomApp,
+        applyKingdom,
+        cancelAppKingdom,
       }}>
       {state.error && (
         <div className="global_error">

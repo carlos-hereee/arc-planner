@@ -3,10 +3,21 @@ import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 import Empty from "../atoms/Empty";
 
 const KingdomList = ({ newKD, setNewKD }) => {
-  const { kingdomList, getAllKingdom } = useContext(KingdomContext);
+  const {
+    kingdomList,
+    getAllKingdom,
+    applyKingdom,
+    applications,
+    cancelAppKingdom,
+    getKingdomApp,
+  } = useContext(KingdomContext);
   useEffect(() => {
     getAllKingdom();
+    getKingdomApp();
   }, []);
+  console.log("applications", applications);
+  console.log("kingdomList", kingdomList);
+
   return (
     <>
       <h2>Join a kingdom</h2>
@@ -22,7 +33,16 @@ const KingdomList = ({ newKD, setNewKD }) => {
               <span className="row-element">{k.name}</span>
               <span className="row-element">{k.kingName}</span>
               <span className="row-element">{k.announcement}</span>
-              <button className="btn">Apply</button>
+              {applications.length > 0 &&
+              applications.some((a) => a.kingdomId === k.uid) ? (
+                <button className="btn" onClick={() => cancelAppKingdom(k)}>
+                  Cancel
+                </button>
+              ) : (
+                <button className="btn" onClick={() => applyKingdom(k)}>
+                  Apply
+                </button>
+              )}
             </div>
           ))
         ) : (
