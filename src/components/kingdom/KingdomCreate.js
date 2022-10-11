@@ -4,7 +4,7 @@ import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 import * as yup from "yup";
 import Spinner from "../atoms/Spinner";
 
-const KingdomCreate = () => {
+const KingdomCreate = ({ show, setNewKD }) => {
   const { createKingdom, isLoading } = useContext(KingdomContext);
   return (
     <>
@@ -39,6 +39,12 @@ const KingdomCreate = () => {
               </div>
             </div>
             <div className="form-submit">
+              <button
+                type="button"
+                className="btn btn-danger"
+                onClick={() => setNewKD(!show)}>
+                Cancel
+              </button>
               <button type="submit" className="btn">
                 {!isLoading ? "Create" : <Spinner />}
               </button>

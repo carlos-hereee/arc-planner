@@ -8,7 +8,7 @@ const KingdomContainer = () => {
   return (
     <div className="card">
       {newKD ? (
-        <KingdomCreate newKD={newKD} setNewKD={setNewKD} />
+        <KingdomCreate show={newKD} setNewKD={setNewKD} />
       ) : (
         <KingdomList newKD={newKD} setNewKD={setNewKD} />
       )}

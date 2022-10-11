@@ -15,6 +15,15 @@
     background: $card-bg;
   }
 }
+.btn-danger {
+  @include btn();
+  background: rgb(207, 22, 22);
+  color: white;
+  &:hover {
+    background: rgb(185, 2, 2);
+  }
+}
+
 .wrapper {
   text-align: center;
   margin: 1rem;
@@ -53,20 +62,9 @@
   }
 }
 
-.red_btn {
-  @include btn();
-  width: 35px;
-  background: rgb(255, 0, 0);
-  &:hover {
-    background: rgb(185, 2, 2);
-  }
-}
-
 .green_btn {
   @include btn();
-  width: 35px;
   background: rgb(4, 185, 4);
-  border: none;
   &:hover {
     background: rgb(4, 153, 4);
   }
