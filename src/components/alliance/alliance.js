@@ -1,8 +1,6 @@
 import React, { useEffect, useContext } from "react";
-
 import AllianceNavLink from "./allianceNavLink";
 import AllianceList from "./allianceList";
-
 import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 
 export default function IsMemberAlliance() {

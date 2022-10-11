@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
-import Empty from "../Empty";
+import Empty from "../atoms/Empty";
 
-const KingdomList = () => {
+const KingdomList = ({ newKD, setNewKD }) => {
   const { kingdomList } = useContext(KingdomContext);
   return (
-    <div className="card">
+    <>
       <h2>Join a kingdom</h2>
       <div className="list">
         {kingdomList.length > 0 ? (
@@ -15,8 +15,10 @@ const KingdomList = () => {
         )}
       </div>
       <span>Don't see your kingdom?</span>
-      <button className="btn">Create</button>
-    </div>
+      <button className="btn" onClick={() => setNewKD(!newKD)}>
+        Create
+      </button>
+    </>
   );
 };
 
