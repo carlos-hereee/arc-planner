@@ -1,8 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Formik } from "formik";
-import * as yup from "yup";
-
 import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
+import * as yup from "yup";
 
 export default function CreateTeam({ eventId }) {
   const { createTeam } = useContext(KingdomContext);

@@ -3,7 +3,7 @@ import { AuthContext } from "../utils/context/Auth/AuthContext";
 
 const Account = () => {
   const { user } = useContext(AuthContext);
-  console.log("user", user);
+  // console.log("user", user);
   return (
     <section>
       <div className="card">
