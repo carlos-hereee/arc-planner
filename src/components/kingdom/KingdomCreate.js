@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import { Formik, Form, Field } from "formik";
 import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 import * as yup from "yup";
+import Spinner from "../atoms/Spinner";
 
 const KingdomCreate = () => {
-  const { createKingdom } = useContext(KingdomContext);
+  const { createKingdom, isLoading } = useContext(KingdomContext);
   return (
     <>
       <h2>Create Kingdom</h2>
@@ -36,6 +37,11 @@ const KingdomCreate = () => {
               <div>
                 <Field type="text" name="announcement" component="textarea" />
               </div>
+            </div>
+            <div className="form-submit">
+              <button type="submit" className="btn">
+                {!isLoading ? "Create" : <Spinner />}
+              </button>
             </div>
           </Form>
         )}

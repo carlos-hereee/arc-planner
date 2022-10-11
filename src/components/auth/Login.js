@@ -4,6 +4,7 @@ import { AuthContext } from "../../utils/context/Auth/AuthContext";
 import { validateUsername, validatePassword } from "../../utils/validateAuth";
 import Icons from "../atoms/Icons";
 import { Link } from "react-router-dom";
+import Spinner from "../atoms/Spinner";
 
 const Login = () => {
   const { isLoading, signIn, signInError } = useContext(AuthContext);
@@ -61,7 +62,7 @@ const Login = () => {
             </div>
             <div className="form-submit">
               <button type="submit" onClick={validateForm} className="btn">
-                {!isLoading ? "Sign In" : <Loader />}
+                {!isLoading ? "Sign In" : <Spinner />}
               </button>
             </div>
           </Form>

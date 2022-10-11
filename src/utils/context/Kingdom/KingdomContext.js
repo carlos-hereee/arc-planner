@@ -27,52 +27,9 @@ export const KingdomState = (props) => {
     listApps: [],
     kingdom: {},
     kingdomList: [],
+    log: [],
   };
-  // use reducer on local state or start fresh with initial state
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  const getUserProfile = async () => {
-    dispatch({ type: "IS_LOADING", payload: true });
-    try {
-      const res = await axiosWithAuth.get(`/user`);
-      dispatch({ type: "GET_USER_PROFILE_SUCCESS", payload: res.data });
-    } catch (e) {
-      console.log("error", e);
-      dispatch({ type: "GET_USER_PROFILE_ERROR", payload: e.response });
-    }
-  };
-  const getProfile = async () => {
-    dispatch({ type: "IS_LOADING", payload: true });
-    try {
-      const res = await axiosWithAuth.get(`/profile`);
-      dispatch({ type: "GET_PROFILE_SUCCESS", payload: res.data });
-    } catch (e) {
-      console.log("e", e);
-      e.response.status === 401
-        ? logOut()
-        : dispatch({ type: "GET_ALLIANCE_ERROR", payload: e.response });
-    }
-  };
-  const updateTroops = async (type, count) => {
-    dispatch({ type: "IS_LOADING", payload: true });
-    try {
-      const res = await axiosWithAuth.put(`/profile/change?${type}=${count}`);
-      dispatch({ type: "UPDATE_TROOPS_SUCCESS", payload: res.data });
-    } catch (e) {
-      console.log("error", e);
-      dispatch({ type: "UPDATE_TROOPS_ERROR", payload: e.response });
-    }
-  };
-  const updateProfile = async (data) => {
-    dispatch({ type: "IS_LOADING", payload: true });
-    try {
-      const res = await axiosWithAuth.put(`/profile/ncc`, data);
-      dispatch({ type: "UPDATE_PROFILE_SUCCESS", payload: res.data });
-    } catch (e) {
-      console.log("error", e);
-      dispatch({ type: "UPDATE_PROFILE_ERROR", payload: e.response });
-    }
-  };
 
   const addImg = async (file) => {
     dispatch({ type: "IS_LOADING", payload: true });
@@ -301,7 +258,6 @@ export const KingdomState = (props) => {
       dispatch({ type: "DELETE_ALLIANCE_ERROR", payload: e.response });
     }
   };
-
   const getApps = async () => {
     dispatch({ type: "IS_LOADING", payload: true });
     try {
@@ -322,6 +278,16 @@ export const KingdomState = (props) => {
     } catch (e) {
       console.log("error", e);
       dispatch({ type: "ACCEPT_APP_ERROR", payload: e.response });
+    }
+  };
+  const createKingdom = async (values) => {
+    dispatch({ type: "IS_LOADING", payload: true });
+    try {
+      const data = await axiosWithAuth.post("/kingdom", values);
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: data.message });
+    } catch (e) {
+      const response = e.response.data.message;
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
     }
   };
 
@@ -347,11 +313,7 @@ export const KingdomState = (props) => {
         listApps: state.listApps,
         kingdom: state.kingdom,
         kingdomList: state.kingdomList,
-        getProfile,
         getPermissions,
-        getUserProfile,
-        updateTroops,
-        updateProfile,
         addImg,
         getAlliance,
         getAllianceList,
@@ -374,6 +336,7 @@ export const KingdomState = (props) => {
         deleteAlliance,
         getApps,
         acceptApp,
+        createKingdom,
       }}>
       {state.error && (
         <div className="global_error">
