@@ -1,9 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 import Empty from "../atoms/Empty";
 
 const KingdomList = ({ newKD, setNewKD }) => {
-  const { kingdomList } = useContext(KingdomContext);
+  const { kingdomList, getAllKingdom } = useContext(KingdomContext);
+  useEffect(() => {
+    getAllKingdom();
+  }, []);
+  console.log("kingdomList", kingdomList);
   return (
     <>
       <h2>Join a kingdom</h2>

@@ -280,6 +280,16 @@ export const KingdomState = (props) => {
       dispatch({ type: "ACCEPT_APP_ERROR", payload: e.response });
     }
   };
+  const getAllKingdom = async () => {
+    dispatch({ type: "IS_LOADING", payload: true });
+    try {
+      const data = await axiosWithAuth.get("/kingdom/all");
+      dispatch({ type: "GET_KINGDOM_LIST", payload: data.data });
+    } catch (e) {
+      const response = e.response.data.message;
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
+    }
+  };
   const createKingdom = async (values) => {
     dispatch({ type: "IS_LOADING", payload: true });
     try {
@@ -337,6 +347,7 @@ export const KingdomState = (props) => {
         getApps,
         acceptApp,
         createKingdom,
+        getAllKingdom,
       }}>
       {state.error && (
         <div className="global_error">
