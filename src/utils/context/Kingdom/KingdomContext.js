@@ -337,11 +337,11 @@ export const KingdomState = (props) => {
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
     }
   };
-  const updateKingdomList = async (list) => {
-    dispatch({ type: "", payload: true });
+  const updateKingdomList = async (word) => {
+    dispatch({ type: "IS_LOADING", payload: true });
     try {
-      // const res = await axiosWithAuth.call(`endpoint`)
-      dispatch({ type: "UPDATE_KINGDOM_LIST", payload: list });
+      const list = await axiosWithAuth.put("/kingdom/search", { search: word });
+      dispatch({ type: "UPDATE_KINGDOM_LIST", payload: list.data });
     } catch {
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: "ERROR" });
     }
