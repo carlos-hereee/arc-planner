@@ -1,6 +1,7 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useContext, useReducer } from "react";
 import { reducer } from "./reducer";
 import { axiosWithAuth } from "../../axiosWithAuth";
+import { AuthContext } from "../Auth/AuthContext";
 
 export const KingdomContext = createContext();
 
@@ -280,6 +281,9 @@ export const KingdomState = (props) => {
       dispatch({ type: "ACCEPT_APP_ERROR", payload: e.response });
     }
   };
+
+  // TODO; GET USER ALL DATA
+
   const getAllKingdom = async () => {
     dispatch({ type: "IS_LOADING", payload: true });
     try {

@@ -20,7 +20,7 @@ const KingdomCreate = ({ show, setNewKD }) => {
           <Form className="form">
             <div className="form-field">
               <label htmlFor="name">
-                Kingdom Name{" "}
+                Kingdom #{" "}
                 {errors.name && <span className="validate">{errors.name}</span>}
               </label>
               <div>
