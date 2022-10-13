@@ -6,17 +6,20 @@ import "./stylesheets/index.scss";
 import { AllianceState } from "./utils/context/Alliance/AllianceContext";
 import { AuthState } from "./utils/context/Auth/AuthContext";
 import { KingdomState } from "./utils/context/Kingdom/KingdomContext";
+import { UserState } from "./utils/context/User/UserContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Router>
       <AuthState>
-        <KingdomState>
-          <AllianceState>
-            <App />
-          </AllianceState>
-        </KingdomState>
+        <UserState>
+          <KingdomState>
+            <AllianceState>
+              <App />
+            </AllianceState>
+          </KingdomState>
+        </UserState>
       </AuthState>
     </Router>
   </React.StrictMode>

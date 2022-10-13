@@ -11,7 +11,6 @@ export const AuthState = (props) => {
     signUpError: "",
     accessToken: "",
     appName: "Rok Handbook",
-    user: {},
   };
   const [state, dispatch] = useReducer(authReducer, initialState);
   useEffect(() => {
@@ -61,7 +60,6 @@ export const AuthState = (props) => {
         signInError: state.signInError,
         signUpError: state.signUpError,
         accessToken: state.accessToken,
-        user: state.user,
         appName: state.appName,
         signIn,
         register,

@@ -1,7 +1,8 @@
-import React, { createContext, useContext, useReducer } from "react";
+import React, { createContext, useContext, useEffect, useReducer } from "react";
 import { reducer } from "./reducer";
 import { axiosWithAuth } from "../../axiosWithAuth";
 import { AuthContext } from "../Auth/AuthContext";
+import { UserContext } from "../User/UserContext";
 
 export const KingdomContext = createContext();
 
@@ -31,6 +32,13 @@ export const KingdomState = (props) => {
     log: [],
   };
   const [state, dispatch] = useReducer(reducer, initialState);
+  const { user } = useContext(UserContext);
+
+  useEffect(() => {
+    if (user.kingdomId) {
+      getKingdom(user.kingdomId);
+    }
+  }, [user.kingdomId]);
 
   const addImg = async (file) => {
     dispatch({ type: "IS_LOADING", payload: true });
@@ -283,6 +291,16 @@ export const KingdomState = (props) => {
   };
 
   // TODO; GET USER ALL DATA
+  const getKingdom = async (id) => {
+    dispatch({ type: "IS_LOADING", payload: true });
+    try {
+      const { data } = await axiosWithAuth.get(`kingdom/${id}`);
+      dispatch({ type: "UPDATE_KINGDOM", payload: data });
+    } catch (e) {
+      const { message } = error.response.data;
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: message });
+    }
+  };
 
   const getAllKingdom = async () => {
     dispatch({ type: "IS_LOADING", payload: true });
