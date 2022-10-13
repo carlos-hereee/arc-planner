@@ -1,13 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../utils/context/User/UserContext";
-import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
+import { useState } from "react";
 import KingdomCreate from "./KingdomCreate";
 import KingdomList from "./KingdomList";
 
 const KingdomContainer = () => {
-  const { user, getUserData } = useContext(UserContext);
   const [newKD, setNewKD] = useState(false);
-
   return (
     <div className="card">
       {newKD ? (

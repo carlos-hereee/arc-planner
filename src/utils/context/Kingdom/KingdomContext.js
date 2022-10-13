@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useEffect, useReducer } from "react";
 import { reducer } from "./reducer";
 import { axiosWithAuth } from "../../axiosWithAuth";
-import { AuthContext } from "../Auth/AuthContext";
 import { UserContext } from "../User/UserContext";
 
 export const KingdomContext = createContext();
@@ -37,6 +36,9 @@ export const KingdomState = (props) => {
   useEffect(() => {
     if (user.kingdomId) {
       getKingdom(user.kingdomId);
+    } else {
+      getAllKingdom();
+      getKingdomApp();
     }
   }, [user.kingdomId]);
 
@@ -301,7 +303,6 @@ export const KingdomState = (props) => {
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: message });
     }
   };
-
   const getAllKingdom = async () => {
     dispatch({ type: "IS_LOADING", payload: true });
     try {
@@ -415,7 +416,6 @@ export const KingdomState = (props) => {
         acceptApp,
         createKingdom,
         getAllKingdom,
-        getKingdomApp,
         applyKingdom,
         cancelAppKingdom,
         updateKingdomList,

@@ -11,13 +11,8 @@ const KingdomList = ({ newKD, setNewKD }) => {
     applications,
     cancelAppKingdom,
     updateKingdomList,
-    getKingdomApp,
   } = useContext(KingdomContext);
   const [search, setSearch] = useState("");
-  useEffect(() => {
-    getAllKingdom();
-    getKingdomApp();
-  }, []);
   useEffect(() => {
     if (search.length) {
       updateKingdomList(search);
@@ -49,13 +44,14 @@ const KingdomList = ({ newKD, setNewKD }) => {
           <span className="row-element">King </span>
           <span className="row-element">Announcement </span>
         </div>
-        {kingdomList.length > 0 ? (
-          kingdomList.map((k) => (
+        {kingdomList && kingdomList.length > 0 ? (
+          kingdomList?.map((k) => (
             <div key={k.uid} className="list-row">
               <span className="row-element">{k.name}</span>
               <span className="row-element">{k.kingName}</span>
               <span className="row-element">{k.announcement}</span>
-              {applications.length > 0 &&
+              {applications &&
+              applications.length > 0 &&
               applications.some((a) => a.kingdomId === k.uid) ? (
                 <button className="btn" onClick={() => cancelAppKingdom(k)}>
                   Cancel

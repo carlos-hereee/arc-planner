@@ -11,11 +11,18 @@ const addToLog = (state, action) => {
     log: [...state.log, action.payload],
   };
 };
-const getKingdomList = (state, action) => {
+const updateKingdomList = (state, action) => {
   return {
     ...state,
     isLoading: false,
     kingdomList: action.payload,
+  };
+};
+const updateKingdom = (state, action) => {
+  return {
+    ...state,
+    isLoading: false,
+    kingdom: action.payload,
   };
 };
 const kingdomApp = (state, action) => {
@@ -32,7 +39,9 @@ export const reducer = (state, action) => {
     case "ADD_MESSAGE_TO_LOG":
       return addToLog(state, action);
     case "UPDATE_KINGDOM_LIST":
-      return getKingdomList(state, action);
+      return updateKingdomList(state, action);
+    case "UPDATE_KINGDOM":
+      return updateKingdom(state, action);
     case "KINGDOM_APPLICATIONS":
       return kingdomApp(state, action);
     default:
