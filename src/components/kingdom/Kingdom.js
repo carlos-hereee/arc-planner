@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
+import { UserContext } from "../../utils/context/User/UserContext";
 
 const Kingdom = () => {
   const { kingdom } = useContext(KingdomContext);
@@ -10,7 +11,20 @@ const Kingdom = () => {
         <h3 className="subtitle">King : {kingdom.kingName}</h3>
         <p className="description">{kingdom.announcement}</p>
       </div>
-      <div></div>
+      <div className="card-nav">
+        <button type="button" className="btn">
+          kvk
+        </button>
+        <button type="button" className="btn">
+          alliance
+        </button>
+        <button type="button" className="btn">
+          applicants
+        </button>
+        <button type="button" className="btn">
+          settings
+        </button>
+      </div>
     </div>
   );
 };
