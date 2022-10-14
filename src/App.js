@@ -6,7 +6,7 @@ import Header from "./pages/Header.js";
 import Footer from "./pages/Footer.js";
 import Landing from "./pages/Landing.js";
 import Dashboard from "./pages/Dashboard.js";
-import Alliance from "./components/alliance/alliance";
+import Alliance from "./components/alliance/Alliance";
 import Account from "./pages/Account.js";
 import PageNotFound from "./pages/PageNotFound.js";
 import Register from "./components/auth/Register.js";

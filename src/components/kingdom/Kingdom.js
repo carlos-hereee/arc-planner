@@ -4,6 +4,9 @@ import { UserContext } from "../../utils/context/User/UserContext";
 
 const Kingdom = () => {
   const { kingdom } = useContext(KingdomContext);
+  const { user } = useContext(UserContext);
+  console.log("kingdom", kingdom);
+
   return (
     <div className="card">
       <div className="card-header">
@@ -12,15 +15,20 @@ const Kingdom = () => {
         <p className="description">{kingdom.announcement}</p>
       </div>
       <div className="card-nav">
-        <button type="button" className="btn">
+        {/* <button type="button" className="btn">
           kvk
-        </button>
+        </button> */}
         <button type="button" className="btn">
           alliance
         </button>
         <button type="button" className="btn">
-          applicants
+          members
         </button>
+        {kingdom.kingId === user.uid && (
+          <button type="button" className="btn">
+            applicants
+          </button>
+        )}
         <button type="button" className="btn">
           settings
         </button>

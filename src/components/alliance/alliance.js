@@ -3,7 +3,7 @@ import AllianceNavLink from "./allianceNavLink";
 import AllianceList from "./allianceList";
 import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 
-export default function IsMemberAlliance() {
+const Alliance = () => {
   const { userProfile, getUserProfile } = useContext(KingdomContext);
 
   useEffect(() => {
@@ -20,4 +20,5 @@ export default function IsMemberAlliance() {
       <div className="buttons">{/* <Navbar /> */}</div>
     </div>
   );
-}
+};
+export default Alliance;

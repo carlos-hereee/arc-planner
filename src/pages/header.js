@@ -13,6 +13,11 @@ export default function Header() {
       </Link>
       {accessToken ? (
         <div className="nav">
+          <Link to="/dashboard">
+            <button type="button" className="btn">
+              Dashboard
+            </button>
+          </Link>
           <Link to="/account">
             <button type="button" className="btn">
               Account

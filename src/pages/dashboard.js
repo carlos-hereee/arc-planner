@@ -1,16 +1,17 @@
 import { useContext } from "react";
+import Alliance from "../components/alliance/Alliance";
 import Kingdom from "../components/kingdom/Kingdom";
 import KingdomContainer from "../components/kingdom/KingdomContainer";
-import { KingdomContext } from "../utils/context/Kingdom/KingdomContext";
+
+import { UserContext } from "../utils/context/User/UserContext";
 
 const Dashboard = () => {
-  const { kingdom } = useContext(KingdomContext);
+  const { user } = useContext(UserContext);
+
   return (
     <section>
-      {kingdom.uid ? <Kingdom /> : <KingdomContainer />}
-      <div>Alliance</div>
-      <div>ARC</div>
-      <div>Other resources</div>
+      {user.allianceId && <Alliance />}
+      {user.kingdomId ? <Kingdom /> : <KingdomContainer />}
     </section>
   );
 };

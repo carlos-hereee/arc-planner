@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
-import { AuthContext } from "../utils/context/Auth/AuthContext";
+import { UserContext } from "../utils/context/User/UserContext";
 
 const Account = () => {
-  const { user } = useContext(AuthContext);
-  // console.log("user", user);
+  const { user } = useContext(UserContext);
   return (
     <section>
       <div className="card">
