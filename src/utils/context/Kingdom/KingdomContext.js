@@ -86,16 +86,16 @@ export const KingdomState = (props) => {
         : dispatch({ type: "GET_ALLIANCE_LIST_ERROR", payload: e.response });
     }
   };
-  const createAlliance = async (data) => {
-    dispatch({ type: "IS_LOADING", payload: true });
-    try {
-      const res = await axiosWithAuth.post(`alliance/`, data);
-      dispatch({ type: "CREATE_ALLIANCE_SUCCESS", payload: res.data });
-    } catch (e) {
-      console.log("error", e);
-      dispatch({ type: "CREATE_ALLIANCE_ERROR", payload: e.response });
-    }
-  };
+  // const createAlliance = async (data) => {
+  //   dispatch({ type: "IS_LOADING", payload: true });
+  //   try {
+  //     const res = await axiosWithAuth.post(`alliance/`, data);
+  //     dispatch({ type: "CREATE_ALLIANCE_SUCCESS", payload: res.data });
+  //   } catch (e) {
+  //     console.log("error", e);
+  //     dispatch({ type: "CREATE_ALLIANCE_ERROR", payload: e.response });
+  //   }
+  // };
   const getApplications = async () => {
     dispatch({ type: "IS_LOADING", payload: true });
     try {
@@ -378,6 +378,17 @@ export const KingdomState = (props) => {
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: "ERROR" });
     }
   };
+  const createAlliance = async (values) => {
+    dispatch({ type: "IS_LOADING", payload: true });
+    try {
+      const { data } = await axiosWithAuth.post("/kingdom/alliance", {
+        values,
+      });
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: data.message });
+    } catch {
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: "ERROR" });
+    }
+  };
   return (
     <KingdomContext.Provider
       value={{
@@ -429,6 +440,7 @@ export const KingdomState = (props) => {
         cancelAppKingdom,
         updateKingdomList,
         getKingdomList,
+        createAlliance,
       }}>
       {state.error && (
         <div className="global_error">

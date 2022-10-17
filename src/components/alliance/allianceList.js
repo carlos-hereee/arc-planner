@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import AllianceCreate from "./AllianceCreate";
-import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 import Empty from "../atoms/Empty";
 
-const AllianceList = ({ list }) => {
-  const [show, setShow] = useState(false);
+const AllianceList = ({ list, create }) => {
+  const [show, setShow] = useState(true);
   // const {
   //   allianceList,
   //   allianceListError,
@@ -36,8 +35,10 @@ const AllianceList = ({ list }) => {
             {l.name}
           </span>
         ))
+      ) : show ? (
+        <AllianceCreate setShow={setShow} create={create} />
       ) : (
-        <>{show ? <AllianceCreate setShow={setShow} /> : <Empty />}</>
+        <Empty />
       )}
       {!show && (
         <button className="btn" onClick={() => setShow(!show)}>

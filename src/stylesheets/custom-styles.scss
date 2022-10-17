@@ -11,16 +11,16 @@
 .btn {
   @include btn();
   &:hover {
-    color: $primary-text-color;
+    color: $primary-txt-color;
     background: $card-bg;
   }
 }
 .btn-danger {
   @include btn();
-  background: rgb(207, 22, 22);
+  background: $primary-btn-bg-color-danger;
   color: white;
   &:hover {
-    background: rgb(185, 2, 2);
+    background: $primary-btn-bg-color-danger-hover;
   }
 }
 
@@ -50,7 +50,6 @@
 .blue_btn {
   @include btn();
   background: $lightest-blue;
-  color: $primary-text-color;
   padding: 1rem 1.5rem;
   margin-top: 1rem;
   &:hover {
@@ -61,7 +60,7 @@
 .save_btn {
   @include btn();
   background: $card-bg;
-  color: $primary-text-color;
+  color: $primary-txt-color;
   border: none;
   &:hover {
     background: $lightest-blue;
@@ -70,7 +69,7 @@
 .cancel_btn {
   @include btn();
   background: red;
-  color: $primary-text-color;
+  color: $primary-txt-color;
   border: none;
   &:hover {
     background: darkred;
@@ -125,7 +124,7 @@
   width: 100%;
   border-radius: 4px;
   background-color: #ff7272;
-  color: $primary-text-color;
+  color: $primary-txt-color;
   padding: 1rem;
   text-align: center;
 }

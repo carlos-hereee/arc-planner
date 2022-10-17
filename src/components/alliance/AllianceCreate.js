@@ -1,83 +1,65 @@
-import React, { useContext, useState } from "react";
 import { Form, Formik, Field } from "formik";
 import * as yup from "yup";
-import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 
-const AllianceCreate = ({ setShow }) => {
-  const { createAlliance } = useContext(KingdomContext);
-
+const AllianceCreate = ({ setShow, create }) => {
   return (
-    <div>
-      <Formik
-        initialValues={{ tag: "", name: "", announcement: "" }}
-        onSubmit={(values) => {
-          createAlliance(values);
-          setShow(false);
-        }}
-        validationSchema={yup.object().shape({
-          tag: yup.string().required("*Required field"),
-          name: yup.string().required("*Required field"),
-          announcement: yup.string().required("*Required field"),
-        })}>
-        {({ values, errors, handleChange, handleSubmit, isSubmitting }) => (
-          <>
-            <Form>
-              {errors.name && <Message error content={errors.name} />}
-              {errors.tag && <Message error content={errors.tag} />}
-              <Field
-                required
-                label="Alliance Tag "
-                fluid
-                type="text"
-                name="allianceTag"
-                value={values.tag}
-                error={errors.tag !== undefined}
-                onChange={handleChange}
-                placeholder="Alliance Tag"
-              />
-              <Field
-                fluid
-                label="Alliance Name "
-                required
-                type="text"
-                value={values.name}
-                error={errors.name !== undefined}
-                onChange={handleChange}
-                name="allianceName"
-                placeholder="Alliance Name"
-              />
-              <Field
-                fluid
-                label="Message Board "
-                required
-                type="text"
-                value={values.messageBoard}
-                error={errors.messageBoard !== undefined}
-                onChange={handleChange}
-                name="messageBoard"
-                placeholder="Message"
-              />
-            </Form>
-            <div>
-              <button
-                color="red"
-                onClick={() => setShow(false)}
-                className="btn">
-                Cancel
-              </button>
-              <button
-                positive
-                className="btn"
-                type="submit"
-                onClick={handleSubmit}
-                loading={isSubmitting}>
-                Submit
-              </button>
+    <Formik
+      initialValues={{ tag: "", name: "", announcement: "" }}
+      onSubmit={(values) => {
+        create(values);
+        setShow(false);
+      }}
+      validationSchema={yup.object().shape({
+        tag: yup.string().required("*Required field"),
+        name: yup.string().required("*Required field"),
+        announcement: yup.string().required("*Required field"),
+      })}>
+      {({ errors }) => (
+        <>
+          <Form className="form">
+            <div className="form-field">
+              <label>
+                Tag{" "}
+                {errors.tag && <span className="validate">{errors.tag} </span>}
+              </label>
+              <div>
+                <Field type="text" name="tag" />
+              </div>
             </div>
-          </>
-        )}
-      </Formik>
-    </div>
+            <div className="form-field">
+              <label>
+                Name{" "}
+                {errors.name && (
+                  <span className="validate">{errors.name} </span>
+                )}
+              </label>
+              <div>
+                <Field type="text" name="name" />
+              </div>
+            </div>
+            <div className="form-field">
+              <label>
+                Announcement{" "}
+                {errors.announcement && (
+                  <span className="validate">{errors.announcement} </span>
+                )}
+              </label>
+              <div>
+                <Field type="text" name="announcement" />
+              </div>
+            </div>
+          </Form>
+          <div className="form-submit">
+            <button onClick={() => setShow(false)} className="btn btn-danger">
+              Cancel
+            </button>
+            <button className="btn" type="submit">
+              Submit
+            </button>
+          </div>
+        </>
+      )}
+    </Formik>
   );
 };
 export default AllianceCreate;

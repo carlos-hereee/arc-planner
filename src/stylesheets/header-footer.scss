@@ -1,7 +1,7 @@
 .header {
   @include flex(space-between, row);
   align-items: baseline;
-  background-color: $primary-dg-color;
+  background-color: $primary-bg-color;
   padding: 1rem;
   color: white;
   overflow: hidden;
@@ -14,24 +14,11 @@
   .nav {
     display: flex;
     align-items: baseline;
-    .content {
-      padding: 7px;
-      &:hover {
-        border-radius: 4px;
-        background: $btn-active;
-      }
-    }
-    a {
-      border-radius: 4px;
-      &:hover {
-        background: $btn-active;
-      }
-    }
   }
 }
 .container {
-  background-color: $primary-dg-color;
-  color: $primary-text-color;
+  background-color: $primary-bg-color;
+  color: $primary-txt-color;
   height: 3rem;
   width: 100%;
   display: flex;
@@ -39,7 +26,7 @@
   justify-content: center;
 }
 footer {
-  background-color: $primary-dg-color;
+  background-color: $primary-bg-color;
   padding: 1rem;
-  color: $primary-text-color;
+  color: $primary-txt-color;
 }

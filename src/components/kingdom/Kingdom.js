@@ -4,7 +4,7 @@ import { UserContext } from "../../utils/context/User/UserContext";
 import AllianceList from "../alliance/AllianceList";
 
 const Kingdom = () => {
-  const { kingdom, kingdomSearchList, getKingdomList } =
+  const { kingdom, kingdomSearchList, getKingdomList, createAlliance } =
     useContext(KingdomContext);
   const { user } = useContext(UserContext);
   const [listName, setListName] = useState("alliance");
@@ -16,7 +16,7 @@ const Kingdom = () => {
   }, [listName]);
 
   const selectedList = {
-    alliance: <AllianceList list={kingdomSearchList} />,
+    alliance: <AllianceList list={kingdomSearchList} create={createAlliance} />,
     // members: <AllianceList />,
   };
 

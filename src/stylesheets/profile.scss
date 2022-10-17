@@ -1,13 +1,3 @@
-// .wrapper {
-//   padding: 0 1rem;
-//   @media #{$mobile} {
-//     text-align: center;
-//     input {
-//       width: 100%;
-//     }
-//   }
-// }
-
 .buttons {
   background: $card-bg;
   padding: 0 2rem 1rem 2rem;
@@ -18,7 +8,7 @@
     padding: 1rem;
     a {
       text-decoration: none;
-      color: $primary-text-color;
+      color: $primary-txt-color;
     }
   }
 }
@@ -81,7 +71,7 @@
   height: 10rem;
 }
 .save {
-  color: $primary-text-color;
+  color: $primary-txt-color;
   font-weight: 600;
   cursor: pointer;
   border-radius: 50%;
