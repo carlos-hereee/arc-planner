@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import PlayerCard from "../components/molecules/PlayerCard";
 import { UserContext } from "../utils/context/User/UserContext";
 
 const Account = () => {
@@ -7,12 +8,16 @@ const Account = () => {
     <section>
       <div className="card">
         <h2>My Account</h2>
-        <p>Username: {user.username}</p>
-        <p>Nickname: {user.nickname}</p>
-        <span>Kingdom: {user.kingdom}</span>
-        <span>Alliance: {user.alliance}</span>
-        <span>Dead: {user.dead}</span>
-        <span>Kill Points: {user.killPoints}</span>
+        <PlayerCard user={user} />
+        <p>
+          <span>Alliance: {user.alliance}</span>
+        </p>
+        <p>
+          <span>Dead: {user.dead}</span>
+        </p>
+        <p>
+          <span>Kill Points: {user.killPoints}</span>
+        </p>
       </div>
       <div className="card">
         <h2>My troops</h2>
@@ -25,6 +30,15 @@ const Account = () => {
         <button className="btn" type="button">
           Edit
         </button>
+      </div>
+      <div className="card">
+        <h2>Settings</h2>
+        <p>
+          Username: <span>{user.username}</span>
+        </p>
+        <p>
+          Created: <span>{new Date(user.createdAt).toDateString()}</span>
+        </p>
       </div>
     </section>
   );
