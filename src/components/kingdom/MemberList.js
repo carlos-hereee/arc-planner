@@ -10,11 +10,17 @@ const MemberList = ({ list }) => {
         <p className="row-element">Name</p>
         <p className="row-element">Power </p>
       </div>
-      {list && list.length > 0 ? (
-        list.map((l) => <PlayerCard key={l.uid} user={l} />)
-      ) : (
-        <Empty />
-      )}
+      <div className="list">
+        {list && list.length > 0 ? (
+          list.map((l) => (
+            <div key={l.uid} className="list-row">
+              <PlayerCard user={l} />
+            </div>
+          ))
+        ) : (
+          <Empty />
+        )}
+      </div>
     </div>
   );
 };
