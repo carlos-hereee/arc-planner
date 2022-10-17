@@ -4,8 +4,13 @@ import { UserContext } from "../../utils/context/User/UserContext";
 import AllianceList from "../alliance/AllianceList";
 
 const Kingdom = () => {
-  const { kingdom, kingdomSearchList, getKingdomList, createAlliance } =
-    useContext(KingdomContext);
+  const {
+    kingdom,
+    kingdomSearchList,
+    getKingdomList,
+    createAlliance,
+    allianceApplications,
+  } = useContext(KingdomContext);
   const { user } = useContext(UserContext);
   const [listName, setListName] = useState("alliance");
 

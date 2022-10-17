@@ -26,7 +26,6 @@ const KingdomList = ({ newKD, setNewKD }) => {
     <>
       <div className="search-bar">
         <h2>Join a kingdom</h2>
-
         <div className="input-icon">
           <input
             className="search-bar-input"
@@ -40,16 +39,16 @@ const KingdomList = ({ newKD, setNewKD }) => {
       </div>
       <div className="list">
         <div className="list-title">
-          <span className="row-element">Kingdom #</span>
-          <span className="row-element">King </span>
-          <span className="row-element">Announcement </span>
+          <p className="row-element">Kingdom #</p>
+          <p className="row-element">King </p>
+          <p className="row-element">Announcement </p>
         </div>
         {kingdomList && kingdomList.length > 0 ? (
           kingdomList?.map((k) => (
             <div key={k.uid} className="list-row">
-              <span className="row-element">{k.name}</span>
-              <span className="row-element">{k.kingName}</span>
-              <span className="row-element">{k.announcement}</span>
+              <p className="row-element">{k.name}</p>
+              <p className="row-element">{k.kingName}</p>
+              <p className="row-element">{k.announcement}</p>
               {applications &&
               applications.length > 0 &&
               applications.some((a) => a.kingdomId === k.uid) ? (
@@ -67,7 +66,7 @@ const KingdomList = ({ newKD, setNewKD }) => {
           <Empty />
         )}
       </div>
-      <span>Don't see your kingdom?</span>
+      <p>Don't see your kingdom?</p>
       <button className="btn" onClick={() => setNewKD(!newKD)}>
         Create
       </button>

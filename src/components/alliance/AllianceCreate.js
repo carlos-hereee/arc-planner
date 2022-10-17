@@ -15,40 +15,36 @@ const AllianceCreate = ({ setShow, create }) => {
         announcement: yup.string().required("*Required field"),
       })}>
       {({ errors }) => (
-        <>
-          <Form className="form">
-            <div className="form-field">
-              <label>
-                Tag{" "}
-                {errors.tag && <span className="validate">{errors.tag} </span>}
-              </label>
-              <div>
-                <Field type="text" name="tag" />
-              </div>
+        <Form className="form">
+          <div className="form-field">
+            <label>
+              Tag{" "}
+              {errors.tag && <span className="validate">{errors.tag} </span>}
+            </label>
+            <div>
+              <Field type="text" name="tag" />
             </div>
-            <div className="form-field">
-              <label>
-                Name{" "}
-                {errors.name && (
-                  <span className="validate">{errors.name} </span>
-                )}
-              </label>
-              <div>
-                <Field type="text" name="name" />
-              </div>
+          </div>
+          <div className="form-field">
+            <label>
+              Name{" "}
+              {errors.name && <span className="validate">{errors.name} </span>}
+            </label>
+            <div>
+              <Field type="text" name="name" />
             </div>
-            <div className="form-field">
-              <label>
-                Announcement{" "}
-                {errors.announcement && (
-                  <span className="validate">{errors.announcement} </span>
-                )}
-              </label>
-              <div>
-                <Field type="text" name="announcement" />
-              </div>
+          </div>
+          <div className="form-field">
+            <label>
+              Announcement{" "}
+              {errors.announcement && (
+                <span className="validate">{errors.announcement} </span>
+              )}
+            </label>
+            <div>
+              <Field type="text" name="announcement" component="textarea" />
             </div>
-          </Form>
+          </div>
           <div className="form-submit">
             <button onClick={() => setShow(false)} className="btn btn-danger">
               Cancel
@@ -57,7 +53,7 @@ const AllianceCreate = ({ setShow, create }) => {
               Submit
             </button>
           </div>
-        </>
+        </Form>
       )}
     </Formik>
   );
