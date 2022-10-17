@@ -4,15 +4,16 @@ import { UserContext } from "../../utils/context/User/UserContext";
 import List from "../molecules/List";
 
 const Kingdom = () => {
-  const { kingdom } = useContext(KingdomContext);
+  const { kingdom, kingdomSearchList, getKingdomList } =
+    useContext(KingdomContext);
   const { user } = useContext(UserContext);
   const [listName, setListName] = useState("alliance");
-  const [list, setList] = useState([]);
-  // console.log("kingdom", listName);
 
-  // useEffect(() => {
-
-  // }, [listName]);
+  useEffect(() => {
+    if (listName) {
+      getKingdomList(listName);
+    }
+  }, [listName]);
 
   return (
     <>
@@ -55,7 +56,7 @@ const Kingdom = () => {
         </div>
       </div>
       <div className="card">
-        <List list={list} />
+        <List list={kingdomSearchList} />
       </div>
     </>
   );

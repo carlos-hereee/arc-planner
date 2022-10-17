@@ -32,6 +32,13 @@ const kingdomApp = (state, action) => {
     applications: action.payload,
   };
 };
+const getKingdomList = (state, action) => {
+  return {
+    ...state,
+    isLoading: false,
+    kingdomSearchList: action.payload,
+  };
+};
 export const reducer = (state, action) => {
   switch (action.type) {
     case "IS_LOADING":
@@ -44,6 +51,8 @@ export const reducer = (state, action) => {
       return updateKingdom(state, action);
     case "KINGDOM_APPLICATIONS":
       return kingdomApp(state, action);
+    case "GET_KINGDOM_LIST":
+      return getKingdomList(state, action);
     default:
       return state;
   }

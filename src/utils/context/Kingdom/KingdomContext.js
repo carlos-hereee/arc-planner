@@ -29,6 +29,7 @@ export const KingdomState = (props) => {
     kingdomList: [],
     applications: [],
     log: [],
+    // kingdomList: [],
   };
   const [state, dispatch] = useReducer(reducer, initialState);
   const { user } = useContext(UserContext);
@@ -293,6 +294,16 @@ export const KingdomState = (props) => {
   };
 
   // TODO; GET USER ALL DATA
+  const getKingdomList = async (search) => {
+    dispatch({ type: "IS_LOADING", payload: true });
+    try {
+      const { data } = await axiosWithAuth.get(`/kingdom/search/${search}`);
+      console.log("list", data);
+      dispatch({ type: "GET_KINGDOM_LIST", payload: data });
+    } catch {
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: "ERROR" });
+    }
+  };
   const getKingdom = async (id) => {
     dispatch({ type: "IS_LOADING", payload: true });
     try {
@@ -360,10 +371,10 @@ export const KingdomState = (props) => {
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
     }
   };
-  const updateKingdomList = async (word) => {
+  const updateKingdomList = async (search) => {
     dispatch({ type: "IS_LOADING", payload: true });
     try {
-      const list = await axiosWithAuth.put("/kingdom/search", { search: word });
+      const list = await axiosWithAuth.put("/kingdom/filter", { search });
       dispatch({ type: "UPDATE_KINGDOM_LIST", payload: list.data });
     } catch {
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: "ERROR" });
@@ -419,6 +430,7 @@ export const KingdomState = (props) => {
         applyKingdom,
         cancelAppKingdom,
         updateKingdomList,
+        getKingdomList,
       }}>
       {state.error && (
         <div className="global_error">
