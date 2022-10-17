@@ -10,7 +10,6 @@ const AllianceList = ({ list, create, applications, applyAlliance }) => {
       {show ? <h2>Create Alliance</h2> : <h2>Alliance</h2>}
       <div className="list">
         <div className="list-title">
-          <p className="row-element">Tag</p>
           <p className="row-element">Name</p>
           <p className="row-element">Announcement </p>
           <div />
@@ -18,17 +17,18 @@ const AllianceList = ({ list, create, applications, applyAlliance }) => {
         {list && list.length > 0 ? (
           list.map((l) => (
             <div key={l.uid} className="list-row">
-              <p className="row-element">{l.tag}</p>
-              <p className="row-element">{l.name}</p>
+              <p className="row-element">
+                [{l.tag}] {l.name}
+              </p>
               <p className="row-element">{l.announcement}</p>
               {applications &&
               applications.length > 0 &&
               applications.some((a) => a.allianceId === l.uid) ? (
-                <button className="btn" onClick={() => applyAlliance(k, false)}>
+                <button className="btn" onClick={() => applyAlliance(a, false)}>
                   Cancel
                 </button>
               ) : (
-                <button className="btn" onClick={() => applyAlliance(k, true)}>
+                <button className="btn" onClick={() => applyAlliance(l, true)}>
                   Apply
                 </button>
               )}

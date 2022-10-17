@@ -39,6 +39,13 @@ const getKingdomList = (state, action) => {
     kingdomAppList: action.payload,
   };
 };
+const getKingdomAllianceApps = (state, action) => {
+  return {
+    ...state,
+    isLoading: false,
+    kingdomAllianceApps: action.payload,
+  };
+};
 export const reducer = (state, action) => {
   switch (action.type) {
     case "IS_LOADING":
@@ -53,6 +60,8 @@ export const reducer = (state, action) => {
       return kingdomApp(state, action);
     case "GET_KINGDOM_LIST":
       return getKingdomList(state, action);
+    case "UPDATE_KINGDOM_ALLIANCE_APPS":
+      return getKingdomAllianceApps(state, action);
     default:
       return state;
   }
