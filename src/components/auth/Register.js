@@ -1,13 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Formik, Form, Field } from "formik";
 import { AuthContext } from "../../utils/context/Auth/AuthContext";
-import {
-  validatePassword,
-  validateUsername,
-  validateConfirmPassword,
-} from "../../utils/validateAuth";
 import Icons from "../atoms/Icons";
 import { Link } from "react-router-dom";
+import * as yup from "yup";
 
 export default function Register() {
   const { register, isLoading, signUpError } = useContext(AuthContext);
@@ -20,8 +16,17 @@ export default function Register() {
       {signUpError && <p className="validate">{signUpError}</p>}
       <Formik
         initialValues={{ username: "", password: "", confirmPassword: "" }}
-        onSubmit={(values) => register(values)}>
-        {({ errors, validateForm, values }) => (
+        onSubmit={(values) => register(values)}
+        validationSchema={yup.object().shape({
+          username: yup.string().required("*Required"),
+          password: yup.string().required("*Required"),
+          confirmPassword: yup
+            .string()
+            .test("passwords-match", "Passwords must match", (values) => {
+              return this.parent.password === values;
+            }),
+        })}>
+        {({ errors }) => (
           <Form className="form">
             <div className="form-field">
               <label htmlFor="username">
@@ -31,11 +36,7 @@ export default function Register() {
                 )}
               </label>
               <div>
-                <Field
-                  type="text"
-                  name="username"
-                  validate={validateUsername}
-                />
+                <Field type="text" name="username" />
               </div>
             </div>
             <div className="form-field">
@@ -49,7 +50,6 @@ export default function Register() {
                 <Field
                   type={canSeePassword ? "text" : "password"}
                   name="password"
-                  validate={validatePassword}
                 />
                 <button
                   className="btn"
@@ -73,9 +73,6 @@ export default function Register() {
                 <Field
                   type={canSeeConfirmPassword ? "text" : "password"}
                   name="confirmPassword"
-                  validate={(value) =>
-                    validateConfirmPassword(values.password, value)
-                  }
                 />
                 <button
                   className="btn"
@@ -90,10 +87,7 @@ export default function Register() {
             </div>
             <div className="form-submit">
               {!isLoading && (
-                <button
-                  type="submit"
-                  className="btn"
-                  onClick={() => validateForm()}>
+                <button type="submit" className="btn">
                   Confirm
                 </button>
               )}
@@ -102,7 +96,7 @@ export default function Register() {
         )}
       </Formik>
       <div className="wrapper">
-        <Link to="/" className="link">
+        <Link to="/login" className="link">
           Already have an account?
         </Link>
       </div>

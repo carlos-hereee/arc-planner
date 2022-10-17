@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Formik, Form, Field } from "formik";
 import { AuthContext } from "../../utils/context/Auth/AuthContext";
-import { validateUsername, validatePassword } from "../../utils/validateAuth";
 import Icons from "../atoms/Icons";
 import { Link } from "react-router-dom";
 import Spinner from "../atoms/Spinner";
+import * as yup from "yup";
 
 const Login = () => {
   const { isLoading, signIn, signInError } = useContext(AuthContext);
@@ -17,9 +17,11 @@ const Login = () => {
       <Formik
         initialValues={{ username: "", password: "" }}
         onSubmit={(values) => signIn(values)}
-        // validationSchema={schema}
-      >
-        {({ errors, validateForm }) => (
+        validationSchema={yup.object().shape({
+          username: yup.string().required("*Required"),
+          password: yup.string().required("*Required"),
+        })}>
+        {({ errors }) => (
           <Form className="form">
             <div className="form-field">
               <label htmlFor="username">
@@ -29,11 +31,7 @@ const Login = () => {
                 )}
               </label>
               <div>
-                <Field
-                  type="text"
-                  name="username"
-                  validate={validateUsername}
-                />
+                <Field type="text" name="username" />
               </div>
             </div>
             <div className="form-field">
@@ -47,7 +45,6 @@ const Login = () => {
                 <Field
                   type={canSeePassword ? "text" : "password"}
                   name="password"
-                  validate={validatePassword}
                 />
                 <button
                   className="btn"
@@ -61,7 +58,7 @@ const Login = () => {
               </div>
             </div>
             <div className="form-submit">
-              <button type="submit" onClick={validateForm} className="btn">
+              <button type="submit" className="btn">
                 {!isLoading ? "Sign In" : <Spinner />}
               </button>
             </div>
