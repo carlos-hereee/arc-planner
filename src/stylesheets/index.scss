@@ -2,6 +2,8 @@
 @import "./keyframes.scss";
 @import "./mixins.scss";
 @import "./custom-styles.scss";
+@import "./app.scss";
+@import "./list.scss";
 @import "./forms.scss";
 @import "./homepage.scss";
 @import "./alliance.scss";
@@ -20,31 +22,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-.App {
-  background: white;
-  max-width: 1000px;
-  margin: auto;
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  @media #{$mobile} {
-    margin: 0 auto;
-  }
-}
-
 input {
   padding: 0.5rem 1rem;
   border-radius: 4px;
 }
-
 p,
 h1,
 h2,

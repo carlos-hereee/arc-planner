@@ -1,9 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CreateAlliance from "./CreateAlliance";
 import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 import Empty from "../atoms/Empty";
 
 const AllianceList = ({ list }) => {
+  const [show, setShow] = useState(false);
   // const {
   //   allianceList,
   //   allianceListError,
@@ -25,7 +26,6 @@ const AllianceList = ({ list }) => {
   // function applicationCancel(e) {
   //   cancelApplication(e);
   // }
-  console.log("list", list);
   return (
     <div className="card">
       <h2>Alliance</h2>
@@ -36,9 +36,17 @@ const AllianceList = ({ list }) => {
           </span>
         ))
       ) : (
-        <div>
-          <Empty />
-          <CreateAlliance />
+        <div className="list-empty">
+          {show ? (
+            <CreateAlliance setShow={setShow} />
+          ) : (
+            <>
+              <Empty />
+              <button className="btn" onClick={() => setShow(!show)}>
+                Create Alliance
+              </button>
+            </>
+          )}
         </div>
       )}
     </div>
