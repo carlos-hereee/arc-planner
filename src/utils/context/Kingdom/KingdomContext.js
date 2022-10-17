@@ -60,7 +60,7 @@ export const KingdomState = (props) => {
   const getKingdomApp = async () => {
     dispatch({ type: "IS_LOADING", payload: true });
     try {
-      const data = await axiosWithAuth.get("/kingdom/user-application");
+      const data = await axiosWithAuth.get("/kingdom/applications");
       dispatch({ type: "KINGDOM_APPLICATIONS", payload: data.data });
     } catch (e) {
       const response = e.response.data.message;
@@ -103,7 +103,7 @@ export const KingdomState = (props) => {
     dispatch({ type: "IS_LOADING", payload: true });
     try {
       const data = await axiosWithAuth.delete(
-        `/kingdom/user-application/${values.uid}`
+        `/kingdom/applications/${values.uid}`
       );
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: data.message });
       getKingdomApp();
@@ -141,7 +141,7 @@ export const KingdomState = (props) => {
     try {
       const { data } = isApply
         ? await axiosWithAuth.post("/kingdom/alliance/apply", { values })
-        : await axiosWithAuth.delete("/kingdom/alliance/apply", { values });
+        : await axiosWithAuth.delete(`/kingdom/alliance/apply/${values.uid}`);
       getKingdomAllianceApps();
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: data.message });
     } catch (e) {

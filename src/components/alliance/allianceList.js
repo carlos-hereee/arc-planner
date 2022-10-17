@@ -5,6 +5,7 @@ import Empty from "../atoms/Empty";
 const AllianceList = ({ list, create, applications, applyAlliance }) => {
   const [show, setShow] = useState(false);
   console.log("applications", applications);
+  console.log("list", list);
   return (
     <div className="card">
       {show ? <h2>Create Alliance</h2> : <h2>Alliance</h2>}
@@ -24,7 +25,9 @@ const AllianceList = ({ list, create, applications, applyAlliance }) => {
               {applications &&
               applications.length > 0 &&
               applications.some((a) => a.allianceId === l.uid) ? (
-                <button className="btn" onClick={() => applyAlliance(a, false)}>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => applyAlliance(l, false)}>
                   Cancel
                 </button>
               ) : (
