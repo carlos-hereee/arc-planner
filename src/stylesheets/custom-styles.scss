@@ -14,6 +14,11 @@
     color: $primary-txt-color;
     background: $card-bg;
   }
+  &:focus {
+    color: $primary-txt-color;
+    background: $card-bg;
+    transform: translateY(4px);
+  }
 }
 .btn-danger {
   @include btn();

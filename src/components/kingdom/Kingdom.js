@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 import { UserContext } from "../../utils/context/User/UserContext";
 import AllianceList from "./AllianceList";
+import MemberList from "./MemberList";
 
 const Kingdom = () => {
   const {
@@ -11,9 +12,10 @@ const Kingdom = () => {
     createAlliance,
     kingdomAllianceApps,
     kingdomAllianceApply,
+    members,
   } = useContext(KingdomContext);
   const { user } = useContext(UserContext);
-  const [listName, setListName] = useState("alliance");
+  const [listName, setListName] = useState("members");
 
   useEffect(() => {
     if (listName) {
@@ -30,7 +32,7 @@ const Kingdom = () => {
         applyAlliance={kingdomAllianceApply}
       />
     ),
-    // members: <AllianceList />,
+    members: <MemberList list={members} />,
   };
 
   return (

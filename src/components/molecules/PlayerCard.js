@@ -2,7 +2,7 @@ import React from "react";
 
 const PlayerCard = ({ user }) => {
   return (
-    <div className="card">
+    <div className="player">
       <h4>
         <span>{user.nickname}</span>
       </h4>

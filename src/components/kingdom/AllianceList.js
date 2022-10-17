@@ -11,7 +11,6 @@ const AllianceList = ({ list, create, applications, applyAlliance }) => {
         <div className="list-title">
           <p className="row-element">Name</p>
           <p className="row-element">Announcement </p>
-          <div />
         </div>
         {list && list.length > 0 ? (
           list.map((l) => (

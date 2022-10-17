@@ -12,6 +12,7 @@ export const KingdomState = (props) => {
     kingdomList: [],
     kingdomAllianceApps: [],
     applications: [],
+    members: [],
     log: [],
   };
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -19,8 +20,9 @@ export const KingdomState = (props) => {
 
   useEffect(() => {
     if (user.kingdomId) {
-      getKingdom(user.kingdomId);
+      getKingdom();
       getKingdomAllianceApps();
+      getMembers();
     } else {
       getAllKingdom();
       getKingdomApp();
@@ -37,10 +39,10 @@ export const KingdomState = (props) => {
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
     }
   };
-  const getKingdom = async (id) => {
+  const getKingdom = async () => {
     dispatch({ type: "IS_LOADING", payload: true });
     try {
-      const { data } = await axiosWithAuth.get(`kingdom/${id}`);
+      const { data } = await axiosWithAuth.get("kingdom/");
       dispatch({ type: "UPDATE_KINGDOM", payload: data });
     } catch (e) {
       const { message } = error.response.data;
@@ -75,6 +77,16 @@ export const KingdomState = (props) => {
     } catch (e) {
       const response = e.response.data.message;
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
+    }
+  };
+  const getMembers = async () => {
+    dispatch({ type: "IS_LOADING", payload: true });
+    try {
+      const { data } = await axiosWithAuth.get("kingdom/members");
+      dispatch({ type: "UPDATE_MEMBERS", payload: data });
+    } catch (e) {
+      const { message } = error.response.data;
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: message });
     }
   };
   const createKingdom = async (values) => {
@@ -158,6 +170,7 @@ export const KingdomState = (props) => {
         applications: state.applications,
         kingdomAppList: state.kingdomAppList,
         kingdomAllianceApps: state.kingdomAllianceApps,
+        members: state.members,
         createKingdom,
         getAllKingdom,
         applyKingdom,

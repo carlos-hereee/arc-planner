@@ -18,6 +18,13 @@ const updateKingdomList = (state, action) => {
     kingdomList: action.payload,
   };
 };
+const updateMembers = (state, action) => {
+  return {
+    ...state,
+    isLoading: false,
+    members: action.payload,
+  };
+};
 const updateKingdom = (state, action) => {
   return {
     ...state,
@@ -56,6 +63,8 @@ export const reducer = (state, action) => {
       return updateKingdomList(state, action);
     case "UPDATE_KINGDOM":
       return updateKingdom(state, action);
+    case "UPDATE_MEMBERS":
+      return updateMembers(state, action);
     case "KINGDOM_APPLICATIONS":
       return kingdomApp(state, action);
     case "GET_KINGDOM_LIST":
