@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Formik, Form, Field } from "formik";
 import { AuthContext } from "../../utils/context/Auth/AuthContext";
-import Icons from "../atoms/Icons";
+import Icons from "../../components/atoms/Icons";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 

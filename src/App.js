@@ -9,8 +9,8 @@ import Dashboard from "./pages/Dashboard.js";
 import Alliance from "./components/alliance/Alliance";
 import Account from "./pages/Account.js";
 import PageNotFound from "./pages/PageNotFound.js";
-import Register from "./components/auth/Register.js";
-import Login from "./components/auth/Login.js";
+import Register from "./pages/auth/Register.js";
+import Login from "./pages/auth/Login.js";
 
 function App() {
   const { accessToken } = useContext(AuthContext);

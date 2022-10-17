@@ -1,6 +1,6 @@
 import { useState } from "react";
 import KingdomCreate from "./KingdomCreate";
-import KingdomList from "./KingdomList";
+import KingdomList from "./KingdomSearch";
 
 const KingdomContainer = () => {
   const [newKD, setNewKD] = useState(false);
