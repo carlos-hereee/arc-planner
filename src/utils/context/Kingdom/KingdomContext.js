@@ -298,7 +298,6 @@ export const KingdomState = (props) => {
     dispatch({ type: "IS_LOADING", payload: true });
     try {
       const { data } = await axiosWithAuth.get(`/kingdom/search/${search}`);
-      console.log("list", data);
       dispatch({ type: "GET_KINGDOM_LIST", payload: data });
     } catch {
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: "ERROR" });
@@ -401,7 +400,7 @@ export const KingdomState = (props) => {
         teams: state.teams,
         listApps: state.listApps,
         kingdom: state.kingdom,
-        kingdomList: state.kingdomList,
+        kingdomSearchList: state.kingdomSearchList,
         getPermissions,
         addImg,
         getAlliance,

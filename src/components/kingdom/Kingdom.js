@@ -14,7 +14,6 @@ const Kingdom = () => {
       getKingdomList(listName);
     }
   }, [listName]);
-
   return (
     <>
       <div className="card">

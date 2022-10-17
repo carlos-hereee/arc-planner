@@ -2,6 +2,7 @@ import React from "react";
 import Empty from "../atoms/Empty";
 
 const List = ({ list }) => {
+  console.log("list", list);
   return (
     <div className="list">
       <div className="list-title">
