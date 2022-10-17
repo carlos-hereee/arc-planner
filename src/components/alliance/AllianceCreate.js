@@ -3,12 +3,11 @@ import { Form, Formik, Field } from "formik";
 import * as yup from "yup";
 import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 
-const CreateAlliance = ({ setShow }) => {
+const AllianceCreate = ({ setShow }) => {
   const { createAlliance } = useContext(KingdomContext);
 
   return (
     <div>
-      <h2>Create alliance</h2>
       <Formik
         initialValues={{ tag: "", name: "", announcement: "" }}
         onSubmit={(values) => {
@@ -81,4 +80,4 @@ const CreateAlliance = ({ setShow }) => {
     </div>
   );
 };
-export default CreateAlliance;
+export default AllianceCreate;
