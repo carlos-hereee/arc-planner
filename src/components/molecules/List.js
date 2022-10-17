@@ -6,7 +6,7 @@ const List = ({ list }) => {
   return (
     <div className="list">
       <div className="list-title">
-        {list ? (
+        {list && list.length > 0 ? (
           list.map((l) => (
             <span className="row-element" key={l.uid}>
               {l.name}

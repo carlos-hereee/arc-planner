@@ -1,71 +1,66 @@
 import React, { useContext, useEffect } from "react";
-
-import CreateAlliance from "./createAlliance";
-
+import CreateAlliance from "./CreateAlliance";
 import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
+import Empty from "../atoms/Empty";
 
-export default function AllianceList() {
-  const {
-    allianceList,
-    allianceListError,
-    getAllianceList,
-    applications,
-    sendApplication,
-    cancelApplication,
-    getApplications,
-  } = useContext(KingdomContext);
+const AllianceList = ({ list }) => {
+  // const {
+  //   allianceList,
+  //   allianceListError,
+  //   getAllianceList,
+  //   applications,
+  //   sendApplication,
+  //   cancelApplication,
+  //   getApplications,
+  // } = useContext(KingdomContext);
 
-  useEffect(() => {
-    getApplications();
-    getAllianceList();
-  }, [applications.length]);
+  // useEffect(() => {
+  //   getApplications();
+  //   getAllianceList();
+  // }, [applications.length]);
 
-  function applicationSent(e) {
-    sendApplication(e);
-  }
-  function applicationCancel(e) {
-    cancelApplication(e);
-  }
+  // function applicationSent(e) {
+  //   sendApplication(e);
+  // }
+  // function applicationCancel(e) {
+  //   cancelApplication(e);
+  // }
+  console.log("list", list);
   return (
-    <div>
-      <div className="header">
-        <h1>Alliance List</h1>
-      </div>
-      <div className="body">
-        <div className="content" style={{ flexDirection: "column" }}>
-          <h4>Your not currently a member of an alliance</h4>
-          {/* <p>search bar</p> */}
+    <div className="card">
+      <h2>Alliance</h2>
+      {list && list.length > 0 ? (
+        list.map((l) => (
+          <span className="row-element" key={l.uid}>
+            {l.name}
+          </span>
+        ))
+      ) : (
+        <div>
+          <Empty />
           <CreateAlliance />
-          <div className="scrollable">
-            {allianceListError && (
-              <div className="errorWrapper">{allianceListError}</div>
-            )}
-            {allianceList &&
-              allianceList.map((data, idx) => (
-                <div key={data.uuid} className="row">
-                  <p>{idx + 1}.</p>
-                  <p>{data.kingdomNumber}</p>
-                  <p>{data.allianceTag}</p>
-                  <p>{data.allianceName}</p>
-
-                  {applications.includes(data.uuid) ? (
-                    <button
-                      className="cancel_btn"
-                      onClick={() => applicationCancel(data.uuid)}>
-                      Cancel
-                    </button>
-                  ) : (
-                    <button
-                      className="save_btn"
-                      onClick={() => applicationSent(data.uuid)}>
-                      Apply
-                    </button>
-                  )}
-                </div>
-              ))}
-          </div>
         </div>
-      </div>
+      )}
     </div>
   );
+};
+export default AllianceList;
+
+{
+  /* <div className="scrollable">
+  {allianceListError && (
+    <div className="errorWrapper">{allianceListError}</div>
+  )}
+</div> */
+}
+{
+  /* {allianceList &&
+  allianceList.map((data, idx) => (
+    <div key={data.uuid} className="row">
+      <p>{idx + 1}.</p>
+      <p>{data.kingdomNumber}</p>
+      <p>{data.allianceTag}</p>
+      <p>{data.allianceName}</p>
+
+  ))} */
 }

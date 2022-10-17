@@ -1,21 +1,18 @@
 import React, { useContext, useState } from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
-
 import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 
-export default function CreateAlliance() {
+const CreateAlliance = () => {
   const { createAlliance } = useContext(KingdomContext);
-  const [open, setOpen] = useState(false);
 
   return (
     <div>
       <Formik
         initialValues={{
-          kingdomNumber: "",
-          allianceTag: "",
-          allianceName: "",
-          messageBoard: "",
+          tag: "",
+          name: "",
+          announcement: "",
         }}
         onSubmit={(values, actions) => {
           createAlliance(values);
@@ -23,10 +20,10 @@ export default function CreateAlliance() {
           setOpen(false);
         }}
         validationSchema={yup.object().shape({
-          kingdomNumber: yup.number().required("This is a required field"),
-          allianceTag: yup.string().required("This is a required field"),
-          allianceName: yup.string().required("This is a required field"),
-          messageBoard: yup.string().required("This is a required field"),
+          kingdomNumber: yup.number().required("*Required field"),
+          allianceTag: yup.string().required("*Required field"),
+          allianceName: yup.string().required("*Required field"),
+          announcement: yup.string().required("*Required field"),
         })}>
         {({ values, errors, handleChange, handleSubmit, isSubmitting }) => (
           <Modal
@@ -37,12 +34,8 @@ export default function CreateAlliance() {
             trigger={<div className="btn">Create</div>}>
             <Modal.Header>Create Alliance</Modal.Header>
             <Modal.Content>
-              {errors.allianceName && (
-                <Message error content={errors.allianceName} />
-              )}
-              {errors.allianceTag && (
-                <Message error content={errors.allianceTag} />
-              )}
+              {errors.name && <Message error content={errors.name} />}
+              {errors.tag && <Message error content={errors.tag} />}
               {errors.kingdomNumber && (
                 <Message error content={errors.kingdomNumber} />
               )}
@@ -64,8 +57,8 @@ export default function CreateAlliance() {
                   fluid
                   type="text"
                   name="allianceTag"
-                  value={values.allianceTag}
-                  error={errors.allianceTag !== undefined}
+                  value={values.tag}
+                  error={errors.tag !== undefined}
                   onChange={handleChange}
                   placeholder="Alliance Tag"
                 />
@@ -74,8 +67,8 @@ export default function CreateAlliance() {
                   label="Alliance Name "
                   required
                   type="text"
-                  value={values.allianceName}
-                  error={errors.allianceName !== undefined}
+                  value={values.name}
+                  error={errors.name !== undefined}
                   onChange={handleChange}
                   name="allianceName"
                   placeholder="Alliance Name"
@@ -111,4 +104,5 @@ export default function CreateAlliance() {
       </Formik>
     </div>
   );
-}
+};
+export default CreateAlliance;

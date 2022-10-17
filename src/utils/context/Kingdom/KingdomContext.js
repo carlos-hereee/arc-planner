@@ -29,7 +29,6 @@ export const KingdomState = (props) => {
     kingdomList: [],
     applications: [],
     log: [],
-    // kingdomList: [],
   };
   const [state, dispatch] = useReducer(reducer, initialState);
   const { user } = useContext(UserContext);

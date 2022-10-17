@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 import { UserContext } from "../../utils/context/User/UserContext";
-import List from "../molecules/List";
+import AllianceList from "../alliance/AllianceList";
 
 const Kingdom = () => {
   const { kingdom, kingdomSearchList, getKingdomList } =
@@ -14,6 +14,12 @@ const Kingdom = () => {
       getKingdomList(listName);
     }
   }, [listName]);
+
+  const selectedList = {
+    alliance: <AllianceList list={kingdomSearchList} />,
+    // members: <AllianceList />,
+  };
+
   return (
     <>
       <div className="card">
@@ -54,9 +60,7 @@ const Kingdom = () => {
           </button>
         </div>
       </div>
-      <div className="card">
-        <List list={kingdomSearchList} />
-      </div>
+      {selectedList[listName]}
     </>
   );
 };

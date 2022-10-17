@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import AllianceNavLink from "./allianceNavLink";
-import AllianceList from "./allianceList";
+import AllianceList from "./AllianceList";
 import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 
 const Alliance = () => {
