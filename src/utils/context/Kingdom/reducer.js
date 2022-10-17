@@ -36,7 +36,7 @@ const getKingdomList = (state, action) => {
   return {
     ...state,
     isLoading: false,
-    kingdomSearchList: action.payload,
+    kingdomAppList: action.payload,
   };
 };
 export const reducer = (state, action) => {

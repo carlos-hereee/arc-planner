@@ -4,6 +4,7 @@ import Empty from "../atoms/Empty";
 
 const AllianceList = ({ list, create, applications, applyAlliance }) => {
   const [show, setShow] = useState(false);
+  console.log("applications", applications);
   return (
     <div className="card">
       {show ? <h2>Create Alliance</h2> : <h2>Alliance</h2>}

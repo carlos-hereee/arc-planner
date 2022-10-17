@@ -4,11 +4,10 @@ import { axiosWithAuth } from "../../axiosWithAuth";
 import { UserContext } from "../User/UserContext";
 
 export const KingdomContext = createContext();
-
 export const KingdomState = (props) => {
   // create and initial state
   const initialState = {
-    listApps: [],
+    isLoading: true,
     kingdom: {},
     kingdomList: [],
     applications: [],
@@ -26,7 +25,6 @@ export const KingdomState = (props) => {
     }
   }, [user.kingdomId]);
 
-  // TODO; GET USER ALL DATA
   const getKingdomList = async (search) => {
     dispatch({ type: "IS_LOADING", payload: true });
     try {
@@ -127,24 +125,10 @@ export const KingdomState = (props) => {
     <KingdomContext.Provider
       value={{
         isLoading: state.isLoading,
-        allianceListError: state.allianceListError,
-        willParticipateMessage: state.willParticipateMessage,
-        eventsError: state.eventsError,
-        alliance: state.alliance,
-        participants: state.participants,
-        events: state.events,
-        eventsList: state.eventsList,
-        members: state.members,
-        allianceList: state.allianceList,
-        applications: state.applications,
-        profile: state.profile,
-        participatingEvents: state.participatingEvents,
-        permissions: state.permissions,
-        userProfile: state.userProfile,
-        teams: state.teams,
-        listApps: state.listApps,
         kingdom: state.kingdom,
-        kingdomSearchList: state.kingdomSearchList,
+        kingdomList: state.kingdomList,
+        applications: state.applications,
+        kingdomAppList: state.kingdomAppList,
         createKingdom,
         getAllKingdom,
         applyKingdom,
@@ -153,15 +137,18 @@ export const KingdomState = (props) => {
         getKingdomList,
         createAlliance,
       }}>
-      {state.error && (
-        <div className="global_error">
-          <p>{state.error}</p>
-          <button onClick={refreshPage} color="blue">
-            click to reload
-          </button>
-        </div>
-      )}
       {props.children}
     </KingdomContext.Provider>
   );
 };
+
+{
+  /* {state.error && (
+  <div className="global_error">
+    <p>{state.error}</p>
+    <button onClick={refreshPage} color="blue">
+      click to reload
+    </button>
+  </div>
+)} */
+}

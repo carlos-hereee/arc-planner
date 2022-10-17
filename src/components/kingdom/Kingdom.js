@@ -6,10 +6,11 @@ import AllianceList from "../alliance/AllianceList";
 const Kingdom = () => {
   const {
     kingdom,
-    kingdomSearchList,
+    kingdomAppList,
     getKingdomList,
     createAlliance,
-    allianceApplications,
+    kingdomAllianceApps,
+    kingdomAllianceApply,
   } = useContext(KingdomContext);
   const { user } = useContext(UserContext);
   const [listName, setListName] = useState("alliance");
@@ -21,7 +22,14 @@ const Kingdom = () => {
   }, [listName]);
 
   const selectedList = {
-    alliance: <AllianceList list={kingdomSearchList} create={createAlliance} />,
+    alliance: (
+      <AllianceList
+        list={kingdomAppList}
+        create={createAlliance}
+        applications={kingdomAllianceApps}
+        applyAlliance={kingdomAllianceApply}
+      />
+    ),
     // members: <AllianceList />,
   };
 
