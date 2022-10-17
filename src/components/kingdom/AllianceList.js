@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import AllianceCreate from "./AllianceCreate";
+import AllianceCreate from "../alliance/AllianceCreate";
 import Empty from "../atoms/Empty";
 
 const AllianceList = ({ list, create, applications, applyAlliance }) => {
   const [show, setShow] = useState(false);
-  console.log("applications", applications);
-  console.log("list", list);
   return (
     <div className="card">
       {show ? <h2>Create Alliance</h2> : <h2>Alliance</h2>}
@@ -52,43 +50,3 @@ const AllianceList = ({ list, create, applications, applyAlliance }) => {
   );
 };
 export default AllianceList;
-
-// const {
-//   allianceList,
-//   allianceListError,
-//   getAllianceList,
-//   applications,
-//   sendApplication,
-//   cancelApplication,
-//   getApplications,
-// } = useContext(KingdomContext);
-
-// useEffect(() => {
-//   getApplications();
-//   getAllianceList();
-// }, [applications.length]);
-
-// function applicationSent(e) {
-//   sendApplication(e);
-// }
-// function applicationCancel(e) {
-//   cancelApplication(e);
-// }
-{
-  /* <div className="scrollable">
-  {allianceListError && (
-    <div className="errorWrapper">{allianceListError}</div>
-  )}
-</div> */
-}
-{
-  /* {allianceList &&
-  allianceList.map((data, idx) => (
-    <div key={data.uuid} className="row">
-      <p>{idx + 1}.</p>
-      <p>{data.kingdomNumber}</p>
-      <p>{data.allianceTag}</p>
-      <p>{data.allianceName}</p>
-
-  ))} */
-}

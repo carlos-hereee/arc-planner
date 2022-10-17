@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 import { UserContext } from "../../utils/context/User/UserContext";
-import AllianceList from "../alliance/AllianceList";
+import AllianceList from "./AllianceList";
 
 const Kingdom = () => {
   const {
