@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-
 import AllianceContent from "./allianceContent";
 import AllianceSettings from "./settings";
-
 import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 import Events from "../event/events";
 import Members from "../event/members";
@@ -19,9 +17,9 @@ export default function AllianceNavLink() {
     setOpen(false);
     setActiveItem(name);
   }
-  useEffect(() => {
-    getPermissions();
-  }, []);
+  // useEffect(() => {
+  //   getPermissions();
+  // }, []);
 
   const navLink = {
     alliance: <AllianceContent />,
