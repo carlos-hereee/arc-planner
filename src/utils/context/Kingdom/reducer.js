@@ -18,6 +18,13 @@ const updateKingdomList = (state, action) => {
     kingdomList: action.payload,
   };
 };
+const updateAllianceList = (state, action) => {
+  return {
+    ...state,
+    isLoading: false,
+    allianceList: action.payload,
+  };
+};
 const updateMembers = (state, action) => {
   return {
     ...state,
@@ -39,13 +46,6 @@ const kingdomApp = (state, action) => {
     applications: action.payload,
   };
 };
-const getKingdomList = (state, action) => {
-  return {
-    ...state,
-    isLoading: false,
-    kingdomAppList: action.payload,
-  };
-};
 const getKingdomAllianceApps = (state, action) => {
   return {
     ...state,
@@ -63,12 +63,12 @@ export const reducer = (state, action) => {
       return updateKingdomList(state, action);
     case "UPDATE_KINGDOM":
       return updateKingdom(state, action);
+    case "UPDATE_ALLIANCE_LIST":
+      return updateAllianceList(state, action);
     case "UPDATE_MEMBERS":
       return updateMembers(state, action);
     case "KINGDOM_APPLICATIONS":
       return kingdomApp(state, action);
-    case "GET_KINGDOM_LIST":
-      return getKingdomList(state, action);
     case "UPDATE_KINGDOM_ALLIANCE_APPS":
       return getKingdomAllianceApps(state, action);
     default:

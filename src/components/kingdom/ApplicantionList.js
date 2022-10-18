@@ -1,13 +1,14 @@
 import Empty from "../atoms/Empty";
 import PlayerCard from "../molecules/PlayerCard";
 
-const MemberList = ({ list }) => {
+const ApplicantionList = ({ list }) => {
   return (
     <div className="card">
-      <h2>Members</h2>
+      <h2>Applications</h2>
       <div className="list-title">
         <p className="row-element">Name </p>
         <p className="row-element">Power </p>
+        <p className="row-element">Kills </p>
       </div>
       <div className="list">
         {list && list.length > 0 ? (
@@ -24,4 +25,4 @@ const MemberList = ({ list }) => {
   );
 };
 
-export default MemberList;
+export default ApplicantionList;

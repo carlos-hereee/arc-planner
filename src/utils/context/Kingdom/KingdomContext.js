@@ -10,6 +10,7 @@ export const KingdomState = (props) => {
     isLoading: true,
     kingdom: {},
     kingdomList: [],
+    allianceList: [],
     kingdomAllianceApps: [],
     applications: [],
     members: [],
@@ -21,7 +22,8 @@ export const KingdomState = (props) => {
   useEffect(() => {
     if (user.kingdomId) {
       getKingdom();
-      getKingdomAllianceApps();
+      getAlliance();
+      getAllianceApps();
       getMembers();
     } else {
       getAllKingdom();
@@ -29,6 +31,16 @@ export const KingdomState = (props) => {
     }
   }, [user.kingdomId]);
 
+  const getAlliance = async () => {
+    dispatch({ type: "IS_LOADING", payload: true });
+    try {
+      const { data } = await axiosWithAuth.get("/kingdom/alliance");
+      dispatch({ type: "UPDATE_ALLIANCE_LIST", payload: data });
+    } catch (e) {
+      const response = e.response.data.message;
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
+    }
+  };
   const getKingdomList = async (search) => {
     dispatch({ type: "IS_LOADING", payload: true });
     try {
@@ -49,11 +61,13 @@ export const KingdomState = (props) => {
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: message });
     }
   };
-  const getKingdomAllianceApps = async () => {
+  const getAllianceApps = async () => {
     dispatch({ type: "IS_LOADING", payload: true });
     try {
-      const { data } = await axiosWithAuth.get("kingdom/alliance/apply/");
-      dispatch({ type: "UPDATE_KINGDOM_ALLIANCE_APPS", payload: data });
+      const { data } = await axiosWithAuth.get(
+        "kingdom/alliance/applications/"
+      );
+      dispatch({ type: "UPDATE_ALLIANCE_LIST", payload: data });
     } catch (e) {
       const { message } = error.response.data;
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: message });
@@ -154,7 +168,7 @@ export const KingdomState = (props) => {
       const { data } = isApply
         ? await axiosWithAuth.post("/kingdom/alliance/apply", { values })
         : await axiosWithAuth.delete(`/kingdom/alliance/apply/${values.uid}`);
-      getKingdomAllianceApps();
+      getAllianceApps();
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: data.message });
     } catch (e) {
       const response = e.response.data.message;
@@ -167,6 +181,7 @@ export const KingdomState = (props) => {
         isLoading: state.isLoading,
         kingdom: state.kingdom,
         kingdomList: state.kingdomList,
+        allianceList: state.allianceList,
         applications: state.applications,
         kingdomAppList: state.kingdomAppList,
         kingdomAllianceApps: state.kingdomAllianceApps,
