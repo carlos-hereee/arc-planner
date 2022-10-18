@@ -10,20 +10,30 @@ const Kingdom = () => {
     kingdom,
     members,
     allianceList,
-    kingdomAppList,
-    // getKingdomList,
+    applicantList,
     createAlliance,
     kingdomAllianceApps,
     kingdomAllianceApply,
+    getAlliance,
+    getMembers,
+    getAllianceApps,
+    getKingdomApplicants,
   } = useContext(KingdomContext);
   const { user } = useContext(UserContext);
   const [listName, setListName] = useState("alliance");
 
-  // useEffect(() => {
-  //   if (listName) {
-  //     getKingdomList(listName);
-  //   }
-  // }, [listName]);
+  useEffect(() => {
+    if (listName && listName === "alliance") {
+      getAlliance();
+      getAllianceApps();
+    }
+    if (listName && listName === "members") {
+      getMembers();
+    }
+    if (listName && listName === "applicants") {
+      getKingdomApplicants();
+    }
+  }, [listName]);
 
   const selectedList = {
     alliance: (
@@ -35,10 +45,8 @@ const Kingdom = () => {
       />
     ),
     members: <MemberList list={members} />,
-    applicants: <ApplicantionList list={kingdomAppList} />,
+    applicants: <ApplicantionList list={applicantList} />,
   };
-  // console.log("kingdom", kingdom);
-  // console.log("kingdomAppList", kingdomAppList);
 
   return (
     <>

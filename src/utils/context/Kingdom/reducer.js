@@ -25,6 +25,20 @@ const updateAllianceList = (state, action) => {
     allianceList: action.payload,
   };
 };
+// const updateAllianceApplicantList = (state, action) => {
+//   return {
+//     ...state,
+//     isLoading: false,
+//     applicantList: action.payload,
+//   };
+// };
+const updateKingdomApplicantList = (state, action) => {
+  return {
+    ...state,
+    isLoading: false,
+    applicantList: action.payload,
+  };
+};
 const updateMembers = (state, action) => {
   return {
     ...state,
@@ -59,12 +73,16 @@ export const reducer = (state, action) => {
       return isLoading(state, action);
     case "ADD_MESSAGE_TO_LOG":
       return addToLog(state, action);
-    case "UPDATE_KINGDOM_LIST":
-      return updateKingdomList(state, action);
     case "UPDATE_KINGDOM":
       return updateKingdom(state, action);
+    case "UPDATE_KINGDOM_LIST":
+      return updateKingdomList(state, action);
     case "UPDATE_ALLIANCE_LIST":
       return updateAllianceList(state, action);
+    case "UPDATE_KINGDOM_APPLICANT_LIST":
+      return updateKingdomApplicantList(state, action);
+    // case "UPDATE_ALLIANCE_APPLICATION_LIST":
+    //   return updateAllianceApplicantList(state, action);
     case "UPDATE_MEMBERS":
       return updateMembers(state, action);
     case "KINGDOM_APPLICATIONS":

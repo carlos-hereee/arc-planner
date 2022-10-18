@@ -11,6 +11,7 @@ export const KingdomState = (props) => {
     kingdom: {},
     kingdomList: [],
     allianceList: [],
+    applicantList: [],
     kingdomAllianceApps: [],
     applications: [],
     members: [],
@@ -22,35 +23,12 @@ export const KingdomState = (props) => {
   useEffect(() => {
     if (user.kingdomId) {
       getKingdom();
-      getAlliance();
-      getAllianceApps();
-      getMembers();
     } else {
       getAllKingdom();
       getKingdomApp();
     }
   }, [user.kingdomId]);
 
-  const getAlliance = async () => {
-    dispatch({ type: "IS_LOADING", payload: true });
-    try {
-      const { data } = await axiosWithAuth.get("/kingdom/alliance");
-      dispatch({ type: "UPDATE_ALLIANCE_LIST", payload: data });
-    } catch (e) {
-      const response = e.response.data.message;
-      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
-    }
-  };
-  const getKingdomList = async (search) => {
-    dispatch({ type: "IS_LOADING", payload: true });
-    try {
-      const { data } = await axiosWithAuth.get(`/kingdom/search/${search}`);
-      dispatch({ type: "GET_KINGDOM_LIST", payload: data });
-    } catch (e) {
-      const response = e.response.data.message;
-      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
-    }
-  };
   const getKingdom = async () => {
     dispatch({ type: "IS_LOADING", payload: true });
     try {
@@ -61,13 +39,33 @@ export const KingdomState = (props) => {
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: message });
     }
   };
+  const getKingdomApplicants = async () => {
+    dispatch({ type: "IS_LOADING", payload: true });
+    try {
+      const { data } = await axiosWithAuth.get("/kingdom/applicants");
+      dispatch({ type: "UPDATE_KINGDOM_APPLICANT_LIST", payload: data });
+    } catch (e) {
+      const response = e.response.data.message;
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
+    }
+  };
+  const getAlliance = async () => {
+    dispatch({ type: "IS_LOADING", payload: true });
+    try {
+      const { data } = await axiosWithAuth.get("/kingdom/alliance");
+      dispatch({ type: "UPDATE_ALLIANCE_LIST", payload: data });
+    } catch (e) {
+      const response = e.response.data.message;
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
+    }
+  };
   const getAllianceApps = async () => {
     dispatch({ type: "IS_LOADING", payload: true });
     try {
       const { data } = await axiosWithAuth.get(
         "kingdom/alliance/applications/"
       );
-      dispatch({ type: "UPDATE_ALLIANCE_LIST", payload: data });
+      dispatch({ type: "UPDATE_ALLIANCE_APPLICATION_LIST", payload: data });
     } catch (e) {
       const { message } = error.response.data;
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: message });
@@ -182,6 +180,7 @@ export const KingdomState = (props) => {
         kingdom: state.kingdom,
         kingdomList: state.kingdomList,
         allianceList: state.allianceList,
+        applicantList: state.applicantList,
         applications: state.applications,
         kingdomAppList: state.kingdomAppList,
         kingdomAllianceApps: state.kingdomAllianceApps,
@@ -191,9 +190,12 @@ export const KingdomState = (props) => {
         applyKingdom,
         cancelAppKingdom,
         updateKingdomList,
-        getKingdomList,
         createAlliance,
         kingdomAllianceApply,
+        getAlliance,
+        getMembers,
+        getAllianceApps,
+        getKingdomApplicants,
       }}>
       {props.children}
     </KingdomContext.Provider>
