@@ -7,7 +7,6 @@ import { UserContext } from "../utils/context/User/UserContext";
 const Dashboard = () => {
   const { user } = useContext(UserContext);
 
-  console.log("user", user);
   return (
     <section>
       {user.allianceId && <Alliance />}
