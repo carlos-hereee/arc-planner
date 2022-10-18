@@ -22,7 +22,6 @@ const Kingdom = () => {
   } = useContext(KingdomContext);
   const { user } = useContext(UserContext);
   const [listName, setListName] = useState("alliance");
-
   useEffect(() => {
     if (listName && listName === "alliance") {
       getAlliance();

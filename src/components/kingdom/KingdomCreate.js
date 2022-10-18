@@ -11,10 +11,13 @@ const KingdomCreate = ({ show, setNewKD }) => {
       <h2>Create Kingdom</h2>
       <Formik
         initialValues={{ number: 0, announcement: "" }}
-        onSubmit={(values) => createKingdom(values)}
+        onSubmit={(values) => {
+          createKingdom(values);
+          setNewKD(!show);
+        }}
         validationSchema={yup.object().shape({
-          name: yup.string().required("*Required"),
-          announcement: yup.string().required("*Required"),
+          number: yup.string().required("*Required field"),
+          announcement: yup.string().required("*Required field"),
         })}>
         {({ errors }) => (
           <Form className="form">
@@ -26,7 +29,7 @@ const KingdomCreate = ({ show, setNewKD }) => {
                 )}
               </label>
               <div>
-                <Field type="text" name="name" />
+                <Field type="number" name="number" />
               </div>
             </div>
             <div className="form-field">

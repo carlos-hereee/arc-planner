@@ -5,7 +5,7 @@ import { reducer } from "./reducer";
 export const UserContext = createContext();
 
 export const UserState = ({ children }) => {
-  const initialState = { isLoading: false, user: [], log: [] };
+  const initialState = { isLoading: false, user: {}, log: [] };
   const [state, dispatch] = useReducer(reducer, initialState);
   const { accessToken } = useContext(AuthContext);
   useEffect(() => {
@@ -16,8 +16,8 @@ export const UserState = ({ children }) => {
   const getUserData = async () => {
     dispatch({ type: "IS_LOADING", payload: true });
     try {
-      const res = await axiosWithAuth.get("/users");
-      dispatch({ type: "UPDATE_USER_DATA", payload: res.data });
+      const { data } = await axiosWithAuth.get("/users");
+      dispatch({ type: "UPDATE_USER_DATA", payload: data });
     } catch (e) {
       const { message } = error.response.data;
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: message });
@@ -25,7 +25,12 @@ export const UserState = ({ children }) => {
   };
   return (
     <UserContext.Provider
-      value={{ user: state.user, isLoading: state.isLoading, log: state.log }}>
+      value={{
+        user: state.user,
+        isLoading: state.isLoading,
+        log: state.log,
+        getUserData,
+      }}>
       {children}
     </UserContext.Provider>
   );

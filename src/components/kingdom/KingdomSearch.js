@@ -46,7 +46,7 @@ const KingdomList = ({ newKD, setNewKD }) => {
         {kingdomList && kingdomList.length > 0 ? (
           kingdomList?.map((k) => (
             <div key={k.uid} className="list-row">
-              <p className="row-element">{k.name}</p>
+              <p className="row-element">{k.number}</p>
               <p className="row-element">{k.kingName}</p>
               <p className="row-element">{k.announcement}</p>
               {applications &&

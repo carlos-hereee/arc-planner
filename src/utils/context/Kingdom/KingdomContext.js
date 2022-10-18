@@ -18,7 +18,7 @@ export const KingdomState = (props) => {
     log: [],
   };
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { user } = useContext(UserContext);
+  const { user, getUserData } = useContext(UserContext);
 
   useEffect(() => {
     if (user.kingdomId) {
@@ -105,10 +105,11 @@ export const KingdomState = (props) => {
     dispatch({ type: "IS_LOADING", payload: true });
     try {
       const data = await axiosWithAuth.post("/kingdom", values);
+      getUserData();
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: data.message });
     } catch (e) {
-      const response = e.response.data.message;
-      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
+      const { message } = e.response.data;
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: message });
     }
   };
   const createAlliance = async (values) => {
@@ -117,6 +118,7 @@ export const KingdomState = (props) => {
       const { data } = await axiosWithAuth.post("/kingdom/alliance", {
         values,
       });
+      getUserData();
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: data.message });
     } catch (e) {
       const response = e.response.data.message;
@@ -176,11 +178,24 @@ export const KingdomState = (props) => {
   const leaveKingdom = async () => {
     dispatch({ type: "IS_LOADING", payload: true });
     try {
-      await axiosWithAuth.put("kingdom/leave");
+      const { data } = await axiosWithAuth.put("kingdom/leave");
+      getUserData();
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: data.message });
     } catch (e) {
       const response = e.response.data.message;
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
+    }
+  };
+  const deleteKingdom = async () => {
+    dispatch({ type: "IS_LOADING", payload: true });
+    try {
+      const { data } = await axiosWithAuth.delete("kingdom");
+      getUserData();
+      console.log("data", data);
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: data });
+    } catch (e) {
+      const { message } = e.response.data;
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: message });
     }
   };
   return (
@@ -207,6 +222,7 @@ export const KingdomState = (props) => {
         getAllianceApps,
         getKingdomApplicants,
         leaveKingdom,
+        deleteKingdom,
       }}>
       {props.children}
     </KingdomContext.Provider>
