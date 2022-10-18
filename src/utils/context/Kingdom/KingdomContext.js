@@ -173,6 +173,16 @@ export const KingdomState = (props) => {
       dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
     }
   };
+  const leaveKingdom = async () => {
+    dispatch({ type: "IS_LOADING", payload: true });
+    try {
+      await axiosWithAuth.put("kingdom/leave");
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: data.message });
+    } catch (e) {
+      const response = e.response.data.message;
+      dispatch({ type: "ADD_MESSAGE_TO_LOG", payload: response });
+    }
+  };
   return (
     <KingdomContext.Provider
       value={{
@@ -196,6 +206,7 @@ export const KingdomState = (props) => {
         getMembers,
         getAllianceApps,
         getKingdomApplicants,
+        leaveKingdom,
       }}>
       {props.children}
     </KingdomContext.Provider>

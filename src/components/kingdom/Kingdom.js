@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { KingdomContext } from "../../utils/context/Kingdom/KingdomContext";
 import { UserContext } from "../../utils/context/User/UserContext";
+import Settings from "./Settings";
 import AllianceList from "./AllianceList";
 import ApplicantionList from "./ApplicantionList";
 import MemberList from "./MemberList";
@@ -46,6 +47,7 @@ const Kingdom = () => {
     ),
     members: <MemberList list={members} />,
     applicants: <ApplicantionList list={applicantList} />,
+    settings: <Settings />,
   };
 
   return (
