@@ -45,46 +45,6 @@
   }
 }
 
-.green_btn {
-  @include btn();
-  background: rgb(4, 185, 4);
-  &:hover {
-    background: rgb(4, 153, 4);
-  }
-}
-
-.blue_btn {
-  @include btn();
-  background: $lightest-blue;
-  padding: 1rem 1.5rem;
-  margin-top: 1rem;
-  &:hover {
-    background: $right-gradiant;
-  }
-}
-
-.save_btn {
-  @include btn();
-  background: $card-bg;
-  color: $primary-txt-color;
-  border: none;
-  &:hover {
-    background: $lightest-blue;
-  }
-}
-.cancel_btn {
-  @include btn();
-  background: red;
-  color: $primary-txt-color;
-  border: none;
-  &:hover {
-    background: darkred;
-  }
-}
-.apply_btn {
-  @include btn();
-}
-
 .inputSave {
   @include input();
   width: 20px;
@@ -118,10 +78,6 @@
   &:hover {
     background: $lightest-blue-hover;
   }
-}
-.scrollable {
-  height: 450px;
-  overflow-y: scroll;
 }
 
 .global_error {

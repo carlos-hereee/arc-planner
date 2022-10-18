@@ -212,14 +212,3 @@ export const KingdomState = (props) => {
     </KingdomContext.Provider>
   );
 };
-
-{
-  /* {state.error && (
-  <div className="global_error">
-    <p>{state.error}</p>
-    <button onClick={refreshPage} color="blue">
-      click to reload
-    </button>
-  </div>
-)} */
-}

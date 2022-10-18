@@ -32,12 +32,19 @@ const Settings = () => {
   ) : (
     <div className="card">
       <h2>Settings</h2>
-      <button
-        type="button"
-        onClick={() => setShow(!show)}
-        className="btn btn-danger">
-        {user.isKing ? "Delete " : "Leave "}Kingdom
-      </button>
+      <div>
+        {user.isKing && (
+          <button type="button" className="btn">
+            Edit Kingdom
+          </button>
+        )}
+        <button
+          type="button"
+          onClick={() => setShow(!show)}
+          className="btn btn-danger">
+          {user.isKing ? "Delete " : "Leave "}Kingdom
+        </button>
+      </div>
     </div>
   );
 };
