@@ -14,11 +14,6 @@
     color: $primary-txt-color;
     background: $card-bg;
   }
-  &:focus {
-    color: $primary-txt-color;
-    background: $card-bg;
-    transform: translateY(4px);
-  }
 }
 .btn-danger {
   @include btn();
@@ -28,7 +23,13 @@
     background: $primary-btn-bg-color-danger-hover;
   }
 }
-
+.btn-focus {
+  &:focus {
+    color: $primary-txt-color;
+    background: $card-bg;
+    transform: translateY(4px);
+  }
+}
 .wrapper {
   text-align: center;
   margin: 1rem;

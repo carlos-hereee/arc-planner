@@ -62,27 +62,27 @@ const Kingdom = () => {
         </button> */}
           <button
             type="button"
-            className="btn"
+            className="btn btn-focus"
             onClick={(e) => setListName(e.currentTarget.textContent)}>
             alliance
           </button>
           <button
             type="button"
-            className="btn"
+            className="btn btn-focus"
             onClick={(e) => setListName(e.currentTarget.textContent)}>
             members
           </button>
           {kingdom.kingId === user.uid && (
             <button
               type="button"
-              className="btn"
+              className="btn btn-focus"
               onClick={(e) => setListName(e.currentTarget.textContent)}>
               applicants
             </button>
           )}
           <button
             type="button"
-            className="btn"
+            className="btn btn-focus"
             onClick={(e) => setListName(e.currentTarget.textContent)}>
             settings
           </button>
